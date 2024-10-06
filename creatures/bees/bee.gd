@@ -26,27 +26,28 @@ func search() -> void:
 
 
 ## Travel to a set location
-func travel() -> void:
-	if not data.current_habitat:
-		print("ERROR: No habitat found!")
-
-	movement.target = data.current_habitat.global_position
+func travel(target: Vector2) -> void:
+	movement.target = target
 
 
 func _on_target_reached() -> void:
-	if data.current_local == null:
+	if data.current_local_data == null:
 		search()
-	elif data.current_local:
+	elif data.current_local_data:
 		# Wait until the action at the local is done
-		await get_tree().create_timer(data.current_local.wait_time).timeout
-		# If @ habitat start searching for plants
-		if data.current_local.is_habitat:
-			data.current_local = null
+		await get_tree().create_timer(data.current_local_data.wait_time).timeout
+		# If at habitat start searching for plants
+		if data.current_local_data.is_habitat:
+			# Reset current_local_data after local was visited
+			data.current_local_data = null
 			search()
-		# If not at habitat we are @ a plant so travel home
+		# If not at habitat we are at a plant so travel home
 		else:
-			travel()
-
+			# Free the occupied space
+			data.current_local_position.clear()
+			# Start traveling to habitat
+			data.current_local_data = data.current_habitat.data
+			travel(data.current_habitat_position.global_position)
 
 
 func _on_inside_attractor_area(area: AttractorArea) -> void:
@@ -56,7 +57,16 @@ func _on_inside_attractor_area(area: AttractorArea) -> void:
 		if area.ref.habitat.data in data.habitats:
 			# Occupy position if available
 			if not area.ref.creature_positions.all_occupied:
-				area.ref.creature_positions.occupy_position()
+				data.current_habitat_position = area.ref.creature_positions.occupy_position()
 				data.current_habitat = area.ref.habitat
-				data.current_local = area.ref.habitat.data
-				travel()
+				data.current_local_data = area.ref.habitat.data
+				travel(data.current_habitat_position.global_position)
+
+	# If habitat is found occupy plant
+	if area.ref.plant:
+		# Occupy position if available
+		if not area.ref.creature_positions.all_occupied:
+			var occupied_position := area.ref.creature_positions.occupy_position()
+			data.current_local_position = occupied_position
+			data.current_local_data = area.ref.plant.data
+			travel(occupied_position.global_position)

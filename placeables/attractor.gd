@@ -7,3 +7,4 @@ signal creature_attracted
 
 @export var creature_positions: CreaturePositionsComponent
 @export var habitat: HabitatComponent
+@export var plant: PlantComponent

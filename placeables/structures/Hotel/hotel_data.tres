@@ -10,4 +10,4 @@ display_name = "Hotel"
 icon = ExtResource("1_ive7l")
 is_attractor = true
 is_habitat = true
-wait_time = 5.0
+wait_time = 2.0

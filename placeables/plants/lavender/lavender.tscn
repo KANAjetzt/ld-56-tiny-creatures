@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://du1wenu1kough"]
+[gd_scene load_steps=10 format=3 uid="uid://du1wenu1kough"]
 
 [ext_resource type="Texture2D" uid="uid://dt0jcqf6qbyto" path="res://placeables/plants/lavender/Lavender.svg" id="1_obwqm"]
 [ext_resource type="Texture2D" uid="uid://cjnhydxgrpm27" path="res://placeables/plants/lavender/Lavender_Glow.svg" id="2_reljm"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://placeables/attractor_area.gd" id="6_2ogpt"]
 [ext_resource type="PackedScene" uid="uid://c5yo20qevp5vw" path="res://placeables/creature_positions.tscn" id="6_yw1lw"]
 [ext_resource type="PackedScene" uid="uid://mu0cbo743n6a" path="res://placeables/creature_position.tscn" id="7_hnajx"]
+[ext_resource type="PackedScene" uid="uid://bgx25yt4ojjda" path="res://placeables/plants/plant.tscn" id="7_vt70n"]
+[ext_resource type="Resource" uid="uid://cajovvpy2a1tr" path="res://placeables/plants/lavender/lavender_data.tres" id="8_1fn6t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bhi5v"]
 radius = 69.3542
@@ -36,13 +38,21 @@ position = Vector2(4, -18)
 [node name="CreaturePositionComponent4" parent="CreaturePositionsComponent" instance=ExtResource("7_hnajx")]
 position = Vector2(12, -18)
 
-[node name="AttractorComponent" parent="." instance=ExtResource("5_k7yxl")]
+[node name="AttractorComponent" parent="." node_paths=PackedStringArray("creature_positions", "plant") instance=ExtResource("5_k7yxl")]
+creature_positions = NodePath("../CreaturePositionsComponent")
+plant = NodePath("../PlantComponent")
 
 [node name="AttractorArea" type="Area2D" parent="AttractorComponent" node_paths=PackedStringArray("ref")]
+collision_layer = 2
 script = ExtResource("6_2ogpt")
 ref = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttractorComponent/AttractorArea"]
 shape = SubResource("CircleShape2D_bhi5v")
+
+[node name="PlantComponent" parent="." node_paths=PackedStringArray("creature_positions", "attractor") instance=ExtResource("7_vt70n")]
+data = ExtResource("8_1fn6t")
+creature_positions = NodePath("../CreaturePositionsComponent")
+attractor = NodePath("../AttractorComponent")
 
 [editable path="AttractorComponent"]

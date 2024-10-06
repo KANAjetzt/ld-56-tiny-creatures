@@ -84,3 +84,36 @@ position = Vector2(757, 533)
 
 [node name="Hotel" parent="." instance=ExtResource("8_iidt7")]
 position = Vector2(878, 414)
+
+[node name="Lavender5" parent="." instance=ExtResource("2_83unn")]
+position = Vector2(614, 179)
+
+[node name="Lavender6" parent="." instance=ExtResource("2_83unn")]
+position = Vector2(938, 101)
+
+[node name="Lavender7" parent="." instance=ExtResource("2_83unn")]
+position = Vector2(1175, 268)
+
+[node name="Lavender8" parent="." instance=ExtResource("2_83unn")]
+position = Vector2(1216, 470)
+
+[node name="Lavender9" parent="." instance=ExtResource("2_83unn")]
+position = Vector2(1105, 688)
+
+[node name="Lavender10" parent="." instance=ExtResource("2_83unn")]
+position = Vector2(899, 755)
+
+[node name="Lavender11" parent="." instance=ExtResource("2_83unn")]
+position = Vector2(654, 729)
+
+[node name="Lavender12" parent="." instance=ExtResource("2_83unn")]
+position = Vector2(607, 574)
+
+[node name="Lavender13" parent="." instance=ExtResource("2_83unn")]
+position = Vector2(566, 346)
+
+[node name="Lavender14" parent="." instance=ExtResource("2_83unn")]
+position = Vector2(764, 123)
+
+[node name="Lavender15" parent="." instance=ExtResource("2_83unn")]
+position = Vector2(1074, 154)

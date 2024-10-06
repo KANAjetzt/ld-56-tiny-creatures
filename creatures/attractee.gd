@@ -8,7 +8,6 @@ signal inside_attractor_area(attractor_area: AttractorArea)
 
 
 func _ready() -> void:
-	print(area_2d.get_overlapping_areas())
 	for area in area_2d.get_overlapping_areas():
 		if area is AttractorArea:
 			if not area.ref.creature_positions.all_occupied:

@@ -11,5 +11,8 @@ enum STATE {IDLE, SEARCHING, TRAVEL}
 @export var habitats: Array[PlaceableData]
 
 var current_state := STATE.IDLE
-var current_local: PlaceableData
+var current_local := Node2D
+var current_local_position: CreaturePositionComponent
+var current_local_data: PlaceableData
 var current_habitat: Node2D
+var current_habitat_position: CreaturePositionComponent

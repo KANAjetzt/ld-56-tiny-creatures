@@ -1,9 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bgx25yt4ojjda"]
 
-[ext_resource type="PackedScene" uid="uid://dannee2yf7qrq" path="res://placeables/attractor.tscn" id="1_7btus"]
+[ext_resource type="Script" path="res://placeables/plants/plant.gd" id="1_dq0sb"]
 
-[node name="Plant" type="Node2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-
-[node name="AtractorComponent" parent="." instance=ExtResource("1_7btus")]
+[node name="PlantComponent" type="Node2D"]
+script = ExtResource("1_dq0sb")
