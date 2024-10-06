@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PlaceableData" load_steps=3 format=3 uid="uid://cajovvpy2a1tr"]
+
+[ext_resource type="Texture2D" uid="uid://dt0jcqf6qbyto" path="res://placeables/plants/lavender/Lavender.svg" id="1_1uytt"]
+[ext_resource type="Script" path="res://placeables/_placeable_data.gd" id="1_gcllh"]
+
+[resource]
+script = ExtResource("1_gcllh")
+id = "plant_lavender"
+display_name = "Lavender"
+icon = ExtResource("1_1uytt")

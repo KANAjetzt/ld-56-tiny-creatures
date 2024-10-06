@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CreatureData" load_steps=2 format=3 uid="uid://8sv418wai735"]
+
+[ext_resource type="Script" path="res://creatures/_creature_data.gd" id="1_n0fmx"]
+
+[resource]
+script = ExtResource("1_n0fmx")
+id = "bee_mason"
+display_name = "Mason Bee"

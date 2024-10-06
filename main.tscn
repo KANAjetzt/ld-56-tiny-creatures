@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=3 uid="uid://ba3ynctue5yd8"]
+
+[ext_resource type="PackedScene" uid="uid://dwr86fpqbqm8v" path="res://placeables/plants/grass/grass.tscn" id="1_xcg35"]
+[ext_resource type="PackedScene" uid="uid://du1wenu1kough" path="res://placeables/plants/lavender/lavender.tscn" id="2_83unn"]
+[ext_resource type="PackedScene" uid="uid://caucs034c3drh" path="res://creatures/bees/mason_bee/mason_bee.tscn" id="3_wk38n"]
+[ext_resource type="PackedScene" uid="uid://fxqjwdt0bjcm" path="res://camera/tracker.tscn" id="4_n8tad"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_4e5on"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="6_ostck"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_tlugj"]
+
+[sub_resource type="Curve" id="Curve_dad68"]
+max_value = 2.0
+_data = [Vector2(0, 2), 0.0, -36.0126, 0, 0, Vector2(0.0985545, 0.271959), -1.39403, -1.39403, 0, 0, Vector2(0.672862, 0.0290964), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Resource" id="Resource_k17r7"]
+script = ExtResource("7_tlugj")
+duration = 1.0
+transition = 0
+ease = 2
+
+[node name="Main" type="Node2D"]
+
+[node name="Grass" parent="." instance=ExtResource("1_xcg35")]
+position = Vector2(292, 467)
+
+[node name="Grass2" parent="." instance=ExtResource("1_xcg35")]
+position = Vector2(148, 507)
+
+[node name="Grass3" parent="." instance=ExtResource("1_xcg35")]
+position = Vector2(433, 605)
+
+[node name="Grass4" parent="." instance=ExtResource("1_xcg35")]
+position = Vector2(652, 509)
+
+[node name="Lavender" parent="." instance=ExtResource("2_83unn")]
+position = Vector2(416, 467)
+
+[node name="Lavender2" parent="." instance=ExtResource("2_83unn")]
+position = Vector2(491, 492)
+
+[node name="Lavender3" parent="." instance=ExtResource("2_83unn")]
+position = Vector2(443, 508)
+
+[node name="Lavender4" parent="." instance=ExtResource("2_83unn")]
+position = Vector2(153, 584)
+
+[node name="MasonBee" parent="." instance=ExtResource("3_wk38n")]
+position = Vector2(930, 484)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/ParallaxBackground"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CameraTarget" parent="." instance=ExtResource("4_n8tad")]
+position = Vector2(574, 323)
+zoom_target_speed_curve = SubResource("Curve_dad68")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+physics_interpolation_mode = 2
+position = Vector2(574, 323)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+script = ExtResource("5_4e5on")
+
+[node name="CameraMain" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
+unique_name_in_owner = true
+position = Vector2(574, 323)
+script = ExtResource("6_ostck")
+follow_mode = 2
+follow_target = NodePath("../CameraTarget")
+tween_resource = SubResource("Resource_k17r7")
+follow_damping = true

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PlaceableData" load_steps=3 format=3 uid="uid://b1oloopp16uv8"]
+
+[ext_resource type="Texture2D" uid="uid://btc70hba4hkmx" path="res://placeables/plants/grass/Grass.svg" id="1_2vgam"]
+[ext_resource type="Script" path="res://placeables/_placeable_data.gd" id="1_iiger"]
+
+[resource]
+script = ExtResource("1_iiger")
+id = "plant_grass"
+display_name = "Tall Grass"
+icon = ExtResource("1_2vgam")

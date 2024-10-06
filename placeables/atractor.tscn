@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dannee2yf7qrq"]
+
+[ext_resource type="Script" path="res://placeables/atractor.gd" id="1_aybwc"]
+
+[node name="AtractorComponent" type="Node2D"]
+script = ExtResource("1_aybwc")

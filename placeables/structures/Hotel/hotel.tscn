@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl30lfpoxafuv"]
+
+[ext_resource type="Texture2D" uid="uid://b5ux024v2aysk" path="res://placeables/structures/Hotel/Hotel.svg" id="1_ffftg"]
+
+[node name="Hotel" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("1_ffftg")

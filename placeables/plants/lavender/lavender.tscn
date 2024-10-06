@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://du1wenu1kough"]
+
+[ext_resource type="Texture2D" uid="uid://dt0jcqf6qbyto" path="res://placeables/plants/lavender/Lavender.svg" id="1_obwqm"]
+[ext_resource type="Texture2D" uid="uid://cjnhydxgrpm27" path="res://placeables/plants/lavender/Lavender_Glow.svg" id="2_reljm"]
+
+[node name="Lavender" type="Node2D" groups=["placeable"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("1_obwqm")
+
+[node name="Glow" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.65521, 0.117885, 0.999998, 1)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("2_reljm")

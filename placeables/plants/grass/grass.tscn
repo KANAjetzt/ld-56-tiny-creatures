@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwr86fpqbqm8v"]
+
+[ext_resource type="Texture2D" uid="uid://btc70hba4hkmx" path="res://placeables/plants/grass/Grass.svg" id="1_5d27m"]
+
+[node name="Grass" type="Node2D" groups=["placeable"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("1_5d27m")
