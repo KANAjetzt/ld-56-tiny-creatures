@@ -1,9 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://caucs034c3drh"]
+[gd_scene load_steps=6 format=3 uid="uid://caucs034c3drh"]
 
 [ext_resource type="Texture2D" uid="uid://bc5kihw4ceao3" path="res://creatures/bees/mason_bee/Bee.svg" id="1_rfrud"]
+[ext_resource type="PackedScene" uid="uid://bn0rrnq8jxv5q" path="res://creatures/movement.tscn" id="2_u58yd"]
+[ext_resource type="PackedScene" uid="uid://dnkjoi6eawcdh" path="res://creatures/bees/bee.tscn" id="4_xwqrq"]
+[ext_resource type="Resource" uid="uid://bhcm5nnwejsi4" path="res://creatures/bees/mason_bee/mason_bee_data.tres" id="5_cpknq"]
+[ext_resource type="PackedScene" uid="uid://b87c15tnbke7v" path="res://creatures/Attractee.tscn" id="5_q28co"]
 
 [node name="MasonBee" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.01, 0.01)
 texture = ExtResource("1_rfrud")
+
+[node name="MovementComponent" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("2_u58yd")]
+parent = NodePath("..")
+speed = 100
+
+[node name="AttracteeComponent" parent="." instance=ExtResource("5_q28co")]
+
+[node name="BeeComponent" parent="." node_paths=PackedStringArray("movement", "attractee") instance=ExtResource("4_xwqrq")]
+data = ExtResource("5_cpknq")
+movement = NodePath("../MovementComponent")
+attractee = NodePath("../AttracteeComponent")

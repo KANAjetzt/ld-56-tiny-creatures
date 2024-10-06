@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cucx3akbt7tmv"]
+
+[ext_resource type="Script" path="res://placeables/attractor_area.gd" id="1_o63ec"]
+
+[node name="AttractorArea" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_o63ec")

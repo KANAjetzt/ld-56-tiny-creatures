@@ -1,9 +1,57 @@
-[gd_scene load_steps=2 format=3 uid="uid://bl30lfpoxafuv"]
+[gd_scene load_steps=9 format=3 uid="uid://bl30lfpoxafuv"]
 
 [ext_resource type="Texture2D" uid="uid://b5ux024v2aysk" path="res://placeables/structures/Hotel/Hotel.svg" id="1_ffftg"]
+[ext_resource type="PackedScene" uid="uid://c5yo20qevp5vw" path="res://placeables/creature_positions.tscn" id="2_mapki"]
+[ext_resource type="PackedScene" uid="uid://mu0cbo743n6a" path="res://placeables/creature_position.tscn" id="3_ps7r8"]
+[ext_resource type="PackedScene" uid="uid://chkip5w1w0ra7" path="res://placeables/structures/habitat.tscn" id="4_o0msf"]
+[ext_resource type="PackedScene" uid="uid://dannee2yf7qrq" path="res://placeables/attractor.tscn" id="5_t1qpm"]
+[ext_resource type="Script" path="res://placeables/attractor_area.gd" id="6_qneih"]
+[ext_resource type="Resource" uid="uid://co8bgcteikhjp" path="res://placeables/structures/Hotel/hotel_data.tres" id="7_8w7tq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bdra4"]
+radius = 225.142
 
 [node name="Hotel" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.09, 0.09)
+scale = Vector2(0.05, 0.05)
 texture = ExtResource("1_ffftg")
+
+[node name="CreaturePositionsComponent" parent="." instance=ExtResource("2_mapki")]
+
+[node name="CreaturePositionComponent" parent="CreaturePositionsComponent" instance=ExtResource("3_ps7r8")]
+position = Vector2(-14, 26)
+
+[node name="CreaturePositionComponent2" parent="CreaturePositionsComponent" instance=ExtResource("3_ps7r8")]
+position = Vector2(-4, 26)
+
+[node name="CreaturePositionComponent3" parent="CreaturePositionsComponent" instance=ExtResource("3_ps7r8")]
+position = Vector2(-2, 14)
+
+[node name="CreaturePositionComponent4" parent="CreaturePositionsComponent" instance=ExtResource("3_ps7r8")]
+position = Vector2(-9, 10)
+
+[node name="CreaturePositionComponent5" parent="CreaturePositionsComponent" instance=ExtResource("3_ps7r8")]
+position = Vector2(-7, -2)
+
+[node name="CreaturePositionComponent6" parent="CreaturePositionsComponent" instance=ExtResource("3_ps7r8")]
+position = Vector2(6, -14)
+
+[node name="AttractorComponent" parent="." node_paths=PackedStringArray("creature_positions", "habitat") instance=ExtResource("5_t1qpm")]
+creature_positions = NodePath("../CreaturePositionsComponent")
+habitat = NodePath("../HabitatComponent")
+
+[node name="AttractorArea" type="Area2D" parent="AttractorComponent" node_paths=PackedStringArray("ref")]
+collision_layer = 2
+script = ExtResource("6_qneih")
+ref = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttractorComponent/AttractorArea"]
+shape = SubResource("CircleShape2D_bdra4")
+
+[node name="HabitatComponent" parent="." node_paths=PackedStringArray("attractor", "creature_positions") instance=ExtResource("4_o0msf")]
+data = ExtResource("7_8w7tq")
+attractor = NodePath("../AttractorComponent")
+creature_positions = NodePath("../CreaturePositionsComponent")
+
+[editable path="AttractorComponent"]

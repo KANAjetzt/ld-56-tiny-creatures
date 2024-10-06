@@ -60,6 +60,11 @@ zoom_out={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="attractee"
+2d_physics/layer_2="attractor"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

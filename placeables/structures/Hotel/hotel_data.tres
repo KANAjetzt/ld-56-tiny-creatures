@@ -1,10 +1,13 @@
-[gd_resource type="Resource" script_class="PlaceableData" load_steps=3 format=3 uid="uid://dql4d7ww7ta3v"]
+[gd_resource type="Resource" script_class="PlaceableData" load_steps=3 format=3 uid="uid://co8bgcteikhjp"]
 
 [ext_resource type="Script" path="res://placeables/_placeable_data.gd" id="1_3m8x0"]
-[ext_resource type="Texture2D" uid="uid://b5ux024v2aysk" path="res://placeables/structures/Hotel/Hotel.svg" id="1_vb4nj"]
+[ext_resource type="Texture2D" uid="uid://b5ux024v2aysk" path="res://placeables/structures/Hotel/Hotel.svg" id="1_ive7l"]
 
 [resource]
 script = ExtResource("1_3m8x0")
 id = "structure_hotel"
 display_name = "Hotel"
-icon = ExtResource("1_vb4nj")
+icon = ExtResource("1_ive7l")
+is_attractor = true
+is_habitat = true
+wait_time = 5.0

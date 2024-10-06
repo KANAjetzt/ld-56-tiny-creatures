@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://ba3ynctue5yd8"]
+[gd_scene load_steps=11 format=3 uid="uid://ba3ynctue5yd8"]
 
 [ext_resource type="PackedScene" uid="uid://dwr86fpqbqm8v" path="res://placeables/plants/grass/grass.tscn" id="1_xcg35"]
 [ext_resource type="PackedScene" uid="uid://du1wenu1kough" path="res://placeables/plants/lavender/lavender.tscn" id="2_83unn"]
-[ext_resource type="PackedScene" uid="uid://caucs034c3drh" path="res://creatures/bees/mason_bee/mason_bee.tscn" id="3_wk38n"]
 [ext_resource type="PackedScene" uid="uid://fxqjwdt0bjcm" path="res://camera/tracker.tscn" id="4_n8tad"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_4e5on"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="6_ostck"]
+[ext_resource type="PackedScene" uid="uid://caucs034c3drh" path="res://creatures/bees/mason_bee/mason_bee.tscn" id="7_stn3t"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_tlugj"]
+[ext_resource type="PackedScene" uid="uid://bl30lfpoxafuv" path="res://placeables/structures/Hotel/hotel.tscn" id="8_iidt7"]
 
 [sub_resource type="Curve" id="Curve_dad68"]
 max_value = 2.0
@@ -45,21 +46,6 @@ position = Vector2(443, 508)
 [node name="Lavender4" parent="." instance=ExtResource("2_83unn")]
 position = Vector2(153, 584)
 
-[node name="MasonBee" parent="." instance=ExtResource("3_wk38n")]
-position = Vector2(930, 484)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/ParallaxBackground"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
 [node name="CameraTarget" parent="." instance=ExtResource("4_n8tad")]
 position = Vector2(574, 323)
 zoom_target_speed_curve = SubResource("Curve_dad68")
@@ -79,3 +65,22 @@ follow_mode = 2
 follow_target = NodePath("../CameraTarget")
 tween_resource = SubResource("Resource_k17r7")
 follow_damping = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/ParallaxBackground"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="MasonBee" parent="." instance=ExtResource("7_stn3t")]
+position = Vector2(757, 533)
+
+[node name="Hotel" parent="." instance=ExtResource("8_iidt7")]
+position = Vector2(878, 414)

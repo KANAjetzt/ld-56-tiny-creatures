@@ -1,8 +1,13 @@
-[gd_resource type="Resource" script_class="CreatureData" load_steps=2 format=3 uid="uid://8sv418wai735"]
+[gd_resource type="Resource" script_class="CreatureData" load_steps=5 format=3 uid="uid://bhcm5nnwejsi4"]
 
-[ext_resource type="Script" path="res://creatures/_creature_data.gd" id="1_n0fmx"]
+[ext_resource type="Script" path="res://placeables/_placeable_data.gd" id="1_x7bka"]
+[ext_resource type="Script" path="res://creatures/_creature_data.gd" id="2_hsu23"]
+[ext_resource type="Resource" uid="uid://co8bgcteikhjp" path="res://placeables/structures/Hotel/hotel_data.tres" id="2_j33g5"]
+[ext_resource type="Texture2D" uid="uid://bc5kihw4ceao3" path="res://creatures/bees/mason_bee/Bee.svg" id="3_lqs35"]
 
 [resource]
-script = ExtResource("1_n0fmx")
+script = ExtResource("2_hsu23")
 id = "bee_mason"
 display_name = "Mason Bee"
+icon = ExtResource("3_lqs35")
+habitats = Array[ExtResource("1_x7bka")]([ExtResource("2_j33g5")])

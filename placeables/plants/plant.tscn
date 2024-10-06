@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bgx25yt4ojjda"]
 
-[ext_resource type="PackedScene" uid="uid://dannee2yf7qrq" path="res://placeables/atractor.tscn" id="1_7btus"]
+[ext_resource type="PackedScene" uid="uid://dannee2yf7qrq" path="res://placeables/attractor.tscn" id="1_7btus"]
 
 [node name="Plant" type="Node2D"]
 
