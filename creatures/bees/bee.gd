@@ -54,16 +54,15 @@ func _on_inside_attractor_area(area: AttractorArea) -> void:
 	# Check if searching for habitat
 	if data.current_habitat == null:
 		# Check if valid habitat
-		if area.ref.habitat.data in data.habitats:
+		if area.ref.habitat and area.ref.habitat.data in data.habitats:
 			# Occupy position if available
 			if not area.ref.creature_positions.all_occupied:
 				data.current_habitat_position = area.ref.creature_positions.occupy_position()
 				data.current_habitat = area.ref.habitat
 				data.current_local_data = area.ref.habitat.data
 				travel(data.current_habitat_position.global_position)
-
 	# If habitat is found occupy plant
-	if area.ref.plant:
+	elif area.ref.plant:
 		# Occupy position if available
 		if not area.ref.creature_positions.all_occupied:
 			var occupied_position := area.ref.creature_positions.occupy_position()

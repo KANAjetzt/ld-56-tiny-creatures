@@ -47,40 +47,24 @@ position = Vector2(443, 508)
 position = Vector2(153, 584)
 
 [node name="CameraTarget" parent="." instance=ExtResource("4_n8tad")]
-position = Vector2(574, 323)
+position = Vector2(900, 500)
 zoom_target_speed_curve = SubResource("Curve_dad68")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 2
-position = Vector2(574, 323)
+position = Vector2(900, 500)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("5_4e5on")
 
 [node name="CameraMain" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 unique_name_in_owner = true
-position = Vector2(574, 323)
+position = Vector2(900, 500)
 script = ExtResource("6_ostck")
 follow_mode = 2
 follow_target = NodePath("../CameraTarget")
 tween_resource = SubResource("Resource_k17r7")
 follow_damping = true
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/ParallaxBackground"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-metadata/_edit_lock_ = true
-
-[node name="MasonBee" parent="." instance=ExtResource("7_stn3t")]
-position = Vector2(757, 533)
 
 [node name="Hotel" parent="." instance=ExtResource("8_iidt7")]
 position = Vector2(878, 414)
@@ -117,3 +101,34 @@ position = Vector2(764, 123)
 
 [node name="Lavender15" parent="." instance=ExtResource("2_83unn")]
 position = Vector2(1074, 154)
+
+[node name="MasonBee" parent="." instance=ExtResource("7_stn3t")]
+position = Vector2(757, 533)
+
+[node name="MasonBee2" parent="." instance=ExtResource("7_stn3t")]
+position = Vector2(726, 615)
+
+[node name="MasonBee3" parent="." instance=ExtResource("7_stn3t")]
+position = Vector2(705, 582)
+
+[node name="MasonBee4" parent="." instance=ExtResource("7_stn3t")]
+position = Vector2(773, 606)
+
+[node name="MasonBee5" parent="." instance=ExtResource("7_stn3t")]
+position = Vector2(867, 608)
+
+[node name="MasonBee6" parent="." instance=ExtResource("7_stn3t")]
+position = Vector2(827, 655)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/ParallaxBackground"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true

@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bc5kihw4ceao3" path="res://creatures/bees/mason_bee/Bee.svg" id="3_lqs35"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("2_hsu23")
 id = "bee_mason"
 display_name = "Mason Bee"
