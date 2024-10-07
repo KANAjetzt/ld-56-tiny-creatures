@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3dwibrkoelds"]
+
+[ext_resource type="Script" path="res://creatures/spawner.gd" id="1_1j7vy"]
+
+[sub_resource type="Gradient" id="Gradient_66skk"]
+colors = PackedColorArray(0.968888, 2.21401e-06, 0.510217, 1, 1, 0.160784, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4fmfl"]
+gradient = SubResource("Gradient_66skk")
+
+[node name="Spawner" type="Node2D"]
+script = ExtResource("1_1j7vy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_4fmfl")

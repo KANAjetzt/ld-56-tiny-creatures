@@ -17,7 +17,8 @@ radius = 225.142
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("1_ffftg")
 
-[node name="CreaturePositionsComponent" parent="." instance=ExtResource("2_mapki")]
+[node name="CreaturePositionsComponent" parent="." node_paths=PackedStringArray("habitat") instance=ExtResource("2_mapki")]
+habitat = NodePath("../HabitatComponent")
 
 [node name="CreaturePositionComponent" parent="CreaturePositionsComponent" instance=ExtResource("3_ps7r8")]
 position = Vector2(-14, 26)

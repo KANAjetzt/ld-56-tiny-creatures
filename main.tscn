@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cawplt2cvlk2e"]
+[gd_scene load_steps=12 format=3 uid="uid://cawplt2cvlk2e"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_8iqq1"]
 [ext_resource type="PackedScene" uid="uid://ceg6niusdu1sc" path="res://ui/placeables.tscn" id="1_tjmr1"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="3_yjssh"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_htq12"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_v507f"]
+[ext_resource type="PackedScene" uid="uid://cvwemviyyb86y" path="res://creatures/spawners.tscn" id="6_jrgpu"]
+[ext_resource type="PackedScene" uid="uid://d3dwibrkoelds" path="res://creatures/spawner.tscn" id="8_cct5b"]
 
 [sub_resource type="Curve" id="Curve_mlh6k"]
 max_value = 2.0
@@ -41,6 +43,13 @@ position = Vector2(900, 500)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("5_v507f")
+
+[node name="SpawnersComponent" parent="Camera2D" node_paths=PackedStringArray("camera", "spawn_to") instance=ExtResource("6_jrgpu")]
+camera = NodePath("..")
+spawner_scene = ExtResource("8_cct5b")
+spawn_to = NodePath("../../Bees")
+
+[node name="Bees" type="Node" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

@@ -12,3 +12,4 @@ id = "bee_mason"
 display_name = "Mason Bee"
 icon = ExtResource("3_lqs35")
 habitats = Array[ExtResource("1_x7bka")]([ExtResource("2_j33g5")])
+scene_path = "res://creatures/bees/mason_bee/mason_bee.tscn"

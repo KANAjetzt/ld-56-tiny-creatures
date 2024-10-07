@@ -1,6 +1,9 @@
 extends Node2D
 
 
+@export var spawner_scene: PackedScene
+
+
 @onready var placeable_preview: UIPlaceablePreview = %PlaceablePreview
 @onready var placeables: UIPlaceables = %Placeables
 
@@ -34,4 +37,5 @@ func place_placeable() -> void:
 
 	Global.currently_selected_placeable.current_amount -= 1
 
-	Global.placeable_placed.emit(Global.currently_selected_placeable)
+	if Global.currently_selected_placeable.is_habitat:
+		Global.check_creature_criteria()
