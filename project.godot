@@ -18,7 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
-Global="*res://singletons/global.tscn"
+Global="*res://singletons/global/global.tscn"
+Utils="*res://singletons/utils.gd"
 
 [editor_plugins]
 

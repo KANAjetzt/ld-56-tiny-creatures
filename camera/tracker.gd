@@ -22,7 +22,6 @@ func _process(delta: float) -> void:
 			camera_main.zoom *= 0.9
 			speed_multiplier = zoom_target_speed_curve.sample(camera_main.zoom.x / zoom_in_max.x)
 
-
 	var direction := Input.get_vector("left", "right", "up", "down")
 	if not direction == Vector2.ZERO:
 		position += direction * speed * speed_multiplier * delta

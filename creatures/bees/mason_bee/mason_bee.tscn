@@ -1,10 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://caucs034c3drh"]
+[gd_scene load_steps=9 format=3 uid="uid://caucs034c3drh"]
 
 [ext_resource type="Texture2D" uid="uid://bc5kihw4ceao3" path="res://creatures/bees/mason_bee/Bee.svg" id="1_rfrud"]
 [ext_resource type="PackedScene" uid="uid://bn0rrnq8jxv5q" path="res://creatures/movement.tscn" id="2_u58yd"]
 [ext_resource type="PackedScene" uid="uid://dnkjoi6eawcdh" path="res://creatures/bees/bee.tscn" id="4_xwqrq"]
-[ext_resource type="Resource" uid="uid://bhcm5nnwejsi4" path="res://creatures/bees/mason_bee/mason_bee_data.tres" id="5_cpknq"]
+[ext_resource type="Script" path="res://placeables/_placeable_data.gd" id="5_0n67y"]
 [ext_resource type="PackedScene" uid="uid://b87c15tnbke7v" path="res://creatures/Attractee.tscn" id="5_q28co"]
+[ext_resource type="Resource" uid="uid://co8bgcteikhjp" path="res://placeables/structures/Hotel/hotel_data.tres" id="6_3s3xu"]
+[ext_resource type="Script" path="res://creatures/_creature_data.gd" id="7_ify5g"]
+
+[sub_resource type="Resource" id="Resource_7ww06"]
+resource_local_to_scene = true
+script = ExtResource("7_ify5g")
+id = "bee_mason"
+display_name = "Mason Bee"
+icon = ExtResource("1_rfrud")
+habitats = Array[ExtResource("5_0n67y")]([ExtResource("6_3s3xu")])
 
 [node name="MasonBee" type="Node2D"]
 
@@ -19,6 +29,6 @@ speed = 100
 [node name="AttracteeComponent" parent="." instance=ExtResource("5_q28co")]
 
 [node name="BeeComponent" parent="." node_paths=PackedStringArray("movement", "attractee") instance=ExtResource("4_xwqrq")]
-data = ExtResource("5_cpknq")
+data = SubResource("Resource_7ww06")
 movement = NodePath("../MovementComponent")
 attractee = NodePath("../AttracteeComponent")

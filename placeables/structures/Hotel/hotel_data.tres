@@ -11,3 +11,5 @@ icon = ExtResource("1_ive7l")
 is_attractor = true
 is_habitat = true
 wait_time = 2.0
+amount_max = 3
+scene_path = "res://placeables/structures/Hotel/hotel.tscn"

@@ -1,11 +1,46 @@
-[gd_scene load_steps=4 format=3 uid="uid://cawplt2cvlk2e"]
+[gd_scene load_steps=10 format=3 uid="uid://cawplt2cvlk2e"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_8iqq1"]
 [ext_resource type="PackedScene" uid="uid://ceg6niusdu1sc" path="res://ui/placeables.tscn" id="1_tjmr1"]
 [ext_resource type="PackedScene" uid="uid://pany56w6d3vs" path="res://ui/placeable_preview.tscn" id="2_5g2f2"]
+[ext_resource type="PackedScene" uid="uid://fxqjwdt0bjcm" path="res://camera/tracker.tscn" id="2_fagt1"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="3_yjssh"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_htq12"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_v507f"]
+
+[sub_resource type="Curve" id="Curve_mlh6k"]
+max_value = 2.0
+_data = [Vector2(0, 2), 0.0, -36.0126, 0, 0, Vector2(0.0985545, 0.271959), -1.39403, -1.39403, 0, 0, Vector2(0.672862, 0.0290964), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Resource" id="Resource_n7po7"]
+script = ExtResource("4_htq12")
+duration = 1.0
+transition = 0
+ease = 2
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_8iqq1")
+
+[node name="CameraTarget" parent="." instance=ExtResource("2_fagt1")]
+position = Vector2(900, 500)
+zoom_target_speed_curve = SubResource("Curve_mlh6k")
+
+[node name="CameraMain" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
+unique_name_in_owner = true
+position = Vector2(900, 500)
+script = ExtResource("3_yjssh")
+follow_mode = 2
+follow_target = NodePath("../CameraTarget")
+tween_resource = SubResource("Resource_n7po7")
+follow_damping = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+physics_interpolation_mode = 2
+position = Vector2(900, 500)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+script = ExtResource("5_v507f")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -24,6 +59,7 @@ metadata/_edit_lock_ = true
 unique_name_in_owner = true
 
 [node name="Placeables" parent="CanvasLayer" instance=ExtResource("1_tjmr1")]
+unique_name_in_owner = true
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0

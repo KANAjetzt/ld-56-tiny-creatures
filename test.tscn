@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://ba3ynctue5yd8"]
 
-[ext_resource type="PackedScene" uid="uid://dwr86fpqbqm8v" path="res://placeables/plants/grass/grass.tscn" id="1_xcg35"]
-[ext_resource type="PackedScene" uid="uid://du1wenu1kough" path="res://placeables/plants/lavender/lavender.tscn" id="2_83unn"]
+[ext_resource type="PackedScene" uid="uid://cn41knnncy7a0" path="res://placeables/plants/grass/grass.tscn" id="1_xcg35"]
+[ext_resource type="PackedScene" uid="uid://du1wenu1kough" path="res://placeables/plants/plant_template_scene.tscn" id="2_83unn"]
 [ext_resource type="PackedScene" uid="uid://fxqjwdt0bjcm" path="res://camera/tracker.tscn" id="4_n8tad"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_4e5on"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="6_ostck"]
