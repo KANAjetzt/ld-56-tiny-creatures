@@ -15,22 +15,14 @@ func _ready() -> void:
 
 
 func add_spawner(creature: CreatureData) -> void:
-	var viewport_size = camera.get_viewport_rect().size
-	var zoom = camera.zoom
-	var view_size = Vector2(
-		viewport_size.x * zoom.x,
-		viewport_size.y * zoom.y
-	)
-
-	var random_x: int = randf() * spawn_offset_max + view_size.x + spawn_offset_min
-	var random_y: int = randf() * spawn_offset_max + view_size.y + spawn_offset_min
-
 	var new_spawner: SpawnerComponent = spawner_scene.instantiate()
 	new_spawner.name = creature.id
 	add_child(new_spawner)
 	new_spawner.spawn_to = spawn_to
 	new_spawner.creature = creature
-	new_spawner.position = Vector2(random_x, random_y)
+	new_spawner.camera = camera
+	new_spawner.spawn_offset_min = spawn_offset_min
+	new_spawner.spawn_offset_max = spawn_offset_max
 	new_spawner.is_active = true
 
 
