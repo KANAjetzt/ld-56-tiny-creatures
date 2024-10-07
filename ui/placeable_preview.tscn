@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://pany56w6d3vs"]
+
+[ext_resource type="Script" path="res://ui/placeable_preview.gd" id="1_nme26"]
+
+[node name="PlaceablePreview" type="Sprite2D"]
+scale = Vector2(0.09, 0.09)
+script = ExtResource("1_nme26")

@@ -8,3 +8,8 @@ extends Resource
 @export var is_attractor := true
 @export var is_habitat := false
 @export var wait_time := 1.0
+@export var amount_max := 3
+@export_dir var scene_path: String
+
+
+var current_amount := amount_max

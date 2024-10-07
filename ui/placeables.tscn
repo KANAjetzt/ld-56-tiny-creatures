@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://ceg6niusdu1sc"]
+
+[ext_resource type="Script" path="res://ui/placeables.gd" id="1_c3ljw"]
+[ext_resource type="PackedScene" uid="uid://go3y4nueef53" path="res://ui/placeable_button.tscn" id="2_trfeh"]
+
+[node name="Placeables" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c3ljw")
+placeable_button_scene = ExtResource("2_trfeh")
+
+[node name="HBoxContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Close"
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 10
+columns = 5
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

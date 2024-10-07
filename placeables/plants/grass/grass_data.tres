@@ -8,3 +8,7 @@ script = ExtResource("1_iiger")
 id = "plant_grass"
 display_name = "Tall Grass"
 icon = ExtResource("1_2vgam")
+is_attractor = true
+is_habitat = false
+wait_time = 1.0
+scene_path = "res://placeables/plants/grass/grass.tscn"

@@ -11,3 +11,4 @@ icon = ExtResource("1_1uytt")
 is_attractor = true
 is_habitat = false
 wait_time = 3.0
+scene_path = "res://placeables/plants/lavender/lavender.tscn"
