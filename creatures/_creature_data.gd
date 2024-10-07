@@ -9,6 +9,7 @@ enum STATE {IDLE, SEARCHING, TRAVEL}
 @export var display_name: String
 @export var icon: CompressedTexture2D
 @export var habitats: Array[PlaceableData]
+@export var plants: Dictionary[PlaceableData, int]
 @export_dir var scene_path: String
 @export var spawn_time: float = 5.0
 

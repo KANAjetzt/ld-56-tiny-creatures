@@ -9,6 +9,6 @@ func get_camera_view_size(camera: Camera2D) -> Vector2:
 	var viewport_size = camera.get_viewport_rect().size
 	var zoom = camera.zoom
 	return Vector2(
-		viewport_size.x * zoom.x,
-		viewport_size.y * zoom.y
+		viewport_size.x / zoom.x,
+		viewport_size.y / zoom.y
 	)

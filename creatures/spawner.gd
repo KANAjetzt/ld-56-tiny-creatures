@@ -25,7 +25,9 @@ func spawn() -> void:
 	new_creature.global_position = random_position
 
 	print("INFO: Spawned %s at %s" % [creature.id, random_position])
-
+	# TODO: Just added this as a quick fix, I guess something in the CreaturePositions Component
+	# TODO: is not right, because the spawner keeps spawning if I don't add this here.
+	Global.check_creature_criteria()
 	spawn()
 
 
