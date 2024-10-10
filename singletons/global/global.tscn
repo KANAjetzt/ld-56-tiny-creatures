@@ -5,10 +5,10 @@
 [ext_resource type="Resource" uid="uid://b1oloopp16uv8" path="res://placeables/plants/grass/grass_data.tres" id="3_tibxk"]
 [ext_resource type="Resource" uid="uid://cajovvpy2a1tr" path="res://placeables/plants/lavender/lavender_data.tres" id="4_qj638"]
 [ext_resource type="Resource" uid="uid://co8bgcteikhjp" path="res://placeables/structures/Hotel/hotel_data.tres" id="5_65jj2"]
-[ext_resource type="Script" path="res://creatures/_creature_data.gd" id="6_m58br"]
-[ext_resource type="Resource" uid="uid://bhcm5nnwejsi4" path="res://creatures/bees/mason_bee/mason_bee_data.tres" id="7_kitnh"]
+[ext_resource type="Script" path="res://creatures/_creature_data.gd" id="6_f440i"]
+[ext_resource type="Resource" uid="uid://c8hiebemd4v7h" path="res://creatures/bees/mason_bee/mason_bee_data.tres" id="7_kitnh"]
 
 [node name="Global" type="Node"]
 script = ExtResource("1_x86hg")
 placeables = Array[ExtResource("2_ci44c")]([ExtResource("3_tibxk"), ExtResource("4_qj638"), ExtResource("5_65jj2")])
-creatures = Array[ExtResource("6_m58br")]([ExtResource("7_kitnh")])
+creatures = Array[ExtResource("6_f440i")]([ExtResource("7_kitnh")])

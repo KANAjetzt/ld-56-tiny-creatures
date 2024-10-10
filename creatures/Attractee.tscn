@@ -10,6 +10,7 @@ script = ExtResource("1_noc8k")
 [node name="Area2D" type="Area2D" parent="."]
 unique_name_in_owner = true
 collision_mask = 2
+input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_4a6rt")

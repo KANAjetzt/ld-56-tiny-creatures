@@ -42,7 +42,7 @@ func free_position(creature_position: CreaturePositionComponent) -> void:
 func _set_all_occupied(new_value) -> void:
 	all_occupied = new_value
 
-	if all_occupied:
+	if all_occupied and habitat:
 		Global.current_habitats_free[habitat.data.id].erase(habitat.data)
 		if Global.current_habitats_free[habitat.data.id].is_empty():
 			Global.current_habitats_free.erase(habitat.data.id)

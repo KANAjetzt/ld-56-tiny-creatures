@@ -3,14 +3,17 @@ extends Node
 
 signal criteria_met(creature: CreatureData)
 signal criteria_no_longer_met(creature: CreatureData)
+signal creature_discovered(creature: CreatureData)
 
 @export var placeables: Array[PlaceableData]
 @export var creatures: Array[CreatureData]
 
 var currently_selected_placeable: PlaceableData
-var current_habitats_free: Dictionary[String, Array] = {}
-var currently_placed_plants: Dictionary[PlaceableData, int] = {}
+var current_habitats_free: Dictionary = {}
+var currently_placed_plants: Dictionary = {}
 var current_creatures_with_met_criteria: Array[CreatureData]
+var currently_discovered_creatures: Array[CreatureData]
+var creature_count: Dictionary = {}
 
 
 func check_creature_criteria() -> void:
@@ -50,3 +53,8 @@ func creature_criteria_no_longer_met(creature: CreatureData):
 	print("INFO: Creature criteria no longer met for %s" % creature.id)
 	current_creatures_with_met_criteria.erase(creature)
 	criteria_no_longer_met.emit(creature)
+
+
+func new_creature_discovered(creature: CreatureData) -> void:
+	currently_discovered_creatures.push_back(creature)
+	creature_discovered.emit(creature)

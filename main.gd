@@ -5,11 +5,13 @@ extends Node2D
 
 
 @onready var placeable_preview: UIPlaceablePreview = %PlaceablePreview
-@onready var placeables: UIPlaceables = %Placeables
+@onready var ui_placeables: UIPlaceables = %UIPlaceables
+@onready var plants: Node = %Plants
+@onready var placeables: Node = %Placeables
 
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("place") and not placeables.is_hovering:
+	if Input.is_action_just_pressed("place") and not ui_placeables.is_hovering:
 		place_placeable()
 
 
@@ -32,7 +34,10 @@ func place_placeable() -> void:
 		return
 
 	var new_placeable: Node2D = load(Global.currently_selected_placeable.scene_path).instantiate()
-	add_child(new_placeable)
+	if Global.currently_selected_placeable.is_plant:
+		plants.add_child(new_placeable)
+	else:
+		placeables.add_child(new_placeable)
 	new_placeable.global_position = get_global_mouse_position()
 
 	Global.currently_selected_placeable.current_amount -= 1

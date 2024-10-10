@@ -5,6 +5,7 @@ extends Node2D
 @export var data: CreatureData
 @export var movement: MovementComponent
 @export var attractee: AttracteeComponent
+@export var pollen_container: PollenContainerComponent
 @export var search_scale := 10
 @export var search_distance_min := 100
 
@@ -36,18 +37,38 @@ func _on_target_reached() -> void:
 	elif data.current_local_data:
 		# Wait until the action at the local is done
 		await get_tree().create_timer(data.current_local_data.wait_time).timeout
+		# TODO: Quick fix - sometimes after awaiting the current_local_can be reset to null some how
+		if data.current_local_data == null:
+			search()
+			return
 		# If at habitat start searching for plants
 		if data.current_local_data.is_habitat:
+			# Drop pollen
+			# TODO: Maybe do something if the pollen container is full?
+			data.current_habitat.pollen_container.receive(pollen_container.give_all())
 			# Reset current_local_data after local was visited
 			data.current_local_data = null
 			search()
-		# If not at habitat we are at a plant so travel home
+		# If not at habitat we are at a plant
 		else:
+			# Retrieve pollen if available
+			var local_pollen_container := data.current_local_position.pollen_container as  PollenContainerComponent
+			var given_pollen_count := local_pollen_container.give()
+			# If there is pollen receive it
+			if not given_pollen_count == -1:
+				var receiver_pollen_count := pollen_container.receive(given_pollen_count)
+
 			# Free the occupied space
 			data.current_local_position.clear()
-			# Start traveling to habitat
-			data.current_local_data = data.current_habitat.data
-			travel(data.current_habitat_position.global_position)
+
+			if pollen_container.is_full:
+				# Start traveling to habitat
+				data.current_local_data = data.current_habitat.data
+				travel(data.current_habitat_position.global_position)
+			else:
+				# Reset current_local_data after local was visited
+				data.current_local_data = null
+				search()
 
 
 func _on_inside_attractor_area(area: AttractorArea) -> void:
@@ -67,5 +88,6 @@ func _on_inside_attractor_area(area: AttractorArea) -> void:
 		if not area.ref.creature_positions.all_occupied:
 			var occupied_position := area.ref.creature_positions.occupy_position()
 			data.current_local_position = occupied_position
+			data.current_local = area.ref.plant
 			data.current_local_data = area.ref.plant.data
 			travel(occupied_position.global_position)

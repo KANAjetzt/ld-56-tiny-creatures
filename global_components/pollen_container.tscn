@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dh60blsam6xim"]
+
+[ext_resource type="Script" path="res://global_components/pollen_container.gd" id="1_sefm5"]
+
+[node name="PollenContainer" type="Node"]
+script = ExtResource("1_sefm5")

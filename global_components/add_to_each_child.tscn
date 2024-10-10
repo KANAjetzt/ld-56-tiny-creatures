@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfitru0sgkbv5"]
+
+[ext_resource type="Script" path="res://global_components/add_to_each_child.gd" id="1_w0u35"]
+
+[node name="AddToEachChildComponent" type="Node"]
+script = ExtResource("1_w0u35")
