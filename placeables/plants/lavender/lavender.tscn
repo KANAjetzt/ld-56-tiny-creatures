@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://sjjvr5umdb8p"]
+[gd_scene load_steps=13 format=3 uid="uid://sjjvr5umdb8p"]
 
 [ext_resource type="Texture2D" uid="uid://dt0jcqf6qbyto" path="res://placeables/plants/lavender/Lavender.svg" id="1_hjeq0"]
 [ext_resource type="Texture2D" uid="uid://cjnhydxgrpm27" path="res://placeables/plants/lavender/Lavender_Glow.svg" id="2_c72t1"]
@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://cajovvpy2a1tr" path="res://placeables/plants/lavender/lavender_data.tres" id="8_qav04"]
 [ext_resource type="PackedScene" uid="uid://dh60blsam6xim" path="res://global_components/pollen_container.tscn" id="9_j1oan"]
 [ext_resource type="PackedScene" uid="uid://bfitru0sgkbv5" path="res://global_components/add_to_each_child.tscn" id="10_v8exi"]
+[ext_resource type="PackedScene" uid="uid://nx2hjeg62iqb" path="res://placeables/plants/grow.tscn" id="11_58nrr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bhi5v"]
 radius = 69.3542
@@ -67,5 +68,10 @@ shape = SubResource("CircleShape2D_bhi5v")
 data = ExtResource("8_qav04")
 creature_positions = NodePath("../CreaturePositionsComponent")
 attractor = NodePath("../AttractorComponent")
+
+[node name="Grow" parent="." node_paths=PackedStringArray("node") instance=ExtResource("11_58nrr")]
+node = NodePath("../Sprite2D")
+time = 20.0
+start_scale = Vector2(0.01, 0.01)
 
 [editable path="AttractorComponent"]

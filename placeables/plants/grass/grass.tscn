@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cn41knnncy7a0"]
+[gd_scene load_steps=13 format=3 uid="uid://cn41knnncy7a0"]
 
 [ext_resource type="Texture2D" uid="uid://btc70hba4hkmx" path="res://placeables/plants/grass/Grass.svg" id="1_5d27m"]
 [ext_resource type="Texture2D" uid="uid://cjnhydxgrpm27" path="res://placeables/plants/lavender/Lavender_Glow.svg" id="2_pkldb"]
@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://b1oloopp16uv8" path="res://placeables/plants/grass/grass_data.tres" id="8_iylaf"]
 [ext_resource type="PackedScene" uid="uid://dh60blsam6xim" path="res://global_components/pollen_container.tscn" id="9_3f3br"]
 [ext_resource type="PackedScene" uid="uid://bfitru0sgkbv5" path="res://global_components/add_to_each_child.tscn" id="10_yv66p"]
+[ext_resource type="PackedScene" uid="uid://nx2hjeg62iqb" path="res://placeables/plants/grow.tscn" id="11_jhmn0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bhi5v"]
 radius = 69.3542
@@ -67,5 +68,10 @@ start = 2
 max = 2
 refills = true
 refill_time = 30.0
+
+[node name="Grow" parent="." node_paths=PackedStringArray("node") instance=ExtResource("11_jhmn0")]
+node = NodePath("../Sprite2D")
+time = 10.0
+start_scale = Vector2(0.01, 0.01)
 
 [editable path="AttractorComponent"]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://nx2hjeg62iqb"]
+
+[ext_resource type="Script" path="res://placeables/plants/grow.gd" id="1_p15l1"]
+
+[node name="Grow" type="Node"]
+script = ExtResource("1_p15l1")
