@@ -7,6 +7,7 @@ extends Node2D
 var all_occupied := false:
 	set = _set_all_occupied
 var creature_positions: Array[CreaturePositionComponent]
+var creature_positions_free: Array[CreaturePositionComponent]
 
 @onready var available_positions: int = get_child_count():
 	set = _set_available_positions
@@ -14,6 +15,7 @@ var creature_positions: Array[CreaturePositionComponent]
 
 func _ready() -> void:
 	creature_positions.assign(get_children())
+	creature_positions_free = creature_positions
 
 	if habitat:
 		if not Global.current_habitats_free.has(habitat.data.id):
@@ -25,16 +27,17 @@ func occupy_position() -> CreaturePositionComponent:
 	if all_occupied:
 		return null
 
-	for creature_position in creature_positions:
-		if not creature_position.is_occupied:
-			creature_position.is_occupied = true
-			available_positions -= 1
-			return creature_position
+	# TODO: Can be optimized
+	var creature_position: CreaturePositionComponent = creature_positions_free.pick_random()
+	creature_positions_free.erase(creature_position)
 
-	return null
+	creature_position.is_occupied = true
+	available_positions -= 1
+	return creature_position
 
 
 func free_position(creature_position: CreaturePositionComponent) -> void:
+	creature_positions_free.push_back(creature_position)
 	creature_position.is_occupied = false
 	available_positions += 1
 

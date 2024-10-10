@@ -36,7 +36,7 @@ prop = "pollen_container"
 start = 3
 max = 3
 refills = true
-refill_time = 3.0
+refill_time = 30.0
 
 [node name="CreaturePositionsComponent" parent="." instance=ExtResource("3_4gjel")]
 
