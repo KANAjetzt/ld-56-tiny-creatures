@@ -19,13 +19,14 @@ var is_full := false:
 var is_empty := true:
 	set = _set_is_empty
 
+var debug_panel: UIDebugPanel
 var debug_entry: UIDebugPanelEntry
 
-@onready var debug_panel: UIDebugPanel = %DebugPanel
 
 
 func _ready() -> void:
 	current = start
+	debug_panel = get_node_or_null("%DebugPanel")
 
 	if debug_panel:
 		debug_entry = debug_panel.add_entry("Pollen count:", str(current))
