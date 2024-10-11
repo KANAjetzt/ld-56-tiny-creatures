@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bern3cmpimetm"]
+
+[ext_resource type="Script" path="res://ui/debug/debug_panel_entry.gd" id="1_h3t6x"]
+
+[node name="DebugPanelEntry" type="HBoxContainer"]
+offset_right = 6.0
+offset_bottom = 22.0
+script = ExtResource("1_h3t6x")
+
+[node name="Info" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Value" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2

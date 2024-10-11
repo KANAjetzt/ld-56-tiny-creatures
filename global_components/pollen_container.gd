@@ -19,9 +19,16 @@ var is_full := false:
 var is_empty := true:
 	set = _set_is_empty
 
+var debug_entry: UIDebugPanelEntry
+
+@onready var debug_panel: UIDebugPanel = %DebugPanel
+
 
 func _ready() -> void:
 	current = start
+
+	if debug_panel:
+		debug_entry = debug_panel.add_entry("Pollen count:", str(current))
 
 	if refills:
 		refill()
@@ -82,6 +89,8 @@ func deplete() -> void:
 
 func _set_current(new_value) -> void:
 	current = new_value
+	if debug_entry:
+		debug_entry.update_value(str(new_value))
 	if new_value < max:
 		is_full = false
 	else:

@@ -19,6 +19,16 @@ var current_focused_creature: BeeComponent:
 	set = _set_current_focused_creature
 
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("show_debug_panels"):
+		for panel in get_tree().get_nodes_in_group("debug_panel"):
+			panel.show()
+
+	if event.is_action_pressed("hide_debug_panels"):
+		for panel in get_tree().get_nodes_in_group("debug_panel"):
+			panel.hide()
+
+
 func check_creature_criteria() -> void:
 	for creature in creatures:
 		var found_habitat := false
