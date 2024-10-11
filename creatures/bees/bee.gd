@@ -9,6 +9,9 @@ extends Node2D
 @export var search_scale := 10
 @export var search_distance_min := 100
 
+var memory_success: Array[PlaceableData] = []
+var memory_no_success: PlaceableData
+var no_pollen_counter := 0
 
 func _ready() -> void:
 	search()
@@ -19,6 +22,8 @@ func _ready() -> void:
 
 ## Search the next attractor
 func search() -> void:
+	data.current_local_data = null
+
 	var random_direction := Vector2(randf() * 2.0 - 1.0, randf() * 2.0 - 1.0)
 	var random_distance := movement.min_distance_to_target + search_distance_min + randf() * search_scale
 	var new_target := movement.parent.global_position + random_direction * random_distance
@@ -32,7 +37,7 @@ func collect(plant_creature_positions: CreaturePositionsComponent) -> void:
 	var plant_creature_position_occupied := plant_creature_positions.occupy_position()
 
 	if plant_creature_position_occupied == null:
-		data.current_local_data = null
+		memory_no_success = data.current_local_data
 		search()
 		return
 
@@ -46,7 +51,10 @@ func collect(plant_creature_positions: CreaturePositionsComponent) -> void:
 	var given_pollen_count := local_pollen_container.give()
 	# If there is pollen receive it
 	if not given_pollen_count == -1:
+		no_pollen_counter = 0
 		var receiver_pollen_count := pollen_container.receive(given_pollen_count)
+	else:
+		no_pollen_counter += 1
 
 	# Free the occupied space
 	plant_creature_position_occupied.clear()
@@ -55,6 +63,9 @@ func collect(plant_creature_positions: CreaturePositionsComponent) -> void:
 		# Start traveling to habitat
 		data.current_local_data = data.current_habitat.data
 		travel(data.current_habitat_position.global_position)
+	elif no_pollen_counter >= 3:
+		memory_no_success = data.current_local_data
+		search()
 	else:
 		var random_direction := Vector2(randf() * 2.0 - 1.0, randf() * 2.0 - 1.0)
 		var random_distance := randf() * 20 + 5
@@ -64,7 +75,6 @@ func collect(plant_creature_positions: CreaturePositionsComponent) -> void:
 
 		await movement.target_reached
 		await get_tree().create_timer(0.3 + randf() * 0.8).timeout
-
 
 		collect(plant_creature_positions)
 
@@ -89,8 +99,6 @@ func _on_target_reached() -> void:
 			# Drop pollen
 			# TODO: Maybe do something if the pollen container is full?
 			data.current_habitat.pollen_container.receive(pollen_container.give_all())
-			# Reset current_local_data after local was visited
-			data.current_local_data = null
 			# Start searching for plants
 			search()
 
@@ -107,6 +115,9 @@ func _on_inside_attractor_area(area: AttractorArea) -> void:
 				data.current_local_data = area.ref.habitat.data
 				travel(data.current_habitat_position.global_position)
 	elif area.ref.plant:
-		if not area.ref.creature_positions.all_occupied:
+		# Check memory
+		if area.ref.plant.data == memory_no_success:
+			search()
+		elif not area.ref.creature_positions.all_occupied:
 			data.current_local_data = area.ref.plant.data
 			collect(area.ref.creature_positions)

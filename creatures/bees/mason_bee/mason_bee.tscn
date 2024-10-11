@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bueem1cthmctk" path="res://creatures/clickable.tscn" id="9_x5kdg"]
 [ext_resource type="PackedScene" uid="uid://dh60blsam6xim" path="res://global_components/pollen_container.tscn" id="11_s2crv"]
 
-[sub_resource type="Resource" id="Resource_avma0"]
+[sub_resource type="Resource" id="Resource_gbkbj"]
 resource_local_to_scene = true
 script = ExtResource("9_wni0k")
 id = "bee_mason"
@@ -43,7 +43,7 @@ speed = 100
 [node name="AttracteeComponent" parent="." instance=ExtResource("5_q28co")]
 
 [node name="BeeComponent" parent="." node_paths=PackedStringArray("movement", "attractee", "pollen_container") instance=ExtResource("4_xwqrq")]
-data = SubResource("Resource_avma0")
+data = SubResource("Resource_gbkbj")
 movement = NodePath("../MovementComponent")
 attractee = NodePath("../AttracteeComponent")
 pollen_container = NodePath("../PollenContainer")
