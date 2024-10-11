@@ -12,6 +12,7 @@ var is_hovering := false
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("place") and is_hovering:
 		clicked_on.emit()
+		Global.current_focused_creature = bee
 		if not bee.data in Global.currently_discovered_creatures:
 			Global.new_creature_discovered(bee.data)
 

@@ -4,6 +4,7 @@ extends Node
 signal criteria_met(creature: CreatureData)
 signal criteria_no_longer_met(creature: CreatureData)
 signal creature_discovered(creature: CreatureData)
+signal creature_focused(creature_node: BeeComponent)
 
 @export var placeables: Array[PlaceableData]
 @export var creatures: Array[CreatureData]
@@ -14,6 +15,8 @@ var currently_placed_plants: Dictionary = {}
 var current_creatures_with_met_criteria: Array[CreatureData]
 var currently_discovered_creatures: Array[CreatureData]
 var creature_count: Dictionary = {}
+var current_focused_creature: BeeComponent:
+	set = _set_current_focused_creature
 
 
 func check_creature_criteria() -> void:
@@ -58,3 +61,8 @@ func creature_criteria_no_longer_met(creature: CreatureData):
 func new_creature_discovered(creature: CreatureData) -> void:
 	currently_discovered_creatures.push_back(creature)
 	creature_discovered.emit(creature)
+
+
+func _set_current_focused_creature(new_value) -> void:
+	current_focused_creature = new_value
+	creature_focused.emit(new_value)

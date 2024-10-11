@@ -45,6 +45,7 @@ habitat = NodePath("../HabitatComponent")
 
 [node name="AttractorArea" type="Area2D" parent="AttractorComponent" node_paths=PackedStringArray("ref")]
 collision_layer = 2
+input_pickable = false
 script = ExtResource("6_qneih")
 ref = NodePath("..")
 

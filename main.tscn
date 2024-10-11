@@ -50,6 +50,12 @@ camera = NodePath("..")
 spawner_scene = ExtResource("8_cct5b")
 spawn_to = NodePath("../../Bees")
 
+[node name="Placeables" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="Plants" type="Node" parent="Placeables"]
+unique_name_in_owner = true
+
 [node name="Bees" type="Node" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -68,6 +74,8 @@ metadata/_edit_lock_ = true
 
 [node name="PlaceablePreview" parent="CanvasLayer" instance=ExtResource("2_5g2f2")]
 unique_name_in_owner = true
+physics_interpolation_mode = 2
+scale = Vector2(0.03, 0.03)
 
 [node name="Book" parent="CanvasLayer" instance=ExtResource("9_4wdwf")]
 
@@ -80,11 +88,5 @@ offset_right = 70.0
 offset_bottom = 55.0
 grow_horizontal = 1
 grow_vertical = 1
-
-[node name="Placeables" type="Node" parent="."]
-unique_name_in_owner = true
-
-[node name="Plants" type="Node" parent="Placeables"]
-unique_name_in_owner = true
 
 [connection signal="placeable_selected" from="CanvasLayer/UIPlaceables" to="." method="_on_placeables_placeable_selected"]

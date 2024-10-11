@@ -58,6 +58,7 @@ plant = NodePath("../PlantComponent")
 
 [node name="AttractorArea" type="Area2D" parent="AttractorComponent" node_paths=PackedStringArray("ref")]
 collision_layer = 2
+input_pickable = false
 script = ExtResource("6_t12ov")
 ref = NodePath("..")
 
@@ -69,7 +70,7 @@ data = ExtResource("8_qav04")
 creature_positions = NodePath("../CreaturePositionsComponent")
 attractor = NodePath("../AttractorComponent")
 
-[node name="Grow" parent="." node_paths=PackedStringArray("node") instance=ExtResource("11_58nrr")]
+[node name="GrowComponent" parent="." node_paths=PackedStringArray("node") instance=ExtResource("11_58nrr")]
 node = NodePath("../Sprite2D")
 time = 20.0
 start_scale = Vector2(0.01, 0.01)

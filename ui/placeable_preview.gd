@@ -4,7 +4,7 @@ extends Sprite2D
 
 func _process(delta: float) -> void:
 	if texture:
-		global_position = get_global_mouse_position()
+		global_position = get_global_mouse_position() + Vector2(20, -15)
 
 
 func set_preview(preview_texture: Texture) -> void:

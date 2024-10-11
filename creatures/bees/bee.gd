@@ -32,6 +32,7 @@ func collect(plant_creature_positions: CreaturePositionsComponent) -> void:
 	var plant_creature_position_occupied := plant_creature_positions.occupy_position()
 
 	if plant_creature_position_occupied == null:
+		data.current_local_data = null
 		search()
 		return
 

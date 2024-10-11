@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://placeables/plants/grow.gd" id="1_p15l1"]
 
-[node name="Grow" type="Node"]
+[node name="GrowComponent" type="Node"]
 script = ExtResource("1_p15l1")

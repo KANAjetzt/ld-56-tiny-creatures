@@ -36,7 +36,7 @@ prop = "pollen_container"
 start = 2
 max = 2
 refills = true
-refill_time = 30.0
+refill_time = 20.0
 
 [node name="CreaturePositionsComponent" parent="." instance=ExtResource("3_2exjg")]
 
@@ -58,6 +58,7 @@ plant = NodePath("../PlantComponent")
 
 [node name="AttractorArea" type="Area2D" parent="AttractorComponent" node_paths=PackedStringArray("ref")]
 collision_layer = 2
+input_pickable = false
 script = ExtResource("6_hs0jk")
 ref = NodePath("..")
 
@@ -70,7 +71,7 @@ data = ExtResource("8_iylaf")
 creature_positions = NodePath("../CreaturePositionsComponent")
 attractor = NodePath("../AttractorComponent")
 
-[node name="Grow" parent="." node_paths=PackedStringArray("node") instance=ExtResource("11_jhmn0")]
+[node name="GrowComponent" parent="." node_paths=PackedStringArray("node") instance=ExtResource("11_jhmn0")]
 node = NodePath("../Sprite2D")
 time = 10.0
 start_scale = Vector2(0.01, 0.01)

@@ -28,6 +28,7 @@ spawn_time = 5.0
 info_text = ""
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wcchw"]
+radius = 21.0
 
 [node name="MasonBee" type="Node2D"]
 
@@ -56,4 +57,3 @@ visibility_layer = 4
 shape = SubResource("CircleShape2D_wcchw")
 
 [node name="PollenContainer" parent="." instance=ExtResource("11_s2crv")]
-max = 10
