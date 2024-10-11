@@ -8,12 +8,20 @@ extends Node2D
 @export var pollen_container: PollenContainerComponent
 @export var search_scale := 10
 @export var search_distance_min := 100
+@export var debug_panel: UIDebugPanel
 
 var memory_success: Array[PlaceableData] = []
 var memory_no_success: PlaceableData
 var no_pollen_counter := 0
+var is_collecting := false
+
+var debug_entry: UIDebugPanelEntry
+
 
 func _ready() -> void:
+	if debug_panel:
+		debug_entry = debug_panel.add_entry("current_local_data:", str(data.current_local_data))
+
 	search()
 
 	attractee.inside_attractor_area.connect(_on_inside_attractor_area)
@@ -23,6 +31,8 @@ func _ready() -> void:
 ## Search the next attractor
 func search() -> void:
 	data.current_local_data = null
+	# TODO: Add a signal for current_local_data changed so I can connect the debug panel with it
+	debug_entry.update_value(data.current_local_data.id if not data.current_local_data == null else "null")
 
 	var random_direction := Vector2(randf() * 2.0 - 1.0, randf() * 2.0 - 1.0)
 	var random_distance := movement.min_distance_to_target + search_distance_min + randf() * search_scale
@@ -33,18 +43,30 @@ func search() -> void:
 
 # If on a plant - stay there until pollen container is filled or plant container is empty
 func collect(plant_creature_positions: CreaturePositionsComponent) -> void:
+	is_collecting = true
 	# pick random position to occupy
 	var plant_creature_position_occupied := plant_creature_positions.occupy_position()
 
 	if plant_creature_position_occupied == null:
 		memory_no_success = data.current_local_data
+		is_collecting = false
 		search()
 		return
 
 	# travel to the occupied position
 	travel(plant_creature_position_occupied.global_position)
 
+	# BUG: Something is going wrong here
+	# BUG: In _on_target_reached is the timer for the action on the target
+	# BUG: That timers gets skipped here
 	await movement.target_reached
+	# TODO: Quick fix - sometimes after awaiting the current_local can be reset to null some how
+	if data.current_local_data == null:
+		print("INFO: Quick fix for `current_local_data == null` is used.")
+		is_collecting = false
+		search()
+		return
+	await get_tree().create_timer(data.current_local_data.wait_time).timeout
 
 	# Retrieve pollen if available
 	var local_pollen_container := plant_creature_position_occupied.pollen_container as  PollenContainerComponent
@@ -60,10 +82,13 @@ func collect(plant_creature_positions: CreaturePositionsComponent) -> void:
 	plant_creature_position_occupied.clear()
 
 	if pollen_container.is_full:
+		is_collecting = false
 		# Start traveling to habitat
 		data.current_local_data = data.current_habitat.data
+		debug_entry.update_value(data.current_local_data.id if not data.current_local_data == null else "null")
 		travel(data.current_habitat_position.global_position)
 	elif no_pollen_counter >= 3:
+		is_collecting = false
 		memory_no_success = data.current_local_data
 		search()
 	else:
@@ -87,11 +112,12 @@ func travel(target: Vector2) -> void:
 func _on_target_reached() -> void:
 	if data.current_local_data == null:
 		search()
-	elif data.current_local_data:
+	elif data.current_local_data and not is_collecting:
 		# Wait until the action at the local is done
 		await get_tree().create_timer(data.current_local_data.wait_time).timeout
 		# TODO: Quick fix - sometimes after awaiting the current_local can be reset to null some how
 		if data.current_local_data == null:
+			print("INFO: Quick fix for `current_local_data == null` is used.")
 			search()
 			return
 		# If at habitat
@@ -113,6 +139,7 @@ func _on_inside_attractor_area(area: AttractorArea) -> void:
 				data.current_habitat_position = area.ref.creature_positions.occupy_position()
 				data.current_habitat = area.ref.habitat
 				data.current_local_data = area.ref.habitat.data
+				debug_entry.update_value(data.current_local_data.id if not data.current_local_data == null else "null")
 				travel(data.current_habitat_position.global_position)
 	elif area.ref.plant:
 		# Check memory
@@ -120,4 +147,5 @@ func _on_inside_attractor_area(area: AttractorArea) -> void:
 			search()
 		elif not area.ref.creature_positions.all_occupied:
 			data.current_local_data = area.ref.plant.data
+			debug_entry.update_value(data.current_local_data.id if not data.current_local_data == null else "null")
 			collect(area.ref.creature_positions)

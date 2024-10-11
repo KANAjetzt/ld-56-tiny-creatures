@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://bl30lfpoxafuv"]
+[gd_scene load_steps=11 format=3 uid="uid://bl30lfpoxafuv"]
 
+[ext_resource type="PackedScene" uid="uid://b850qlnpmsgn8" path="res://ui/debug/debug_panel.tscn" id="1_6lhh4"]
 [ext_resource type="Texture2D" uid="uid://b5ux024v2aysk" path="res://placeables/structures/Hotel/Hotel.svg" id="1_ffftg"]
 [ext_resource type="PackedScene" uid="uid://c5yo20qevp5vw" path="res://placeables/creature_positions.tscn" id="2_mapki"]
 [ext_resource type="PackedScene" uid="uid://mu0cbo743n6a" path="res://placeables/creature_position.tscn" id="3_ps7r8"]
@@ -13,6 +14,9 @@
 radius = 225.142
 
 [node name="Hotel" type="Node2D"]
+
+[node name="DebugPanel" parent="." instance=ExtResource("1_6lhh4")]
+unique_name_in_owner = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.05, 0.05)
