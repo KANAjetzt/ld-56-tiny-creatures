@@ -8,12 +8,15 @@ extends Node2D
 @export var pollen_container: PollenContainerComponent
 @export var search_scale := 10
 @export var search_distance_min := 100
+@export var max_distance_from_habitat := 1000
+@export var max_search_time := 60.0
 @export var debug_panel: UIDebugPanel
 
 var memory_success: Array[PlaceableData] = []
 var memory_no_success: PlaceableData
 var no_pollen_counter := 0
 var is_collecting := false
+var timer_max_search_time := Timer.new()
 
 var debug_entry: UIDebugPanelEntry
 
@@ -26,6 +29,14 @@ func _ready() -> void:
 
 	attractee.inside_attractor_area.connect(_on_inside_attractor_area)
 	movement.target_reached.connect(_on_target_reached)
+	timer_max_search_time.timeout.connect(_on_timer_max_search_time_timeout)
+
+
+func _process(delta: float) -> void:
+	if data.current_habitat:
+		if global_position.distance_to(data.current_habitat_position.global_position) > max_distance_from_habitat:
+			data.current_local = data.current_habitat
+			travel(data.current_habitat_position.global_position)
 
 
 ## Search the next attractor
@@ -149,3 +160,8 @@ func _on_inside_attractor_area(area: AttractorArea) -> void:
 			data.current_local_data = area.ref.plant.data
 			debug_entry.update_value(data.current_local_data.id if not data.current_local_data == null else "null")
 			collect(area.ref.creature_positions)
+
+
+func _on_timer_max_search_time_timeout() -> void:
+	data.current_local = data.current_habitat
+	travel(data.current_habitat_position.global_position)
