@@ -43,9 +43,9 @@ func place_placeable() -> void:
 	Global.currently_selected_placeable.current_amount -= 1
 
 	if Global.currently_selected_placeable.is_plant:
-		if not Global.currently_placed_plants.has(Global.currently_selected_placeable):
-			Global.currently_placed_plants[Global.currently_selected_placeable] = 1
+		if not Global.currently_placed_plants.has(Global.currently_selected_placeable.id):
+			Global.currently_placed_plants[Global.currently_selected_placeable.id] = 1
 		else:
-			Global.currently_placed_plants[Global.currently_selected_placeable] += 1
+			Global.currently_placed_plants[Global.currently_selected_placeable.id] += 1
 
 	Global.check_creature_criteria()

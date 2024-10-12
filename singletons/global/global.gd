@@ -39,10 +39,10 @@ func check_creature_criteria() -> void:
 			if current_habitats_free.has(habitat.id):
 				found_habitat = true
 
-		for plant in creature.plants:
-			if not currently_placed_plants.has(plant):
+		for plant_id in creature.plants:
+			if not currently_placed_plants.has(plant_id):
 				continue
-			if currently_placed_plants[plant] >= creature.plants[plant]:
+			if currently_placed_plants[plant_id] >= creature.plants[plant_id]:
 					found_plant_count += 1
 
 		found_plants = found_plant_count == creature.plants.size()

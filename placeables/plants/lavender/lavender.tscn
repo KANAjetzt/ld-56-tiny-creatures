@@ -15,7 +15,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_bhi5v"]
 radius = 69.3542
 
-[sub_resource type="Resource" id="Resource_dbn3b"]
+[sub_resource type="Resource" id="Resource_ke8h8"]
 resource_local_to_scene = true
 script = ExtResource("10_ljhwv")
 id = "plant_lavender"
@@ -80,7 +80,7 @@ ref = NodePath("..")
 shape = SubResource("CircleShape2D_bhi5v")
 
 [node name="PlantComponent" parent="." node_paths=PackedStringArray("creature_positions", "attractor") instance=ExtResource("7_y430i")]
-data = SubResource("Resource_dbn3b")
+data = SubResource("Resource_ke8h8")
 creature_positions = NodePath("../CreaturePositionsComponent")
 attractor = NodePath("../AttractorComponent")
 
