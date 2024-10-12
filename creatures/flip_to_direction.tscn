@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://duaefw1ednjhb"]
+
+[ext_resource type="Script" path="res://creatures/flip_to_direction.gd" id="1_70eta"]
+
+[node name="FlipToDirectionComponent" type="Node"]
+script = ExtResource("1_70eta")

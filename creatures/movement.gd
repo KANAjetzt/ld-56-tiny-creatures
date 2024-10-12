@@ -14,10 +14,11 @@ var target: Vector2:
 		target = new_value
 		is_at_target = false
 var is_at_target := false
+var direction: Vector2
 
 
 func _physics_process(delta: float) -> void:
-	var direction := parent.global_position.direction_to(target)
+	direction = parent.global_position.direction_to(target)
 	var movement := direction * speed * speed_multiplier * delta
 
 	if parent.global_position.distance_squared_to(target) > min_distance_to_target:
