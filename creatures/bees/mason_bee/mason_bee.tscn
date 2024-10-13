@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://caucs034c3drh"]
+[gd_scene load_steps=16 format=3 uid="uid://caucs034c3drh"]
 
 [ext_resource type="Texture2D" uid="uid://bc5kihw4ceao3" path="res://creatures/bees/mason_bee/Bee.svg" id="1_rfrud"]
 [ext_resource type="PackedScene" uid="uid://bn0rrnq8jxv5q" path="res://creatures/movement.tscn" id="2_u58yd"]
@@ -12,8 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://dh60blsam6xim" path="res://global_components/pollen_container.tscn" id="11_s2crv"]
 [ext_resource type="PackedScene" uid="uid://b850qlnpmsgn8" path="res://ui/debug/debug_panel.tscn" id="12_l187m"]
 [ext_resource type="PackedScene" uid="uid://dtd546uk8jtsa" path="res://creatures/shake.tscn" id="12_npwo8"]
+[ext_resource type="AudioStream" uid="uid://j355sceih1s" path="res://creatures/bees/502994__smytheagain__bee_wasp.wav" id="13_r4xr2"]
 
-[sub_resource type="Resource" id="Resource_78cqp"]
+[sub_resource type="Resource" id="Resource_vqlv0"]
 resource_local_to_scene = true
 script = ExtResource("9_wni0k")
 id = "bee_mason"
@@ -51,7 +52,7 @@ steering_speed = 5.0
 [node name="AttracteeComponent" parent="." instance=ExtResource("5_q28co")]
 
 [node name="BeeComponent" parent="." node_paths=PackedStringArray("movement", "attractee", "pollen_container", "debug_panel") instance=ExtResource("4_xwqrq")]
-data = SubResource("Resource_78cqp")
+data = SubResource("Resource_vqlv0")
 movement = NodePath("../MovementComponent")
 attractee = NodePath("../AttracteeComponent")
 pollen_container = NodePath("../PollenContainer")
@@ -76,3 +77,9 @@ movement = NodePath("../MovementComponent")
 sprite = NodePath("../Sprite2D")
 speed = 0.15
 range = 100
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_r4xr2")
+autoplay = true
+max_distance = 200.0
+attenuation = 2.07053
