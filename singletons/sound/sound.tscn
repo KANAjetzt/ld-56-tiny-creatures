@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://bh543d1dwh00b"]
+
+[ext_resource type="Script" path="res://singletons/sound/sound.gd" id="1_80cil"]
+[ext_resource type="Script" path="res://singletons/sound/music.gd" id="2_s5d4n"]
+[ext_resource type="AudioStream" uid="uid://c6ois0ifqeday" path="res://assets/music/ld-56-bees-1.ogg" id="3_i1xi5"]
+[ext_resource type="AudioStream" uid="uid://bj3ml7manf6g1" path="res://assets/music/ld-56-bees.ogg" id="4_p0v3o"]
+[ext_resource type="AudioStream" uid="uid://bip1lp2o6lhxs" path="res://assets/music/ld-56-bees-2.ogg" id="5_joihp"]
+
+[node name="Sound" type="Node"]
+script = ExtResource("1_80cil")
+
+[node name="Music" type="Node" parent="."]
+script = ExtResource("2_s5d4n")
+tracks = Array[AudioStream]([ExtResource("3_i1xi5"), ExtResource("4_p0v3o"), ExtResource("5_joihp")])
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Music"]
+bus = &"Music"
+
+[connection signal="finished" from="Music/AudioStreamPlayer" to="Music" method="_on_audio_stream_player_finished"]

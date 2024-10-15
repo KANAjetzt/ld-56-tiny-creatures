@@ -1,3 +1,4 @@
+class_name CameraTarget
 extends Node2D
 
 
@@ -15,6 +16,8 @@ var is_active := true
 
 func _ready() -> void:
 	Global.creature_focused.connect(_on_creature_focused)
+	Global.zoom_out_max = zoom_out_max
+	Global.zoom_in_max = zoom_in_max
 
 
 func _process(delta: float) -> void:

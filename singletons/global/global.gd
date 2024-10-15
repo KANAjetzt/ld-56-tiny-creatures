@@ -18,6 +18,9 @@ var creature_count: Dictionary = {}
 var current_focused_creature: BeeComponent:
 	set = _set_current_focused_creature
 
+## Set by [CameraTarget]
+var zoom_in_max: Vector2
+var zoom_out_max: Vector2
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("show_debug_panels"):
