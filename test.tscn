@@ -92,6 +92,7 @@ spawn_frequenzy = 5.0
 visualize_sound_spawn = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CameraTarget/AmbientSoundscapeMice"]
+bus = &"SFX"
 
 [node name="ZoomDbModulateComponent" parent="CameraTarget/AmbientSoundscapeMice/AudioStreamPlayer2D" node_paths=PackedStringArray("audio_player") instance=ExtResource("16_qq7iv")]
 audio_player = NodePath("..")

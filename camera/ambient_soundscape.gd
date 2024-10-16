@@ -14,6 +14,7 @@ extends Node2D
 @export var sounds_transition_time := 0.5
 ## Components that get added to each spawned sound.
 @export var audio_stream_player_to_use: AudioStreamPlayer2D
+@export var bus_to_use: StringName = &"SFX"
 @export var global_spawn_position_node: Node2D
 @export var global_spawn_container_node: Node
 @export var spawn_local := true
@@ -105,6 +106,7 @@ func get_new_audio_stream_player_2d() -> AudioStreamPlayer2D:
 		new_audio_stream_player_2d.volume_db = randf_range(sounds_min_db, sounds_max_db)
 	new_audio_stream_player_2d.volume_db -= sounds_db_reduction
 	new_audio_stream_player_2d.panning_strength = 1.8
+	new_audio_stream_player_2d.bus = bus_to_use
 	new_audio_stream_player_2d.finished.connect(_on_audio_stream_player_2d_finished.bind(new_audio_stream_player_2d))
 
 	if visualize_sound_spawn:
