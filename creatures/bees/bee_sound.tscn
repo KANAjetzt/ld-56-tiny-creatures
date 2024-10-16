@@ -2,12 +2,7 @@
 
 [ext_resource type="Script" path="res://creatures/bees/bee_sound.gd" id="1_6t056"]
 [ext_resource type="AudioStream" uid="uid://j355sceih1s" path="res://creatures/bees/502994__smytheagain__bee_wasp.wav" id="2_hfn0o"]
-
-[sub_resource type="Curve" id="Curve_4ry2t"]
-min_value = -80.0
-max_value = 0.0
-_data = [Vector2(0, -31.2178), 0.0, 0.0, 0, 0, Vector2(0.05, -9.81132), 35.0405, 35.0405, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
+[ext_resource type="PackedScene" uid="uid://c0p6fwpet1gec" path="res://global_components/zoom_db_modulate.tscn" id="3_hjisu"]
 
 [node name="BeeSoundComponent" type="AudioStreamPlayer2D"]
 stream = ExtResource("2_hfn0o")
@@ -16,4 +11,6 @@ max_distance = 200.0
 attenuation = 2.0
 panning_strength = 1.5
 script = ExtResource("1_6t056")
-zoom_db_curve = SubResource("Curve_4ry2t")
+
+[node name="ZoomDbModulateComponent" parent="." node_paths=PackedStringArray("audio_player") instance=ExtResource("3_hjisu")]
+audio_player = NodePath("..")

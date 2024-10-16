@@ -17,6 +17,7 @@ radius = 225.142
 
 [node name="DebugPanel" parent="." instance=ExtResource("1_6lhh4")]
 unique_name_in_owner = true
+visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.05, 0.05)

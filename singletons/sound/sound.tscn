@@ -1,13 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://bh543d1dwh00b"]
+[gd_scene load_steps=9 format=3 uid="uid://bh543d1dwh00b"]
 
-[ext_resource type="Script" path="res://singletons/sound/sound.gd" id="1_80cil"]
 [ext_resource type="Script" path="res://singletons/sound/music.gd" id="2_s5d4n"]
 [ext_resource type="AudioStream" uid="uid://c6ois0ifqeday" path="res://assets/music/ld-56-bees-1.ogg" id="3_i1xi5"]
 [ext_resource type="AudioStream" uid="uid://bj3ml7manf6g1" path="res://assets/music/ld-56-bees.ogg" id="4_p0v3o"]
 [ext_resource type="AudioStream" uid="uid://bip1lp2o6lhxs" path="res://assets/music/ld-56-bees-2.ogg" id="5_joihp"]
+[ext_resource type="PackedScene" uid="uid://bjdxhmo6hjyhx" path="res://singletons/sound/loop.tscn" id="6_4010q"]
+[ext_resource type="AudioStream" uid="uid://bjlywx476ttgg" path="res://assets/sfx/ambient_loop/cricket-loop.ogg" id="6_g314x"]
+[ext_resource type="PackedScene" uid="uid://c0p6fwpet1gec" path="res://global_components/zoom_db_modulate.tscn" id="7_rv5ec"]
+
+[sub_resource type="Curve" id="Curve_ggxbf"]
+min_value = -80.0
+max_value = 0.0
+_data = [Vector2(0, -31.2178), 0.0, 0.0, 0, 0, Vector2(0.0315236, -20.3464), 35.0405, 35.0405, 0, 0, Vector2(1, -7.67158), 5.60164, 0.0, 0, 0]
+point_count = 3
 
 [node name="Sound" type="Node"]
-script = ExtResource("1_80cil")
 
 [node name="Music" type="Node" parent="."]
 script = ExtResource("2_s5d4n")
@@ -15,5 +22,16 @@ tracks = Array[AudioStream]([ExtResource("3_i1xi5"), ExtResource("4_p0v3o"), Ext
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Music"]
 bus = &"Music"
+
+[node name="Ambience" type="Node" parent="."]
+
+[node name="CricketLoop" parent="Ambience" instance=ExtResource("6_4010q")]
+stream = ExtResource("6_g314x")
+volume_db = -20.0
+autoplay = true
+
+[node name="ZoomDbModulateComponent" parent="Ambience/CricketLoop" node_paths=PackedStringArray("audio_player") instance=ExtResource("7_rv5ec")]
+audio_player = NodePath("..")
+zoom_db_curve = SubResource("Curve_ggxbf")
 
 [connection signal="finished" from="Music/AudioStreamPlayer" to="Music" method="_on_audio_stream_player_finished"]

@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://bjdxhmo6hjyhx"]
+
+[node name="Loop" type="AudioStreamPlayer"]

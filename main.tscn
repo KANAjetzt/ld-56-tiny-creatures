@@ -1,19 +1,45 @@
-[gd_scene load_steps=13 format=3 uid="uid://cawplt2cvlk2e"]
+[gd_scene load_steps=34 format=3 uid="uid://cawplt2cvlk2e"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_8iqq1"]
 [ext_resource type="PackedScene" uid="uid://ceg6niusdu1sc" path="res://ui/placeables.tscn" id="1_tjmr1"]
 [ext_resource type="PackedScene" uid="uid://pany56w6d3vs" path="res://ui/placeable_preview.tscn" id="2_5g2f2"]
 [ext_resource type="PackedScene" uid="uid://fxqjwdt0bjcm" path="res://camera/tracker.tscn" id="2_fagt1"]
+[ext_resource type="PackedScene" uid="uid://jv6gm24c60xm" path="res://camera/ambient_soundscape.tscn" id="3_l4b8f"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="3_yjssh"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_htq12"]
+[ext_resource type="AudioStream" uid="uid://bk7q556t707pr" path="res://assets/sfx/ambient_short/bird/bird-0.ogg" id="4_x8hbb"]
+[ext_resource type="AudioStream" uid="uid://yp5o8wh3sv8x" path="res://assets/sfx/ambient_short/bird/bird-1.ogg" id="5_2mir3"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_v507f"]
+[ext_resource type="AudioStream" uid="uid://gr40mmqtwjwn" path="res://assets/sfx/ambient_short/bird/bird-2.ogg" id="6_3iusn"]
 [ext_resource type="PackedScene" uid="uid://cvwemviyyb86y" path="res://creatures/spawners.tscn" id="6_jrgpu"]
+[ext_resource type="AudioStream" uid="uid://dah6lhr8nq3k0" path="res://assets/sfx/ambient_short/bird/bird-3.ogg" id="7_d3oxu"]
 [ext_resource type="PackedScene" uid="uid://d3dwibrkoelds" path="res://creatures/spawner.tscn" id="8_cct5b"]
+[ext_resource type="AudioStream" uid="uid://cplxqwx0vk0iu" path="res://assets/sfx/ambient_short/bird/bird-4.ogg" id="8_nf565"]
 [ext_resource type="PackedScene" uid="uid://d25f1lqy1mp5x" path="res://ui/book.tscn" id="9_4wdwf"]
+[ext_resource type="AudioStream" uid="uid://cq12nkpu3n8us" path="res://assets/sfx/ambient_short/bird/bird-5.ogg" id="9_cb0h8"]
+[ext_resource type="AudioStream" uid="uid://begkpspk1urda" path="res://assets/sfx/ambient_short/bird/bird-6.ogg" id="10_3st4r"]
+[ext_resource type="AudioStream" uid="uid://ds2tkjg3b00cp" path="res://assets/sfx/ambient_short/bird/bird-7.ogg" id="11_uyatv"]
+[ext_resource type="AudioStream" uid="uid://dcdm4g83jpx4i" path="res://assets/sfx/ambient_short/bird/bird-8.ogg" id="12_f6qsd"]
+[ext_resource type="AudioStream" uid="uid://bjnosxpf0d8is" path="res://assets/sfx/ambient_short/bird/bird-9.ogg" id="13_b6572"]
+[ext_resource type="AudioStream" uid="uid://dg21a4qdbfmen" path="res://assets/sfx/ambient_short/wind/wind-0.ogg" id="14_5xxjf"]
+[ext_resource type="AudioStream" uid="uid://p7fywl77qxhg" path="res://assets/sfx/ambient_short/wind/wind-1.ogg" id="15_t4ujn"]
+[ext_resource type="AudioStream" uid="uid://dda3tmldjcp2v" path="res://assets/sfx/ambient_short/wind/wind-2.ogg" id="16_mj5ut"]
+[ext_resource type="AudioStream" uid="uid://cfv7eqt2hm5d7" path="res://assets/sfx/ambient_short/rat/rat-0.ogg" id="17_kxr70"]
+[ext_resource type="AudioStream" uid="uid://cyicc1dno332r" path="res://assets/sfx/ambient_short/rat/rat-1.ogg" id="18_tmei4"]
+[ext_resource type="AudioStream" uid="uid://xtlo25uc05e7" path="res://assets/sfx/ambient_short/rat/rat-2.ogg" id="19_058kc"]
+[ext_resource type="AudioStream" uid="uid://c81fm6efluoli" path="res://assets/sfx/ambient_short/rat/rat-3.ogg" id="20_e176y"]
+[ext_resource type="AudioStream" uid="uid://groxr85fv5mg" path="res://assets/sfx/ambient_short/rat/rat-4.ogg" id="21_0j3gq"]
+[ext_resource type="PackedScene" uid="uid://c0p6fwpet1gec" path="res://global_components/zoom_db_modulate.tscn" id="22_6o7vv"]
 
 [sub_resource type="Curve" id="Curve_mlh6k"]
 max_value = 2.0
 _data = [Vector2(0, 2), 0.0, -36.0126, 0, 0, Vector2(0.0985545, 0.271959), -1.39403, -1.39403, 0, 0, Vector2(0.672862, 0.0290964), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_u8w0q"]
+min_value = -80.0
+max_value = 0.0
+_data = [Vector2(0, -31.2178), 0.0, 0.0, 0, 0, Vector2(0.0683012, -13.0083), 35.0405, 35.0405, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Resource" id="Resource_n7po7"]
@@ -28,6 +54,47 @@ script = ExtResource("1_8iqq1")
 [node name="CameraTarget" parent="." instance=ExtResource("2_fagt1")]
 position = Vector2(900, 500)
 zoom_target_speed_curve = SubResource("Curve_mlh6k")
+
+[node name="AmbientSoundscape" parent="CameraTarget" node_paths=PackedStringArray("global_spawn_position_node", "global_spawn_container_node") instance=ExtResource("3_l4b8f")]
+sounds = Array[AudioStream]([ExtResource("4_x8hbb"), ExtResource("5_2mir3"), ExtResource("6_3iusn"), ExtResource("7_d3oxu"), ExtResource("8_nf565"), ExtResource("9_cb0h8"), ExtResource("10_3st4r"), ExtResource("11_uyatv"), ExtResource("12_f6qsd"), ExtResource("13_b6572")])
+sounds_db_shift_enabled = true
+sounds_pitch_shift_enabled = true
+global_spawn_position_node = NodePath("..")
+global_spawn_container_node = NodePath("../../Sounds")
+spawn_local = false
+spawn_frequenzy = 2.0
+
+[node name="AmbientSoundscape2" parent="CameraTarget" node_paths=PackedStringArray("global_spawn_position_node", "global_spawn_container_node") instance=ExtResource("3_l4b8f")]
+position = Vector2(-900, -500)
+sounds = Array[AudioStream]([ExtResource("14_5xxjf"), ExtResource("15_t4ujn"), ExtResource("16_mj5ut")])
+sounds_db_reduction = 5
+sounds_db_shift_enabled = true
+sounds_pitch_shift_enabled = true
+sounds_transition_enalbed = true
+global_spawn_position_node = NodePath("..")
+global_spawn_container_node = NodePath("../../Sounds")
+spawn_global = false
+spawn_frequenzy = 2.0
+
+[node name="AmbientSoundscape3" parent="CameraTarget" node_paths=PackedStringArray("audio_stream_player_to_use", "global_spawn_position_node", "global_spawn_container_node") instance=ExtResource("3_l4b8f")]
+sounds = Array[AudioStream]([ExtResource("17_kxr70"), ExtResource("18_tmei4"), ExtResource("19_058kc"), ExtResource("20_e176y"), ExtResource("21_0j3gq")])
+sounds_db_reduction = 3
+sounds_pitch_shift_enabled = true
+sounds_pitch_min = 1.2
+sounds_pitch_max = 1.5
+sounds_transition_enalbed = true
+sounds_transition_time = 0.1
+audio_stream_player_to_use = NodePath("AudioStreamPlayer2D")
+global_spawn_position_node = NodePath("..")
+global_spawn_container_node = NodePath("../../Sounds")
+spawn_local = false
+spawn_frequenzy = 10.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CameraTarget/AmbientSoundscape3"]
+
+[node name="ZoomDbModulateComponent" parent="CameraTarget/AmbientSoundscape3/AudioStreamPlayer2D" node_paths=PackedStringArray("audio_player") instance=ExtResource("22_6o7vv")]
+audio_player = NodePath("..")
+zoom_db_curve = SubResource("Curve_u8w0q")
 
 [node name="CameraMain" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 unique_name_in_owner = true
@@ -88,5 +155,7 @@ offset_right = 70.0
 offset_bottom = 55.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="Sounds" type="Node" parent="."]
 
 [connection signal="placeable_selected" from="CanvasLayer/UIPlaceables" to="." method="_on_placeables_placeable_selected"]
