@@ -1,9 +1,10 @@
 class_name PollenContainerComponent
-extends Node
+extends Node2D
 
 
 signal filled_up
 signal emptied
+signal current_changed(current: int)
 
 @export var start := 0
 @export var max := 5
@@ -11,6 +12,11 @@ signal emptied
 @export var refill_time := 5.0
 @export var depletes := false
 @export var deplete_time := 5.0
+@export var sprite: AnimatedSprite2D
+## Use this to set a custom positions node
+## The node should contain a child node for each position
+## a pollen sprite should be added.
+@export var positions: Node2D
 
 var current := 0:
 	set = _set_current
@@ -94,12 +100,15 @@ func _set_current(new_value) -> void:
 		debug_entry.update_value(str(new_value))
 	if new_value < max:
 		is_full = false
+		refill()
 	else:
 		is_full = true
 	if new_value == 0:
 		is_empty = true
 	else:
 		is_empty = false
+
+	current_changed.emit(current)
 
 
 func _set_is_full(new_value) -> void:

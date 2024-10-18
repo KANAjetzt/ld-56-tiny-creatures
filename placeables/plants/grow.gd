@@ -13,4 +13,4 @@ func _ready() -> void:
 	node.modulate.a = 0.0
 	var tween := create_tween()
 	tween.tween_property(node, "scale", original_scale, time)
-	tween.parallel().tween_property(node, "modulate:a", 1.0, 1.0)
+	tween.parallel().tween_property(node, "modulate:a", 1.0, time)

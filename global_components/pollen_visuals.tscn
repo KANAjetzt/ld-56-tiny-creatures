@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://q4n3kxvei28e"]
+
+[ext_resource type="Shader" path="res://assets/shader/pollen.gdshader" id="1_705tp"]
+[ext_resource type="Script" path="res://global_components/pollen_visuals.gd" id="2_5qqfe"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xhelq"]
+resource_local_to_scene = true
+shader = ExtResource("1_705tp")
+shader_parameter/circle_count = 8
+shader_parameter/circle_radius = 0.078
+shader_parameter/circle_distance = 0.134
+shader_parameter/circle_color = Color(0.856, 0.68, 0, 1)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_lvk83"]
+size = Vector2(4, 4)
+
+[node name="PollenVisuals" type="Sprite2D"]
+material = SubResource("ShaderMaterial_xhelq")
+texture = SubResource("PlaceholderTexture2D_lvk83")
+script = ExtResource("2_5qqfe")

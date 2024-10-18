@@ -1,10 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://sjjvr5umdb8p"]
+[gd_scene load_steps=17 format=3 uid="uid://sjjvr5umdb8p"]
 
 [ext_resource type="Texture2D" uid="uid://dt0jcqf6qbyto" path="res://placeables/plants/lavender/Lavender.svg" id="1_hjeq0"]
 [ext_resource type="Texture2D" uid="uid://cjnhydxgrpm27" path="res://placeables/plants/lavender/Lavender_Glow.svg" id="2_c72t1"]
 [ext_resource type="PackedScene" uid="uid://c5yo20qevp5vw" path="res://placeables/creature_positions.tscn" id="3_4gjel"]
 [ext_resource type="PackedScene" uid="uid://mu0cbo743n6a" path="res://placeables/creature_position.tscn" id="4_oxgck"]
+[ext_resource type="PackedScene" uid="uid://q4n3kxvei28e" path="res://global_components/pollen_visuals.tscn" id="5_napsn"]
 [ext_resource type="PackedScene" uid="uid://dannee2yf7qrq" path="res://placeables/attractor.tscn" id="5_tbpm3"]
+[ext_resource type="Shader" path="res://assets/shader/pollen.gdshader" id="6_mn2gb"]
 [ext_resource type="Script" path="res://placeables/attractor_area.gd" id="6_t12ov"]
 [ext_resource type="PackedScene" uid="uid://bgx25yt4ojjda" path="res://placeables/plants/plant_component.tscn" id="7_y430i"]
 [ext_resource type="PackedScene" uid="uid://dh60blsam6xim" path="res://global_components/pollen_container.tscn" id="9_j1oan"]
@@ -12,10 +14,18 @@
 [ext_resource type="PackedScene" uid="uid://bfitru0sgkbv5" path="res://global_components/add_to_each_child.tscn" id="10_v8exi"]
 [ext_resource type="PackedScene" uid="uid://nx2hjeg62iqb" path="res://placeables/plants/grow.tscn" id="11_58nrr"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2j7ci"]
+resource_local_to_scene = true
+shader = ExtResource("6_mn2gb")
+shader_parameter/circle_count = 8
+shader_parameter/circle_radius = 0.078
+shader_parameter/circle_distance = 0.134
+shader_parameter/circle_color = Color(0.856, 0.68, 0, 1)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_bhi5v"]
 radius = 69.3542
 
-[sub_resource type="Resource" id="Resource_hixy5"]
+[sub_resource type="Resource" id="Resource_irmw6"]
 resource_local_to_scene = true
 script = ExtResource("10_ljhwv")
 id = "plant_lavender"
@@ -25,7 +35,7 @@ is_attractor = true
 is_habitat = false
 is_plant = true
 wait_time = 3.0
-resupply_time = 30.0
+resupply_time = 3.0
 amount_max = 3
 scene_path = "res://placeables/plants/lavender/lavender.tscn"
 
@@ -52,6 +62,10 @@ max = 3
 refills = true
 refill_time = 30.0
 
+[node name="PollenVisuals" parent="AddToEachChildComponent/PollenContainer" instance=ExtResource("5_napsn")]
+material = SubResource("ShaderMaterial_2j7ci")
+use_parent = true
+
 [node name="CreaturePositionsComponent" parent="." instance=ExtResource("3_4gjel")]
 
 [node name="CreaturePositionComponent" parent="CreaturePositionsComponent" instance=ExtResource("4_oxgck")]
@@ -71,6 +85,7 @@ creature_positions = NodePath("../CreaturePositionsComponent")
 plant = NodePath("../PlantComponent")
 
 [node name="AttractorArea" type="Area2D" parent="AttractorComponent" node_paths=PackedStringArray("ref")]
+visible = false
 collision_layer = 2
 input_pickable = false
 script = ExtResource("6_t12ov")
@@ -80,13 +95,13 @@ ref = NodePath("..")
 shape = SubResource("CircleShape2D_bhi5v")
 
 [node name="PlantComponent" parent="." node_paths=PackedStringArray("creature_positions", "attractor") instance=ExtResource("7_y430i")]
-data = SubResource("Resource_hixy5")
+data = SubResource("Resource_irmw6")
 creature_positions = NodePath("../CreaturePositionsComponent")
 attractor = NodePath("../AttractorComponent")
 
 [node name="GrowComponent" parent="." node_paths=PackedStringArray("node") instance=ExtResource("11_58nrr")]
-node = NodePath("../Sprite2D")
-time = 20.0
+node = NodePath("..")
+time = 15.0
 start_scale = Vector2(0.01, 0.01)
 
 [editable path="AttractorComponent"]

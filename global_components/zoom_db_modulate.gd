@@ -15,5 +15,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var camera := get_viewport().get_camera_2d()
 
-	var t = camera.zoom.x / Global.zoom_in_max.x
-	audio_player.volume_db = zoom_db_curve.sample_baked(t)
+	if camera:
+		var t = camera.zoom.x / Global.zoom_in_max.x
+		audio_player.volume_db = zoom_db_curve.sample_baked(t)

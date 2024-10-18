@@ -17,7 +17,7 @@ plants = {
 "plant_lavender": 3
 }
 scene_path = "res://creatures/bees/mason_bee/mason_bee.tscn"
-spawn_time = 5.0
+spawn_time = 0.2
 info_text = "- Prefers small cavities, like hollow stems, or bee hotels made of wood or bamboo tubes for nesting.
 - Attracted to flowering plants with accessible nectar, such as fruit trees and spring-blooming plants.
 - These bees are prolific pollinators and can boost the bloom of early plants."

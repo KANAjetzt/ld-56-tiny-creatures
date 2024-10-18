@@ -21,10 +21,11 @@ PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_came
 Global="*res://singletons/global/global.tscn"
 Utils="*res://singletons/utils.gd"
 Sound="*res://singletons/sound/sound.tscn"
+DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
+enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
 
 [global_group]
 

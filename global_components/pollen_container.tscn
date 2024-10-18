@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://global_components/pollen_container.gd" id="1_sefm5"]
 
-[node name="PollenContainer" type="Node"]
+[node name="PollenContainer" type="Node2D"]
 script = ExtResource("1_sefm5")
