@@ -6,6 +6,7 @@ signal placeable_selected(button: UIPlaceableButton, placeable: PlaceableData)
 
 @onready var button: Button = %Button
 @onready var label: Label = %Label
+@onready var progress_bar: ProgressBar = %ProgressBar
 
 var data: PlaceableData
 
@@ -22,6 +23,11 @@ func set_label(text: String) -> void:
 	label.text = text
 
 
+func tween_progress_bar() -> void:
+	var tween := create_tween()
+	tween.tween_method(progress_bar.set_value_no_signal, 0.0, 1.0, data.resupply_time)
+
+
 func _on_button_pressed() -> void:
 	placeable_selected.emit(self, data)
 	Global.currently_selected_placeable = data
@@ -33,3 +39,8 @@ func _on_button_pressed() -> void:
 func _on_current_amount_changed(placeable: PlaceableData) -> void:
 	if placeable == data:
 		set_label(str(placeable.current_amount))
+
+		if not placeable.current_amount == placeable.amount_max:
+			tween_progress_bar()
+		else:
+			progress_bar.set_value_no_signal(0.0)
