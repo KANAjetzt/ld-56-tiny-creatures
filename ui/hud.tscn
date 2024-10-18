@@ -1,4 +1,9 @@
-[gd_scene format=3 uid="uid://clc8r6kbffjad"]
+[gd_scene load_steps=5 format=3 uid="uid://clc8r6kbffjad"]
+
+[ext_resource type="Script" path="res://ui/hud.gd" id="1_jjvs2"]
+[ext_resource type="PackedScene" uid="uid://hi233c3jm3s3" path="res://ui/folded.tscn" id="1_wqxql"]
+[ext_resource type="PackedScene" uid="uid://ceg6niusdu1sc" path="res://ui/placeables.tscn" id="2_p1ne0"]
+[ext_resource type="PackedScene" uid="uid://dtwmad8adjx0j" path="res://ui/fly_in.tscn" id="3_m8jdn"]
 
 [node name="Hud" type="MarginContainer"]
 anchors_preset = 15
@@ -6,3 +11,40 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_jjvs2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="Control2" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Control2"]
+layout_mode = 2
+offset_top = 4.0
+offset_right = 1152.0
+offset_bottom = 114.0
+
+[node name="PanelContainer" parent="VBoxContainer/Control2/VBoxContainer" instance=ExtResource("1_wqxql")]
+layout_mode = 2
+
+[node name="Placeables" parent="VBoxContainer/Control2/VBoxContainer" instance=ExtResource("2_p1ne0")]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="FlyIn" parent="." node_paths=PackedStringArray("mouse_over_control", "transition_control", "hidden_control") instance=ExtResource("3_m8jdn")]
+mouse_over_control = NodePath("../VBoxContainer/Control2/VBoxContainer")
+transition_control = NodePath("../VBoxContainer/Control2")
+hidden_control = NodePath("../VBoxContainer/Control2/VBoxContainer/Placeables")
+
+[connection signal="placeable_selected" from="VBoxContainer/Control2/VBoxContainer/Placeables" to="." method="_on_placeables_placeable_selected"]
+[connection signal="hover_changed" from="FlyIn" to="." method="_on_fly_in_hover_changed"]
+
+[editable path="VBoxContainer/Control2/VBoxContainer/PanelContainer"]

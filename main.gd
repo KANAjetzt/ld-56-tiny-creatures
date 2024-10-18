@@ -5,18 +5,14 @@ extends Node2D
 
 
 @onready var placeable_preview: UIPlaceablePreview = %PlaceablePreview
-@onready var ui_placeables: UIPlaceables = %UIPlaceables
+@onready var hud: UIHUD = %Hud
 @onready var plants: Node = %Plants
 @onready var placeables: Node = %Placeables
 
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("place") and not ui_placeables.is_hovering:
+	if Input.is_action_just_pressed("place") and not hud.is_hovering:
 		place_placeable()
-
-
-func _on_placeables_placeable_selected(data: PlaceableData) -> void:
-	placeable_preview.set_preview(data.icon)
 
 
 func place_placeable() -> void:
@@ -49,3 +45,7 @@ func place_placeable() -> void:
 			Global.currently_placed_plants[Global.currently_selected_placeable.id] += 1
 
 	Global.check_creature_criteria()
+
+
+func _on_hud_placeable_selected(data: PlaceableData) -> void:
+	placeable_preview.set_preview(data.icon)

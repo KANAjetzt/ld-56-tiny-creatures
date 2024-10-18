@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://hi233c3jm3s3"]
+
+[ext_resource type="Texture2D" uid="uid://dnl2ed54uwm6x" path="res://ui/arrow_up.svg" id="1_tjxn4"]
+
+[node name="Folded" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 25)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+custom_minimum_size = Vector2(30, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("1_tjxn4")
+expand_mode = 1

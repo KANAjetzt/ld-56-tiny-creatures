@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtwmad8adjx0j"]
+
+[ext_resource type="Script" path="res://ui/fly_in.gd" id="1_0a2ya"]
+
+[node name="FlyIn" type="Node"]
+script = ExtResource("1_0a2ya")

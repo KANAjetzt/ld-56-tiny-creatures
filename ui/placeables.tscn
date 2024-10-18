@@ -23,17 +23,9 @@ theme_override_constants/margin_bottom = 15
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 8
-text = "Close"
-
 [node name="GridContainer" type="GridContainer" parent="HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/h_separation = 15
 theme_override_constants/v_separation = 10
 columns = 5
-
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -1,7 +1,6 @@
 [gd_scene load_steps=34 format=3 uid="uid://cawplt2cvlk2e"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_8iqq1"]
-[ext_resource type="PackedScene" uid="uid://ceg6niusdu1sc" path="res://ui/placeables.tscn" id="1_tjmr1"]
 [ext_resource type="PackedScene" uid="uid://pany56w6d3vs" path="res://ui/placeable_preview.tscn" id="2_5g2f2"]
 [ext_resource type="PackedScene" uid="uid://fxqjwdt0bjcm" path="res://camera/tracker.tscn" id="2_fagt1"]
 [ext_resource type="PackedScene" uid="uid://jv6gm24c60xm" path="res://camera/ambient_soundscape.tscn" id="3_l4b8f"]
@@ -30,6 +29,7 @@
 [ext_resource type="AudioStream" uid="uid://c81fm6efluoli" path="res://assets/sfx/ambient_short/rat/rat-3.ogg" id="20_e176y"]
 [ext_resource type="AudioStream" uid="uid://groxr85fv5mg" path="res://assets/sfx/ambient_short/rat/rat-4.ogg" id="21_0j3gq"]
 [ext_resource type="PackedScene" uid="uid://c0p6fwpet1gec" path="res://global_components/zoom_db_modulate.tscn" id="22_6o7vv"]
+[ext_resource type="PackedScene" uid="uid://clc8r6kbffjad" path="res://ui/hud.tscn" id="29_4bs2p"]
 
 [sub_resource type="Curve" id="Curve_mlh6k"]
 max_value = 2.0
@@ -144,18 +144,11 @@ unique_name_in_owner = true
 physics_interpolation_mode = 2
 scale = Vector2(0.03, 0.03)
 
-[node name="Book" parent="CanvasLayer" instance=ExtResource("9_4wdwf")]
-
-[node name="UIPlaceables" parent="CanvasLayer" instance=ExtResource("1_tjmr1")]
+[node name="Hud" parent="CanvasLayer" instance=ExtResource("29_4bs2p")]
 unique_name_in_owner = true
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_right = 70.0
-offset_bottom = 55.0
-grow_horizontal = 1
-grow_vertical = 1
+
+[node name="Book" parent="CanvasLayer" instance=ExtResource("9_4wdwf")]
 
 [node name="Sounds" type="Node" parent="."]
 
-[connection signal="placeable_selected" from="CanvasLayer/UIPlaceables" to="." method="_on_placeables_placeable_selected"]
+[connection signal="placeable_selected" from="CanvasLayer/Hud" to="." method="_on_hud_placeable_selected"]
