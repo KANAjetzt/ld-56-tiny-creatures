@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dy1sof26yiegd" path="res://creatures/bees/bee_sound.tscn" id="13_1ei2o"]
 [ext_resource type="PackedScene" uid="uid://nx2hjeg62iqb" path="res://placeables/plants/Fade.tscn" id="14_4l5wg"]
 
-[sub_resource type="Resource" id="Resource_il68f"]
+[sub_resource type="Resource" id="Resource_bi5n3"]
 resource_local_to_scene = true
 script = ExtResource("9_wni0k")
 id = "bee_mason"
@@ -53,13 +53,14 @@ steering_speed = 5.0
 
 [node name="AttracteeComponent" parent="." instance=ExtResource("5_q28co")]
 
-[node name="BeeComponent" parent="." node_paths=PackedStringArray("movement", "attractee", "pollen_container", "fade", "shake", "debug_panel") instance=ExtResource("4_xwqrq")]
-data = SubResource("Resource_il68f")
+[node name="BeeComponent" parent="." node_paths=PackedStringArray("movement", "attractee", "pollen_container", "fade", "shake", "sound", "debug_panel") instance=ExtResource("4_xwqrq")]
+data = SubResource("Resource_bi5n3")
 movement = NodePath("../MovementComponent")
 attractee = NodePath("../AttracteeComponent")
 pollen_container = NodePath("../PollenContainer")
 fade = NodePath("../FadeComponent")
 shake = NodePath("../ShakeComponent")
+sound = NodePath("../BeeSoundComponent")
 max_search_time = 20.0
 debug_panel = NodePath("../DebugPanel")
 
@@ -83,6 +84,7 @@ speed = 0.15
 range = 100
 
 [node name="BeeSoundComponent" parent="." instance=ExtResource("13_1ei2o")]
+bus = &"SFX"
 
 [node name="FadeComponent" parent="." node_paths=PackedStringArray("node") instance=ExtResource("14_4l5wg")]
 node = NodePath("..")

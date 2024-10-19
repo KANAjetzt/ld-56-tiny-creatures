@@ -3,7 +3,8 @@ extends Node
 
 
 @export var sprite: Sprite2D
-@export var is_active := true
+@export var is_active := true:
+	set = _set_is_active
 @export var speed := 0.5
 @export var range := 10
 
@@ -22,3 +23,11 @@ func start() -> void:
 		tween.tween_property(sprite, "offset:y", sprite.offset.y + random_range, random_speed * 0.5).as_relative()
 		tween.tween_property(sprite, "offset:y", sprite.offset.y - random_range, random_speed * 0.5).as_relative()
 		tween.tween_callback(start)
+
+
+func _set_is_active(new_value) -> void:
+	var previous_value := is_active
+	is_active = new_value
+
+	if previous_value == false and new_value == true:
+		start()

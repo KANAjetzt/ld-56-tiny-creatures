@@ -8,6 +8,7 @@ extends Node2D
 @export var pollen_container: PollenContainerComponent
 @export var fade: FadeComponent
 @export var shake: ShakeComponent
+@export var sound: BeeSoundComponent
 @export var search_scale := 10
 @export var search_distance_min := 100
 @export var max_distance_from_habitat := 1000
@@ -79,11 +80,8 @@ func collect(plant_creature_positions: CreaturePositionsComponent) -> void:
 		search()
 		return
 
-	shake.is_active = false
-
-	await get_tree().create_timer(data.current_local_data.wait_time).timeout
-
-	shake.is_active = true
+	# Check for pollen
+	await get_tree().create_timer(data.current_local_data.wait_time * 0.5).timeout
 
 	# Retrieve pollen if available
 	var local_pollen_container := plant_creature_position_occupied.pollen_container as  PollenContainerComponent
@@ -91,6 +89,12 @@ func collect(plant_creature_positions: CreaturePositionsComponent) -> void:
 	# If there is pollen receive it
 	if not given_pollen_count == -1:
 		no_pollen_counter = 0
+		# Receive pollen
+		shake.is_active = false
+		sound.fade_out()
+		await get_tree().create_timer(data.current_local_data.wait_time * 0.5).timeout
+		shake.is_active = true
+		sound.fade_in()
 		var receiver_pollen_count := pollen_container.receive(given_pollen_count)
 	else:
 		no_pollen_counter += 1
@@ -132,6 +136,7 @@ func _on_target_reached() -> void:
 		if data.current_local_data.is_habitat:
 			# Fade out bee
 			fade.fade_out()
+			sound.fade_out()
 		# Wait until the action at the local is done
 		await get_tree().create_timer(data.current_local_data.wait_time).timeout
 		# TODO: Quick fix - sometimes after awaiting the current_local can be reset to null some how
@@ -146,6 +151,7 @@ func _on_target_reached() -> void:
 			data.current_habitat.pollen_container.receive(pollen_container.give_all())
 			# Fade in bee
 			fade.fade_in()
+			sound.fade_in()
 			await fade.fade_in_finished
 			# Start searching for plants
 			search()
