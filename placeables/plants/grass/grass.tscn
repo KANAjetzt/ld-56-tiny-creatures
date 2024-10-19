@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dh60blsam6xim" path="res://global_components/pollen_container.tscn" id="9_3f3br"]
 [ext_resource type="Script" path="res://placeables/_placeable_data.gd" id="10_8w7b4"]
 [ext_resource type="PackedScene" uid="uid://bfitru0sgkbv5" path="res://global_components/add_to_each_child.tscn" id="10_yv66p"]
-[ext_resource type="PackedScene" uid="uid://nx2hjeg62iqb" path="res://placeables/plants/grow.tscn" id="11_jhmn0"]
+[ext_resource type="PackedScene" uid="uid://nx2hjeg62iqb" path="res://placeables/plants/Fade.tscn" id="11_jhmn0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_avv54"]
 resource_local_to_scene = true

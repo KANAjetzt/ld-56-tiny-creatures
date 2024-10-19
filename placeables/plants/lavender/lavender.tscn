@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dh60blsam6xim" path="res://global_components/pollen_container.tscn" id="9_j1oan"]
 [ext_resource type="Script" path="res://placeables/_placeable_data.gd" id="10_ljhwv"]
 [ext_resource type="PackedScene" uid="uid://bfitru0sgkbv5" path="res://global_components/add_to_each_child.tscn" id="10_v8exi"]
-[ext_resource type="PackedScene" uid="uid://nx2hjeg62iqb" path="res://placeables/plants/grow.tscn" id="11_58nrr"]
+[ext_resource type="PackedScene" uid="uid://nx2hjeg62iqb" path="res://placeables/plants/Fade.tscn" id="11_58nrr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2j7ci"]
 resource_local_to_scene = true
@@ -25,7 +25,7 @@ shader_parameter/circle_color = Color(0.856, 0.68, 0, 1)
 [sub_resource type="CircleShape2D" id="CircleShape2D_bhi5v"]
 radius = 69.3542
 
-[sub_resource type="Resource" id="Resource_irmw6"]
+[sub_resource type="Resource" id="Resource_3txqt"]
 resource_local_to_scene = true
 script = ExtResource("10_ljhwv")
 id = "plant_lavender"
@@ -95,7 +95,7 @@ ref = NodePath("..")
 shape = SubResource("CircleShape2D_bhi5v")
 
 [node name="PlantComponent" parent="." node_paths=PackedStringArray("creature_positions", "attractor") instance=ExtResource("7_y430i")]
-data = SubResource("Resource_irmw6")
+data = SubResource("Resource_3txqt")
 creature_positions = NodePath("../CreaturePositionsComponent")
 attractor = NodePath("../AttractorComponent")
 

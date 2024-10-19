@@ -6,6 +6,7 @@ extends Node2D
 @export var movement: MovementComponent
 @export var attractee: AttracteeComponent
 @export var pollen_container: PollenContainerComponent
+@export var fade: FadeComponent
 @export var search_scale := 10
 @export var search_distance_min := 100
 @export var max_distance_from_habitat := 1000
@@ -124,6 +125,9 @@ func _on_target_reached() -> void:
 	if data.current_local_data == null:
 		search()
 	elif data.current_local_data and not is_collecting:
+		if data.current_local_data.is_habitat:
+			# Fade out bee
+			fade.fade_out()
 		# Wait until the action at the local is done
 		await get_tree().create_timer(data.current_local_data.wait_time).timeout
 		# TODO: Quick fix - sometimes after awaiting the current_local can be reset to null some how
@@ -136,6 +140,9 @@ func _on_target_reached() -> void:
 			# Drop pollen
 			# TODO: Maybe do something if the pollen container is full?
 			data.current_habitat.pollen_container.receive(pollen_container.give_all())
+			# Fade in bee
+			fade.fade_in()
+			await fade.fade_in_finished
 			# Start searching for plants
 			search()
 
