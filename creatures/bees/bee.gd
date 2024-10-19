@@ -7,6 +7,7 @@ extends Node2D
 @export var attractee: AttracteeComponent
 @export var pollen_container: PollenContainerComponent
 @export var fade: FadeComponent
+@export var shake: ShakeComponent
 @export var search_scale := 10
 @export var search_distance_min := 100
 @export var max_distance_from_habitat := 1000
@@ -77,7 +78,12 @@ func collect(plant_creature_positions: CreaturePositionsComponent) -> void:
 		is_collecting = false
 		search()
 		return
+
+	shake.is_active = false
+
 	await get_tree().create_timer(data.current_local_data.wait_time).timeout
+
+	shake.is_active = true
 
 	# Retrieve pollen if available
 	var local_pollen_container := plant_creature_position_occupied.pollen_container as  PollenContainerComponent
