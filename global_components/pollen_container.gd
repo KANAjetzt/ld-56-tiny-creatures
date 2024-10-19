@@ -100,7 +100,6 @@ func _set_current(new_value) -> void:
 		debug_entry.update_value(str(new_value))
 	if new_value < max:
 		is_full = false
-		refill()
 	else:
 		is_full = true
 	if new_value == 0:
@@ -117,8 +116,9 @@ func _set_is_full(new_value) -> void:
 	if previous_value == false and new_value == true:
 		filled_up.emit()
 	# If refill is true and it was full bevore start refilling
-	if previous_value == true and new_value == true and refills:
+	if previous_value == true and new_value == false and refills:
 		refill()
+		print("start refill")
 
 
 func _set_is_empty(new_value) -> void:
@@ -126,3 +126,7 @@ func _set_is_empty(new_value) -> void:
 	is_empty = new_value
 	if previous_value == false and new_value == true:
 		emptied.emit()
+	# If deplete is true and it was empty bevore start depleting
+	if previous_value == true and new_value == false and depletes:
+		deplete()
+		print("start deplete")
