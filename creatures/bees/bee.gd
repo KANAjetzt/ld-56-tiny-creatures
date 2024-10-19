@@ -31,6 +31,7 @@ func _ready() -> void:
 	attractee.inside_attractor_area.connect(_on_inside_attractor_area)
 	movement.target_reached.connect(_on_target_reached)
 	timer_max_search_time.timeout.connect(_on_timer_max_search_time_timeout)
+	data.current_local_data_changed.connect(_on_data_current_local_data_changed)
 
 
 func _process(delta: float) -> void:
@@ -43,8 +44,6 @@ func _process(delta: float) -> void:
 ## Search the next attractor
 func search() -> void:
 	data.current_local_data = null
-	# TODO: Add a signal for current_local_data changed so I can connect the debug panel with it
-	debug_entry.update_value(data.current_local_data.id if not data.current_local_data == null else "null")
 
 	var random_direction := Vector2(randf() * 2.0 - 1.0, randf() * 2.0 - 1.0)
 	var random_distance := movement.min_distance_to_target + search_distance_min + randf() * search_scale
@@ -97,7 +96,6 @@ func collect(plant_creature_positions: CreaturePositionsComponent) -> void:
 		is_collecting = false
 		# Start traveling to habitat
 		data.current_local_data = data.current_habitat.data
-		debug_entry.update_value(data.current_local_data.id if not data.current_local_data == null else "null")
 		travel(data.current_habitat_position.global_position)
 	elif no_pollen_counter >= 3:
 		is_collecting = false
@@ -157,7 +155,6 @@ func _on_inside_attractor_area(area: AttractorArea) -> void:
 				data.current_habitat_position = area.ref.creature_positions.occupy_position()
 				data.current_habitat = area.ref.habitat
 				data.current_local_data = area.ref.habitat.data
-				debug_entry.update_value(data.current_local_data.id if not data.current_local_data == null else "null")
 				travel(data.current_habitat_position.global_position)
 	elif area.ref.plant:
 		# Check memory
@@ -165,10 +162,17 @@ func _on_inside_attractor_area(area: AttractorArea) -> void:
 			search()
 		elif not area.ref.creature_positions.all_occupied:
 			data.current_local_data = area.ref.plant.data
-			debug_entry.update_value(data.current_local_data.id if not data.current_local_data == null else "null")
 			collect(area.ref.creature_positions)
 
 
 func _on_timer_max_search_time_timeout() -> void:
 	data.current_local = data.current_habitat
 	travel(data.current_habitat_position.global_position)
+
+
+func _on_data_current_local_data_changed(_data: PlaceableData) -> void:
+	if debug_entry:
+		if _data == null:
+			debug_entry.update_value("null")
+		else:
+			debug_entry.update_value(_data.id)

@@ -4,6 +4,7 @@ extends Resource
 
 enum STATE {IDLE, SEARCHING, TRAVEL}
 
+signal current_local_data_changed(current_local_data: PlaceableData)
 
 @export var id: String
 @export var display_name: String
@@ -17,7 +18,13 @@ enum STATE {IDLE, SEARCHING, TRAVEL}
 var current_state := STATE.IDLE
 var current_local: Node
 var current_local_position: CreaturePositionComponent
-var current_local_data: PlaceableData
+var current_local_data: PlaceableData:
+	set = _set_current_local_data
 var current_habitat: HabitatComponent
 var current_habitat_position: CreaturePositionComponent
 var is_discovered := false
+
+
+func _set_current_local_data(new_value) -> void:
+	current_local_data = new_value
+	current_local_data_changed.emit(new_value)
