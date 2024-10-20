@@ -1,4 +1,4 @@
-class_name AmbientSoundscapeComponent
+class_name SFXContainer2D
 extends Node2D
 
 
@@ -19,17 +19,13 @@ extends Node2D
 @export var global_spawn_container_node: Node
 @export var spawn_local := true
 @export var spawn_global := true
-## Spawn all soudns in the center of the component position
-@export var spawn_center := false
 @export var spawn_global_offset_min := 50
 @export var spawn_global_offset_max := 500
 @export var spawn_frequenzy := 0.5
-## The component will keep spawning new sounds while this is true
 @export var spawn_enabled := true
 @export var visualize_sound_spawn := false
 
 @onready var sprite_2d: Sprite2D = $Template/Sprite2D
-@onready var center: Node2D = $Center
 
 
 func _ready() -> void:
@@ -38,19 +34,12 @@ func _ready() -> void:
 			if child is Sprite2D:
 				child.show()
 
-	if spawn_enabled:
-		start()
+	start()
 
 
 func start() -> void:
 	spawn_enabled = true
 	spawn_sound()
-
-
-func play() -> void:
-	spawn_enabled = true
-	spawn_sound()
-	spawn_enabled = false
 
 
 func spawn_sound() -> void:
@@ -85,12 +74,6 @@ func spawn_sound() -> void:
 	if spawn_local:
 		var new_audio_stream_player_2d := get_new_audio_stream_player_2d()
 		get_children().pick_random().add_child(new_audio_stream_player_2d)
-		new_audio_stream_player_2d.stream = sounds.pick_random()
-		play_sound(new_audio_stream_player_2d)
-
-	if spawn_center:
-		var new_audio_stream_player_2d := get_new_audio_stream_player_2d()
-		center.add_child(new_audio_stream_player_2d)
 		new_audio_stream_player_2d.stream = sounds.pick_random()
 		play_sound(new_audio_stream_player_2d)
 

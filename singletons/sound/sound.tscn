@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://bjlywx476ttgg" path="res://assets/sfx/ambient_loop/cricket-loop.ogg" id="6_g314x"]
 [ext_resource type="PackedScene" uid="uid://c0p6fwpet1gec" path="res://global_components/zoom_db_modulate.tscn" id="7_rv5ec"]
 
-[sub_resource type="Curve" id="Curve_ggxbf"]
+[sub_resource type="Curve" id="Curve_x6cf5"]
 min_value = -80.0
 max_value = 0.0
 _data = [Vector2(0, -31.2178), 0.0, 0.0, 0, 0, Vector2(0.0315236, -20.3464), 35.0405, 35.0405, 0, 0, Vector2(1, -7.67158), 5.60164, 0.0, 0, 0]
@@ -32,6 +32,6 @@ autoplay = true
 
 [node name="ZoomDbModulateComponent" parent="Ambience/CricketLoop" node_paths=PackedStringArray("audio_player") instance=ExtResource("7_rv5ec")]
 audio_player = NodePath("..")
-zoom_db_curve = SubResource("Curve_ggxbf")
+zoom_db_curve = SubResource("Curve_x6cf5")
 
 [connection signal="finished" from="Music/AudioStreamPlayer" to="Music" method="_on_audio_stream_player_finished"]

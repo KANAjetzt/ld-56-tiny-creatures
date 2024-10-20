@@ -29,6 +29,8 @@ var debug_panel: UIDebugPanel
 var debug_entry: UIDebugPanelEntry
 
 
+@onready var ambient_soundscape: AmbientSoundscapeComponent = $AmbientSoundscape
+
 
 func _ready() -> void:
 	current = start
@@ -42,6 +44,7 @@ func _ready() -> void:
 
 
 func give(amount: int = 1) -> int:
+	ambient_soundscape.play()
 	# If there is enough return the amount given
 	if current - amount >= 0:
 		current -= amount
@@ -64,6 +67,8 @@ func give_all() -> int:
 
 
 func receive(amount: int = 1) -> int:
+	ambient_soundscape.play()
+
 	# If there is enough space add amount
 	if current + amount < max:
 		current += amount

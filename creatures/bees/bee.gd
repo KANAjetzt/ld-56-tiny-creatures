@@ -82,6 +82,11 @@ func collect(plant_creature_positions: CreaturePositionsComponent) -> void:
 
 	# Check for pollen
 	await get_tree().create_timer(data.current_local_data.wait_time * 0.5).timeout
+	if data.current_local_data == null:
+		print("INFO: Quick fix for `current_local_data == null` is used.")
+		is_collecting = false
+		search()
+		return
 
 	# Retrieve pollen if available
 	var local_pollen_container := plant_creature_position_occupied.pollen_container as  PollenContainerComponent
@@ -93,6 +98,11 @@ func collect(plant_creature_positions: CreaturePositionsComponent) -> void:
 		shake.is_active = false
 		sound.fade_out()
 		await get_tree().create_timer(data.current_local_data.wait_time * 0.5).timeout
+		if data.current_local_data == null:
+			print("INFO: Quick fix for `current_local_data == null` is used.")
+			is_collecting = false
+			search()
+			return
 		shake.is_active = true
 		sound.fade_in()
 		var receiver_pollen_count := pollen_container.receive(given_pollen_count)

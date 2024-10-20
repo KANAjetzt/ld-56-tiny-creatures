@@ -1,6 +1,43 @@
-[gd_scene load_steps=2 format=3 uid="uid://dh60blsam6xim"]
+[gd_scene load_steps=9 format=3 uid="uid://dh60blsam6xim"]
 
 [ext_resource type="Script" path="res://global_components/pollen_container.gd" id="1_sefm5"]
+[ext_resource type="PackedScene" uid="uid://jv6gm24c60xm" path="res://camera/ambient_soundscape.tscn" id="2_nyuyw"]
+[ext_resource type="AudioStream" uid="uid://b3rm16djfxikb" path="res://assets/sfx/mouth/pop-0.ogg" id="3_h2bnu"]
+[ext_resource type="PackedScene" uid="uid://c0p6fwpet1gec" path="res://global_components/zoom_db_modulate.tscn" id="3_x6n1v"]
+[ext_resource type="AudioStream" uid="uid://bxhvg0s7kmepy" path="res://assets/sfx/mouth/pop-1.ogg" id="4_gsu2g"]
+[ext_resource type="AudioStream" uid="uid://qm2mco3saq3" path="res://assets/sfx/mouth/pop-2.ogg" id="5_2gnms"]
+[ext_resource type="AudioStream" uid="uid://cilndafnweh6p" path="res://assets/sfx/mouth/pop-3.ogg" id="6_sydqi"]
+
+[sub_resource type="Curve" id="Curve_dgkso"]
+min_value = -80.0
+max_value = 0.0
+_data = [Vector2(0, -20.5865), 0.0, 0.0, 0, 0, Vector2(0.0296443, -6.86217), 22.9647, 22.9647, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [node name="PollenContainer" type="Node2D"]
 script = ExtResource("1_sefm5")
+
+[node name="AmbientSoundscape" parent="." node_paths=PackedStringArray("audio_stream_player_to_use", "global_spawn_position_node", "global_spawn_container_node") instance=ExtResource("2_nyuyw")]
+sounds = Array[AudioStream]([ExtResource("3_h2bnu"), ExtResource("4_gsu2g"), ExtResource("5_2gnms"), ExtResource("6_sydqi")])
+sounds_min_db = 0
+sounds_pitch_min = 0.8
+sounds_pitch_max = 1.2
+audio_stream_player_to_use = NodePath("../AudioStreamPlayer2D")
+global_spawn_position_node = NodePath("..")
+global_spawn_container_node = NodePath(".")
+spawn_local = false
+spawn_global = false
+spawn_center = true
+spawn_global_offset_min = 0
+spawn_global_offset_max = 0
+spawn_enabled = false
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+max_distance = 500.0
+attenuation = 2.0
+panning_strength = 1.5
+bus = &"SFX"
+
+[node name="ZoomDbModulateComponent" parent="AudioStreamPlayer2D" node_paths=PackedStringArray("audio_player") instance=ExtResource("3_x6n1v")]
+audio_player = NodePath("..")
+zoom_db_curve = SubResource("Curve_dgkso")
