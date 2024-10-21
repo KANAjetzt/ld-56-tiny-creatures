@@ -22,10 +22,12 @@ var is_collecting := false
 var timer_max_search_time := Timer.new()
 
 var debug_entry: UIDebugPanelEntry
+var debug_entry_name: UIDebugPanelEntry
 
 
 func _ready() -> void:
 	if debug_panel:
+		debug_entry_name = debug_panel.add_entry("name:", get_parent().name)
 		debug_entry = debug_panel.add_entry("current_local_data:", str(data.current_local_data))
 
 	search()
