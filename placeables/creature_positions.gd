@@ -18,9 +18,10 @@ func _ready() -> void:
 	creature_positions_free = creature_positions
 
 	if habitat:
-		if not Global.current_habitats_free.has(habitat.data.id):
-			Global.current_habitats_free[habitat.data.id] = []
-		Global.current_habitats_free[habitat.data.id].push_back(habitat.data)
+		if not Global.current_habitats.has(habitat.data.id):
+			Global.current_habitats[habitat.data.id] = available_positions
+		else:
+			Global.current_habitats[habitat.data.id] += available_positions
 
 
 func occupy_position() -> CreaturePositionComponent:
@@ -44,12 +45,6 @@ func free_position(creature_position: CreaturePositionComponent) -> void:
 
 func _set_all_occupied(new_value) -> void:
 	all_occupied = new_value
-
-	if all_occupied and habitat:
-		Global.current_habitats_free[habitat.data.id].erase(habitat.data)
-		if Global.current_habitats_free[habitat.data.id].is_empty():
-			Global.current_habitats_free.erase(habitat.data.id)
-			Global.check_creature_criteria()
 
 
 func _set_available_positions(new_value) -> void:

@@ -10,7 +10,7 @@ signal creature_focused(creature_node: BeeComponent)
 @export var creatures: Array[CreatureData]
 
 var currently_selected_placeable: PlaceableData
-var current_habitats_free: Dictionary = {}
+var current_habitats: Dictionary = {}
 var currently_placed_plants: Dictionary = {}
 var current_creatures_with_met_criteria: Array[CreatureData]
 var currently_discovered_creatures: Array[CreatureData]
@@ -38,10 +38,19 @@ func check_creature_criteria() -> void:
 		var found_plants := false
 		var found_plant_count := 0
 
+		# Habitat Check
+		var habitat_space := 0
 		for habitat in creature.habitats:
-			if current_habitats_free.has(habitat.id):
-				found_habitat = true
+			if current_habitats.has(habitat.id):
+				habitat_space += current_habitats[habitat.id]
 
+		# If there is free habitat space and there is no creature with that id there is enough space for them.
+		if habitat_space > 0 and not creature_count.has(creature.id):
+			found_habitat = true
+		elif habitat_space > creature_count[creature.id]:
+			found_habitat = true
+
+		# Plant Check
 		for plant_id in creature.plants:
 			if not currently_placed_plants.has(plant_id):
 				continue

@@ -23,10 +23,10 @@ func spawn() -> void:
 	var new_creature: Node2D = load(creature.scene_path).instantiate()
 	spawn_to.add_child(new_creature)
 	new_creature.global_position = random_position
-	if not Global.creature_count.has(creature):
-		Global.creature_count[creature] = 1
+	if not Global.creature_count.has(creature.id):
+		Global.creature_count[creature.id] = 1
 	else:
-		Global.creature_count[creature] += 1
+		Global.creature_count[creature.id] += 1
 
 	print("INFO: Spawned %s at %s" % [creature.id, random_position])
 	# TODO: Just added this as a quick fix, I guess something in the CreaturePositions Component
