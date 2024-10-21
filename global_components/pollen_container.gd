@@ -17,6 +17,7 @@ signal current_changed(current: int)
 ## The node should contain a child node for each position
 ## a pollen sprite should be added.
 @export var positions: Node2D
+@export var play_sound := false
 
 var current := 0:
 	set = _set_current
@@ -44,7 +45,8 @@ func _ready() -> void:
 
 
 func give(amount: int = 1) -> int:
-	ambient_soundscape.play()
+	if amount > 0:
+		play_sfx()
 	# If there is enough return the amount given
 	if current - amount >= 0:
 		current -= amount
@@ -67,7 +69,8 @@ func give_all() -> int:
 
 
 func receive(amount: int = 1) -> int:
-	ambient_soundscape.play()
+	if amount > 0:
+		play_sfx()
 
 	# If there is enough space add amount
 	if current + amount < max:
@@ -97,6 +100,13 @@ func deplete() -> void:
 	current -= 1
 
 	deplete()
+
+
+func play_sfx() -> void:
+	if not play_sound:
+		return
+
+	ambient_soundscape.play()
 
 
 func _set_current(new_value) -> void:

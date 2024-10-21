@@ -149,6 +149,9 @@ func _on_target_reached() -> void:
 			# Fade out bee
 			fade.fade_out()
 			sound.fade_out()
+			# Drop pollen
+			# TODO: Maybe do something if the pollen container is full?
+			data.current_habitat.pollen_container.receive(pollen_container.give_all())
 		# Wait until the action at the local is done
 		await get_tree().create_timer(data.current_local_data.wait_time).timeout
 		# TODO: Quick fix - sometimes after awaiting the current_local can be reset to null some how
@@ -158,9 +161,6 @@ func _on_target_reached() -> void:
 			return
 		# If at habitat
 		if data.current_local_data.is_habitat:
-			# Drop pollen
-			# TODO: Maybe do something if the pollen container is full?
-			data.current_habitat.pollen_container.receive(pollen_container.give_all())
 			# Fade in bee
 			fade.fade_in()
 			sound.fade_in()
