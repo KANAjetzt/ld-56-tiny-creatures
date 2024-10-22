@@ -19,9 +19,9 @@ func _ready() -> void:
 
 	if habitat:
 		if not Global.current_habitats.has(habitat.data.id):
-			Global.current_habitats[habitat.data.id] = available_positions
+			Global.current_habitats[habitat.data.id] = HabitatSpaceData.new(available_positions)
 		else:
-			Global.current_habitats[habitat.data.id] += available_positions
+			Global.current_habitats[habitat.data.id].add(available_positions)
 
 
 func occupy_position() -> CreaturePositionComponent:

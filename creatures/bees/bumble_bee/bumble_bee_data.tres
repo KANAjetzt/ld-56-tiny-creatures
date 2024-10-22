@@ -16,6 +16,6 @@ plants = {
 "plant_grass": 3,
 "plant_lavender": 3
 }
-scene_path = "res://creatures/bees/mason_bee/mason_bee.tscn"
+scene_path = "res://creatures/bees/bumble_bee/bumble_bee.tscn"
 spawn_time = 1.0
 info_text = ""

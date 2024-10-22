@@ -29,6 +29,12 @@ func spawn() -> void:
 		Global.creature_count[creature.id] += 1
 
 	print("INFO: Spawned %s at %s" % [creature.id, random_position])
+
+	for habitat in creature.habitats:
+		if Global.current_habitats[habitat.id].space_free > 0:
+			Global.current_habitats[habitat.id].remove()
+			break
+
 	Global.check_creature_criteria()
 	spawn()
 

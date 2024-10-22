@@ -1,14 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dy1sof26yiegd"]
+[gd_scene load_steps=3 format=3 uid="uid://dy1sof26yiegd"]
 
 [ext_resource type="Script" path="res://creatures/bees/bee_sound.gd" id="1_6t056"]
 [ext_resource type="AudioStream" uid="uid://j355sceih1s" path="res://creatures/bees/502994__smytheagain__bee_wasp.wav" id="2_hfn0o"]
-[ext_resource type="PackedScene" uid="uid://c0p6fwpet1gec" path="res://global_components/zoom_db_modulate.tscn" id="3_hjisu"]
-
-[sub_resource type="Curve" id="Curve_oyare"]
-min_value = -80.0
-max_value = 0.0
-_data = [Vector2(0, -80), 10.1528, 10.1528, 0, 0, Vector2(0.0118577, -21.7302), 32.1505, 32.1505, 0, 0, Vector2(0.083004, -6.48094), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 4
 
 [node name="BeeSoundComponent" type="AudioStreamPlayer2D"]
 stream = ExtResource("2_hfn0o")
@@ -17,7 +10,3 @@ max_distance = 500.0
 attenuation = 2.0
 panning_strength = 1.5
 script = ExtResource("1_6t056")
-
-[node name="ZoomDbModulateComponent" parent="." node_paths=PackedStringArray("audio_player") instance=ExtResource("3_hjisu")]
-audio_player = NodePath("..")
-zoom_db_curve = SubResource("Curve_oyare")
