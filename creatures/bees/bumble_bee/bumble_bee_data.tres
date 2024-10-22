@@ -13,7 +13,7 @@ display_name = "Bumblebee"
 icon = ExtResource("3_vmsn7")
 habitats = Array[ExtResource("1_ekjt2")]([ExtResource("2_pi0vj")])
 plants = {
-"plant_grass": 3,
+"plant_clover": 3,
 "plant_lavender": 3
 }
 scene_path = "res://creatures/bees/bumble_bee/bumble_bee.tscn"

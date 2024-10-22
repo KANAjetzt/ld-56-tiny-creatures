@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://kiocox8emvoc"]
+
+[ext_resource type="PackedScene" uid="uid://b3bquxluiiqbn" path="res://placeables/placeable.tscn" id="1_d031q"]
+[ext_resource type="PackedScene" uid="uid://g1hw0mr401vy" path="res://placeables/plants/clover/clover.tscn" id="2_tes67"]
+
+[node name="Placeable" instance=ExtResource("1_d031q")]
+
+[node name="Clover" parent="." index="1" instance=ExtResource("2_tes67")]

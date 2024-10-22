@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="PlaceableData" load_steps=3 format=3 uid="uid://ct7hknfwasjft"]
+
+[ext_resource type="Texture2D" uid="uid://bqnkatmp18vj0" path="res://placeables/plants/clover/clover.svg" id="1_hvlik"]
+[ext_resource type="Script" path="res://placeables/_placeable_data.gd" id="2_mgvgs"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("2_mgvgs")
+id = "plant_clover"
+display_name = "Clover"
+icon = ExtResource("1_hvlik")
+is_attractor = true
+is_habitat = false
+is_plant = true
+wait_time = 8.0
+resupply_time = 15.0
+amount_max = 8
+scene_path = "res://placeables/plants/clover/clover_placeable.tscn"

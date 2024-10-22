@@ -1,0 +1,90 @@
+[gd_scene load_steps=15 format=3 uid="uid://g1hw0mr401vy"]
+
+[ext_resource type="Texture2D" uid="uid://bqnkatmp18vj0" path="res://placeables/plants/clover/clover.svg" id="1_jhtnp"]
+[ext_resource type="Texture2D" uid="uid://cjnhydxgrpm27" path="res://placeables/plants/lavender/Lavender_Glow.svg" id="2_3qt4o"]
+[ext_resource type="PackedScene" uid="uid://bfitru0sgkbv5" path="res://global_components/add_to_each_child.tscn" id="3_vuc1y"]
+[ext_resource type="PackedScene" uid="uid://dh60blsam6xim" path="res://global_components/pollen_container.tscn" id="4_e4vcd"]
+[ext_resource type="PackedScene" uid="uid://q4n3kxvei28e" path="res://global_components/pollen_visuals.tscn" id="5_rm17q"]
+[ext_resource type="Shader" path="res://assets/shader/pollen.gdshader" id="6_gchti"]
+[ext_resource type="PackedScene" uid="uid://c5yo20qevp5vw" path="res://placeables/creature_positions.tscn" id="7_tcden"]
+[ext_resource type="PackedScene" uid="uid://mu0cbo743n6a" path="res://placeables/creature_position.tscn" id="8_hkl3e"]
+[ext_resource type="PackedScene" uid="uid://dannee2yf7qrq" path="res://placeables/attractor.tscn" id="9_yupob"]
+[ext_resource type="Script" path="res://placeables/attractor_area.gd" id="10_n033r"]
+[ext_resource type="PackedScene" uid="uid://bgx25yt4ojjda" path="res://placeables/plants/plant_component.tscn" id="11_cpbo1"]
+[ext_resource type="PackedScene" uid="uid://nx2hjeg62iqb" path="res://placeables/plants/Fade.tscn" id="13_bolhf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_avv54"]
+resource_local_to_scene = true
+shader = ExtResource("6_gchti")
+shader_parameter/circle_count = 8
+shader_parameter/circle_radius = 0.078
+shader_parameter/circle_distance = 0.134
+shader_parameter/circle_color = Color(0.856, 0.68, 0, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bhi5v"]
+radius = 69.3542
+
+[node name="Clover" type="Node2D" groups=["placeable"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("1_jhtnp")
+
+[node name="Glow" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.65521, 0.117885, 0.999998, 1)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("2_3qt4o")
+
+[node name="AddToEachChildComponent" parent="." node_paths=PackedStringArray("base_node", "component_to_add") instance=ExtResource("3_vuc1y")]
+base_node = NodePath("../CreaturePositionsComponent")
+component_to_add = NodePath("PollenContainer")
+prop = "pollen_container"
+
+[node name="PollenContainer" parent="AddToEachChildComponent" instance=ExtResource("4_e4vcd")]
+start = 5
+refills = true
+refill_time = 40.0
+
+[node name="PollenVisuals" parent="AddToEachChildComponent/PollenContainer" instance=ExtResource("5_rm17q")]
+material = SubResource("ShaderMaterial_avv54")
+use_parent = true
+
+[node name="CreaturePositionsComponent" parent="." instance=ExtResource("7_tcden")]
+
+[node name="CreaturePositionComponent" parent="CreaturePositionsComponent" instance=ExtResource("8_hkl3e")]
+position = Vector2(-12, -12)
+
+[node name="CreaturePositionComponent2" parent="CreaturePositionsComponent" instance=ExtResource("8_hkl3e")]
+position = Vector2(-1, -19)
+
+[node name="CreaturePositionComponent3" parent="CreaturePositionsComponent" instance=ExtResource("8_hkl3e")]
+position = Vector2(-1, -8)
+
+[node name="CreaturePositionComponent4" parent="CreaturePositionsComponent" instance=ExtResource("8_hkl3e")]
+position = Vector2(8, -14)
+
+[node name="AttractorComponent" parent="." node_paths=PackedStringArray("creature_positions", "plant") instance=ExtResource("9_yupob")]
+creature_positions = NodePath("../CreaturePositionsComponent")
+plant = NodePath("../PlantComponent")
+
+[node name="AttractorArea" type="Area2D" parent="AttractorComponent" node_paths=PackedStringArray("ref")]
+collision_layer = 2
+input_pickable = false
+script = ExtResource("10_n033r")
+ref = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttractorComponent/AttractorArea"]
+visible = false
+shape = SubResource("CircleShape2D_bhi5v")
+
+[node name="PlantComponent" parent="." node_paths=PackedStringArray("creature_positions", "attractor") instance=ExtResource("11_cpbo1")]
+creature_positions = NodePath("../CreaturePositionsComponent")
+attractor = NodePath("../AttractorComponent")
+
+[node name="GrowComponent" parent="." node_paths=PackedStringArray("node") instance=ExtResource("13_bolhf")]
+node = NodePath("..")
+time = 15.0
+start_scale = Vector2(0.01, 0.01)
+
+[editable path="AttractorComponent"]
