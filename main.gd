@@ -29,12 +29,13 @@ func place_placeable() -> void:
 		placeable_preview.remove_preview()
 		return
 
-	var new_placeable: Node2D = load(Global.currently_selected_placeable.scene_path).instantiate()
+	var new_placeable: Placeable = load(Global.currently_selected_placeable.scene_path).instantiate()
 	if Global.currently_selected_placeable.is_plant:
 		plants.add_child(new_placeable)
 	else:
 		placeables.add_child(new_placeable)
 	new_placeable.global_position = get_global_mouse_position()
+	new_placeable.place_sfx.play()
 
 	Global.currently_selected_placeable.current_amount -= 1
 

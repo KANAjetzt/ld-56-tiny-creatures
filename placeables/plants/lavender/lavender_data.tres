@@ -15,4 +15,4 @@ is_plant = true
 wait_time = 8.0
 resupply_time = 15.0
 amount_max = 5
-scene_path = "res://placeables/plants/lavender/lavender.tscn"
+scene_path = "res://placeables/plants/lavender/placeable_lavender.tscn"

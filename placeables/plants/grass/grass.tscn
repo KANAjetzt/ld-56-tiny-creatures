@@ -25,7 +25,7 @@ shader_parameter/circle_color = Color(0.856, 0.68, 0, 1)
 [sub_resource type="CircleShape2D" id="CircleShape2D_bhi5v"]
 radius = 69.3542
 
-[sub_resource type="Resource" id="Resource_2obgp"]
+[sub_resource type="Resource" id="Resource_wba2n"]
 resource_local_to_scene = true
 script = ExtResource("10_8w7b4")
 id = "plant_grass"
@@ -34,10 +34,10 @@ icon = ExtResource("1_5d27m")
 is_attractor = true
 is_habitat = false
 is_plant = true
-wait_time = 3.0
-resupply_time = 3.0
-amount_max = 3
-scene_path = "res://placeables/plants/grass/grass.tscn"
+wait_time = 5.0
+resupply_time = 5.0
+amount_max = 5
+scene_path = "res://placeables/plants/grass/placeable_grass.tscn"
 
 [node name="Grass" type="Node2D" groups=["placeable"]]
 
@@ -95,7 +95,7 @@ visible = false
 shape = SubResource("CircleShape2D_bhi5v")
 
 [node name="PlantComponent" parent="." node_paths=PackedStringArray("creature_positions", "attractor") instance=ExtResource("7_oafsp")]
-data = SubResource("Resource_2obgp")
+data = SubResource("Resource_wba2n")
 creature_positions = NodePath("../CreaturePositionsComponent")
 attractor = NodePath("../AttractorComponent")
 

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://rhgqpvtnenpf"]
+
+[ext_resource type="PackedScene" uid="uid://b3bquxluiiqbn" path="res://placeables/placeable.tscn" id="1_0bfdm"]
+[ext_resource type="PackedScene" uid="uid://cn41knnncy7a0" path="res://placeables/plants/grass/grass.tscn" id="6_xwf5u"]
+
+[node name="Placeable" instance=ExtResource("1_0bfdm")]
+
+[node name="Grass" parent="." index="1" instance=ExtResource("6_xwf5u")]

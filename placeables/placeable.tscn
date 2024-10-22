@@ -1,0 +1,25 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3bquxluiiqbn"]
+
+[ext_resource type="PackedScene" uid="uid://jv6gm24c60xm" path="res://camera/ambient_soundscape.tscn" id="1_6fgwe"]
+[ext_resource type="Script" path="res://placeables/placeable.gd" id="1_8p3dm"]
+[ext_resource type="AudioStream" uid="uid://b3rm16djfxikb" path="res://assets/sfx/mouth/pop-0.ogg" id="2_bkr01"]
+[ext_resource type="AudioStream" uid="uid://bxhvg0s7kmepy" path="res://assets/sfx/mouth/pop-1.ogg" id="3_j2cml"]
+[ext_resource type="AudioStream" uid="uid://qm2mco3saq3" path="res://assets/sfx/mouth/pop-2.ogg" id="4_ga7v1"]
+[ext_resource type="AudioStream" uid="uid://cilndafnweh6p" path="res://assets/sfx/mouth/pop-3.ogg" id="5_43yeo"]
+
+[node name="Placeable" type="Node2D"]
+script = ExtResource("1_8p3dm")
+
+[node name="PlaceSFX" parent="." instance=ExtResource("1_6fgwe")]
+unique_name_in_owner = true
+sounds = Array[AudioStream]([ExtResource("2_bkr01"), ExtResource("3_j2cml"), ExtResource("4_ga7v1"), ExtResource("5_43yeo")])
+sounds_db_shift_enabled = true
+sounds_min_db = 5
+sounds_max_db = 10
+sounds_pitch_shift_enabled = true
+sounds_pitch_min = 0.25
+sounds_pitch_max = 0.5
+spawn_local = false
+spawn_global = false
+spawn_center = true
+spawn_enabled = false

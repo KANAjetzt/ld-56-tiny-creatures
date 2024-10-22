@@ -47,7 +47,7 @@ func check_creature_criteria() -> void:
 		# If there is free habitat space and there is no creature with that id there is enough space for them.
 		if habitat_space > 0 and not creature_count.has(creature.id):
 			found_habitat = true
-		elif habitat_space > creature_count[creature.id]:
+		elif creature_count.has(creature.id) and habitat_space > creature_count[creature.id]:
 			found_habitat = true
 
 		# Plant Check
