@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CreatureData" load_steps=5 format=3 uid="uid://tlfsluwoh36b"]
+
+[ext_resource type="Script" path="res://placeables/_placeable_data.gd" id="1_ekjt2"]
+[ext_resource type="Resource" uid="uid://co8bgcteikhjp" path="res://placeables/structures/Hotel/hotel_data.tres" id="2_pi0vj"]
+[ext_resource type="Texture2D" uid="uid://drvucgj0wdyp5" path="res://creatures/bees/bumble_bee/Bee_Bumble.svg" id="3_vmsn7"]
+[ext_resource type="Script" path="res://creatures/_creature_data.gd" id="4_ye2ni"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("4_ye2ni")
+id = "bee_bumble"
+display_name = "Bumblebee"
+icon = ExtResource("3_vmsn7")
+habitats = Array[ExtResource("1_ekjt2")]([ExtResource("2_pi0vj")])
+plants = {
+"plant_grass": 3,
+"plant_lavender": 3
+}
+scene_path = "res://creatures/bees/mason_bee/mason_bee.tscn"
+spawn_time = 1.0
+info_text = ""

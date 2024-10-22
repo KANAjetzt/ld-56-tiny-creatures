@@ -1,0 +1,76 @@
+[gd_scene load_steps=14 format=3 uid="uid://fluverg1qtie"]
+
+[ext_resource type="PackedScene" uid="uid://b850qlnpmsgn8" path="res://ui/debug/debug_panel.tscn" id="1_ypnlu"]
+[ext_resource type="Texture2D" uid="uid://drvucgj0wdyp5" path="res://creatures/bees/bumble_bee/Bee_Bumble.svg" id="2_413p8"]
+[ext_resource type="PackedScene" uid="uid://bn0rrnq8jxv5q" path="res://creatures/movement.tscn" id="3_v5ywb"]
+[ext_resource type="PackedScene" uid="uid://b87c15tnbke7v" path="res://creatures/Attractee.tscn" id="4_rbjvn"]
+[ext_resource type="PackedScene" uid="uid://dnkjoi6eawcdh" path="res://creatures/bees/bee.tscn" id="5_tq3r2"]
+[ext_resource type="Resource" uid="uid://tlfsluwoh36b" path="res://creatures/bees/bumble_bee/bumble_bee_data.tres" id="6_23s0m"]
+[ext_resource type="PackedScene" uid="uid://bueem1cthmctk" path="res://creatures/clickable.tscn" id="9_u71c6"]
+[ext_resource type="PackedScene" uid="uid://dh60blsam6xim" path="res://global_components/pollen_container.tscn" id="10_u44m0"]
+[ext_resource type="PackedScene" uid="uid://duaefw1ednjhb" path="res://creatures/flip_to_direction.tscn" id="11_ur0ge"]
+[ext_resource type="PackedScene" uid="uid://dtd546uk8jtsa" path="res://creatures/shake.tscn" id="12_uiakv"]
+[ext_resource type="PackedScene" uid="uid://dy1sof26yiegd" path="res://creatures/bees/bee_sound.tscn" id="13_icqee"]
+[ext_resource type="PackedScene" uid="uid://nx2hjeg62iqb" path="res://placeables/plants/Fade.tscn" id="14_vbmf8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wcchw"]
+radius = 21.0
+
+[node name="MasonBee" type="Node2D"]
+
+[node name="DebugPanel" parent="." instance=ExtResource("1_ypnlu")]
+unique_name_in_owner = true
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("2_413p8")
+
+[node name="MovementComponent" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("3_v5ywb")]
+parent = NodePath("..")
+speed = 100
+steering_speed = 5.0
+
+[node name="AttracteeComponent" parent="." instance=ExtResource("4_rbjvn")]
+
+[node name="BeeComponent" parent="." node_paths=PackedStringArray("movement", "attractee", "pollen_container", "fade", "shake", "sound", "debug_panel") instance=ExtResource("5_tq3r2")]
+data = ExtResource("6_23s0m")
+movement = NodePath("../MovementComponent")
+attractee = NodePath("../AttracteeComponent")
+pollen_container = NodePath("../PollenContainer")
+fade = NodePath("../FadeComponent")
+shake = NodePath("../ShakeComponent")
+sound = NodePath("../BeeSoundComponent")
+max_search_time = 20.0
+debug_panel = NodePath("../DebugPanel")
+
+[node name="ClickableComponent" parent="." node_paths=PackedStringArray("bee") instance=ExtResource("9_u71c6")]
+bee = NodePath("../BeeComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableComponent"]
+light_mask = 4
+visibility_layer = 4
+shape = SubResource("CircleShape2D_wcchw")
+
+[node name="PollenContainer" parent="." instance=ExtResource("10_u44m0")]
+max = 10
+play_sound = true
+
+[node name="FlipToDirectionComponent" parent="." node_paths=PackedStringArray("sprite", "movement") instance=ExtResource("11_ur0ge")]
+sprite = NodePath("../Sprite2D")
+movement = NodePath("../MovementComponent")
+
+[node name="ShakeComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("12_uiakv")]
+sprite = NodePath("../Sprite2D")
+speed = 0.15
+range = 100
+
+[node name="BeeSoundComponent" parent="." instance=ExtResource("13_icqee")]
+bus = &"SFX"
+pitch_min = 0.5
+pitch_max = 0.6
+
+[node name="FadeComponent" parent="." node_paths=PackedStringArray("node") instance=ExtResource("14_vbmf8")]
+node = NodePath("..")
+time = 0.5
+auto_start = false
