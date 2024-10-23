@@ -9,6 +9,7 @@ extends Node2D
 @export var fade: FadeComponent
 @export var shake: ShakeComponent
 @export var sound: BeeSoundComponent
+@export var digging: DiggingComponent
 @export var search_scale := 10
 @export var search_distance_min := 100
 @export var max_distance_from_habitat := 1000
@@ -36,7 +37,7 @@ func _ready() -> void:
 	movement.target_reached.connect(_on_target_reached)
 	timer_max_search_time.timeout.connect(_on_timer_max_search_time_timeout)
 	data.current_local_data_changed.connect(_on_data_current_local_data_changed)
-
+	digging.finished.connect(_on_digging_finished)
 
 func _process(delta: float) -> void:
 	if data.current_habitat:
@@ -142,6 +143,8 @@ func travel(target: Vector2) -> void:
 
 
 func _on_target_reached() -> void:
+	if digging.is_digging:
+		return
 	if data.current_local_data == null:
 		search()
 	elif data.current_local_data and not is_collecting:
@@ -161,6 +164,9 @@ func _on_target_reached() -> void:
 			return
 		# If at habitat
 		if data.current_local_data.is_habitat:
+			if data.current_local_data.is_habitat_construction:
+				return
+
 			# Fade in bee
 			fade.fade_in()
 			sound.fade_in()
@@ -200,3 +206,7 @@ func _on_data_current_local_data_changed(_data: PlaceableData) -> void:
 			debug_entry.update_value("null")
 		else:
 			debug_entry.update_value(_data.id)
+
+
+func _on_digging_finished(_spawn_habitat_callable: Callable) ->  void:
+	search()

@@ -112,10 +112,14 @@ position = Vector2(900, 500)
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("5_v507f")
 
-[node name="SpawnersComponent" parent="Camera2D" node_paths=PackedStringArray("camera", "spawn_to") instance=ExtResource("6_jrgpu")]
+[node name="SpawnersComponent" parent="Camera2D" node_paths=PackedStringArray("camera", "spawn_to", "constructions_spawn_to") instance=ExtResource("6_jrgpu")]
 camera = NodePath("..")
 spawner_scene = ExtResource("8_cct5b")
 spawn_to = NodePath("../../Bees")
+constructions_spawn_to = NodePath("../../Constructed")
+
+[node name="Constructed" type="Node" parent="."]
+unique_name_in_owner = true
 
 [node name="Placeables" type="Node" parent="."]
 unique_name_in_owner = true

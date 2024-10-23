@@ -5,6 +5,7 @@ extends Node2D
 @export var camera: Camera2D
 @export var spawner_scene: PackedScene
 @export var spawn_to: Node
+@export var constructions_spawn_to: Node
 @export var spawn_offset_min := 50
 @export var spawn_offset_max := 200
 
@@ -19,6 +20,7 @@ func add_spawner(creature: CreatureData) -> void:
 	new_spawner.name = creature.id
 	add_child(new_spawner)
 	new_spawner.spawn_to = spawn_to
+	new_spawner.constructions_spawn_to = constructions_spawn_to
 	new_spawner.creature = creature
 	new_spawner.camera = camera
 	new_spawner.spawn_offset_min = spawn_offset_min

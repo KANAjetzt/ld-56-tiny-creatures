@@ -22,6 +22,9 @@ var current_focused_creature: BeeComponent:
 var zoom_in_max: Vector2
 var zoom_out_max: Vector2
 
+var main_ref: Node2D
+
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("show_debug_panels"):
 		for panel in get_tree().get_nodes_in_group("debug_panel"):
@@ -43,9 +46,11 @@ func check_creature_criteria() -> void:
 		for habitat in creature.habitats:
 			if current_habitats.has(habitat.id):
 				habitat_space += current_habitats[habitat.id].space_free
+			elif habitat.is_habitat_construction:
+				current_habitats[habitat.id] = HabitatSpaceData.new(1)
 
 		# If there is free habitat space and there is no creature with that id there is enough space for them.
-		if habitat_space > 0:
+		if habitat_space > 0 or creature.habitats.is_empty():
 			found_habitat = true
 
 		# Plant Check

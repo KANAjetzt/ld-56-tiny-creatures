@@ -1,13 +1,11 @@
 [gd_scene load_steps=19 format=3 uid="uid://fluverg1qtie"]
 
+[ext_resource type="Script" path="res://creatures/bees/bee.gd" id="1_ijwiw"]
 [ext_resource type="PackedScene" uid="uid://b850qlnpmsgn8" path="res://ui/debug/debug_panel.tscn" id="1_ypnlu"]
 [ext_resource type="Texture2D" uid="uid://drvucgj0wdyp5" path="res://creatures/bees/bumble_bee/Bee_Bumble.svg" id="2_413p8"]
 [ext_resource type="PackedScene" uid="uid://bn0rrnq8jxv5q" path="res://creatures/movement.tscn" id="3_v5ywb"]
 [ext_resource type="PackedScene" uid="uid://b87c15tnbke7v" path="res://creatures/Attractee.tscn" id="4_rbjvn"]
-[ext_resource type="PackedScene" uid="uid://dnkjoi6eawcdh" path="res://creatures/bees/bee.tscn" id="5_tq3r2"]
-[ext_resource type="Script" path="res://placeables/_placeable_data.gd" id="6_eccdt"]
-[ext_resource type="Resource" uid="uid://co8bgcteikhjp" path="res://placeables/structures/Hotel/hotel_data.tres" id="7_bo5rj"]
-[ext_resource type="Script" path="res://creatures/_creature_data.gd" id="8_5eteg"]
+[ext_resource type="Resource" uid="uid://tlfsluwoh36b" path="res://creatures/bees/bumble_bee/bumble_bee_data.tres" id="6_t3u0n"]
 [ext_resource type="PackedScene" uid="uid://bueem1cthmctk" path="res://creatures/clickable.tscn" id="9_u71c6"]
 [ext_resource type="PackedScene" uid="uid://dh60blsam6xim" path="res://global_components/pollen_container.tscn" id="10_u44m0"]
 [ext_resource type="PackedScene" uid="uid://duaefw1ednjhb" path="res://creatures/flip_to_direction.tscn" id="11_ur0ge"]
@@ -15,21 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://dy1sof26yiegd" path="res://creatures/bees/bee_sound.tscn" id="13_icqee"]
 [ext_resource type="PackedScene" uid="uid://c0p6fwpet1gec" path="res://global_components/zoom_db_modulate.tscn" id="14_fypyg"]
 [ext_resource type="PackedScene" uid="uid://nx2hjeg62iqb" path="res://placeables/plants/Fade.tscn" id="14_vbmf8"]
-
-[sub_resource type="Resource" id="Resource_obwtg"]
-resource_local_to_scene = true
-script = ExtResource("8_5eteg")
-id = "bee_bumble"
-display_name = "Bumblebee"
-icon = ExtResource("2_413p8")
-habitats = Array[ExtResource("6_eccdt")]([ExtResource("7_bo5rj")])
-plants = {
-"plant_grass": 3,
-"plant_lavender": 3
-}
-scene_path = "res://creatures/bees/bumble_bee/bumble_bee.tscn"
-spawn_time = 1.0
-info_text = ""
+[ext_resource type="PackedScene" uid="uid://b4k5x2h857mh8" path="res://creatures/bees/area_scanner.tscn" id="16_f4vup"]
+[ext_resource type="PackedScene" uid="uid://cq4dycueymjnj" path="res://creatures/bees/digging.tscn" id="17_7jjtd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wcchw"]
 radius = 21.0
@@ -40,7 +25,20 @@ max_value = 8.0
 _data = [Vector2(0, -80), 10.1528, 10.1528, 0, 0, Vector2(0.0296443, -9.17705), 32.1505, 32.1505, 0, 0, Vector2(0.0652174, 0.032259), 0.0, 0.0, 0, 0, Vector2(1, 8), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[node name="MasonBee" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_00m6i"]
+radius = 248.002
+
+[node name="BumbleBee" type="Node2D" node_paths=PackedStringArray("movement", "attractee", "pollen_container", "fade", "shake", "sound", "digging", "debug_panel")]
+script = ExtResource("1_ijwiw")
+data = ExtResource("6_t3u0n")
+movement = NodePath("MovementComponent")
+attractee = NodePath("AttracteeComponent")
+pollen_container = NodePath("PollenContainer")
+fade = NodePath("FadeComponent")
+shake = NodePath("ShakeComponent")
+sound = NodePath("BeeSoundComponent")
+digging = NodePath("Digging")
+debug_panel = NodePath("DebugPanel")
 
 [node name="DebugPanel" parent="." instance=ExtResource("1_ypnlu")]
 unique_name_in_owner = true
@@ -57,19 +55,8 @@ steering_speed = 5.0
 
 [node name="AttracteeComponent" parent="." instance=ExtResource("4_rbjvn")]
 
-[node name="BeeComponent" parent="." node_paths=PackedStringArray("movement", "attractee", "pollen_container", "fade", "shake", "sound", "debug_panel") instance=ExtResource("5_tq3r2")]
-data = SubResource("Resource_obwtg")
-movement = NodePath("../MovementComponent")
-attractee = NodePath("../AttracteeComponent")
-pollen_container = NodePath("../PollenContainer")
-fade = NodePath("../FadeComponent")
-shake = NodePath("../ShakeComponent")
-sound = NodePath("../BeeSoundComponent")
-max_search_time = 20.0
-debug_panel = NodePath("../DebugPanel")
-
 [node name="ClickableComponent" parent="." node_paths=PackedStringArray("bee") instance=ExtResource("9_u71c6")]
-bee = NodePath("../BeeComponent")
+bee = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableComponent"]
 light_mask = 4
@@ -102,3 +89,18 @@ zoom_db_curve = SubResource("Curve_wxc3i")
 node = NodePath("..")
 time = 0.5
 auto_start = false
+
+[node name="AreaScanner" parent="." instance=ExtResource("16_f4vup")]
+search_for = {
+"plant_grass": 3
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaScanner"]
+shape = SubResource("CircleShape2D_00m6i")
+debug_color = Color(0.500993, 0.490109, 0.82156, 0.42)
+
+[node name="Digging" parent="." node_paths=PackedStringArray("area_scanner", "movement") instance=ExtResource("17_7jjtd")]
+area_scanner = NodePath("../AreaScanner")
+movement = NodePath("../MovementComponent")
+dig_time = 5.0
+habitat_to_spawn = "res://non_placeables/Hole/hole_placeable.tscn"

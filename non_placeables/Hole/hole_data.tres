@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="PlaceableData" load_steps=3 format=3 uid="uid://dwued6pb2bpl0"]
+
+[ext_resource type="Texture2D" uid="uid://dxq4pc8ccwhfy" path="res://non_placeables/Hole/hole.svg" id="1_ev5ar"]
+[ext_resource type="Script" path="res://placeables/_placeable_data.gd" id="2_4gdjl"]
+
+[resource]
+script = ExtResource("2_4gdjl")
+id = "structure_hole"
+display_name = "Hole"
+icon = ExtResource("1_ev5ar")
+is_attractor = true
+is_habitat = true
+is_habitat_construction = true
+is_plant = false
+wait_time = 25.0
+resupply_time = 30.0
+amount_max = 3
+scene_path = "res://non_placeables/Hole/hole_placeable.tscn"

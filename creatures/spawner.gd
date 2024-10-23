@@ -4,6 +4,7 @@ extends Node2D
 
 var creature: CreatureData
 var spawn_to: Node
+var constructions_spawn_to: Node
 var is_active := false:
 	set = _set_is_active
 var camera: Camera2D
@@ -16,13 +17,21 @@ func spawn() -> void:
 
 	await get_tree().create_timer(creature.spawn_time).timeout
 	var camera_view_size := Utils.get_camera_view_size(camera)
-	var random_x: int = (randf() + 1) * spawn_offset_max + camera_view_size.x + spawn_offset_min
-	var random_y: int = (randf() + 1) * spawn_offset_max + camera_view_size.y + spawn_offset_min
+
+	var multiplier_x := 1 if randf() > 0.5 else -1
+	var random_x: int = (randi_range(spawn_offset_min, spawn_offset_max) + camera_view_size.x) * multiplier_x
+	var multiplier_y := 1 if randf() > 0.5 else -1
+	var random_y: int = (randi_range(spawn_offset_min, spawn_offset_max) + camera_view_size.y) * multiplier_y
 	var random_position := Vector2(random_x, random_y)
 
 	var new_creature: Node2D = load(creature.scene_path).instantiate()
 	spawn_to.add_child(new_creature)
 	new_creature.global_position = random_position
+
+	var digging_component: DiggingComponent = new_creature.get("digging")
+	if digging_component:
+		digging_component.spawn_to = constructions_spawn_to
+
 	if not Global.creature_count.has(creature.id):
 		Global.creature_count[creature.id] = 1
 	else:

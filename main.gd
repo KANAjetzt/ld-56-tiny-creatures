@@ -8,6 +8,11 @@ extends Node2D
 @onready var hud: UIHUD = %Hud
 @onready var plants: Node = %Plants
 @onready var placeables: Node = %Placeables
+@onready var constructed: Node = %Constructed
+
+
+func _ready() -> void:
+	Global.main_ref = self
 
 
 func _process(delta: float) -> void:

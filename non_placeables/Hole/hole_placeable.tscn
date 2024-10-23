@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2ms7ifcmpuri"]
+
+[ext_resource type="PackedScene" uid="uid://b3bquxluiiqbn" path="res://placeables/placeable.tscn" id="1_510ge"]
+[ext_resource type="PackedScene" uid="uid://rni0lanhuidt" path="res://non_placeables/Hole/hole.tscn" id="2_1n6l3"]
+
+[node name="Placeable" instance=ExtResource("1_510ge")]
+
+[node name="Hole" parent="." index="1" instance=ExtResource("2_1n6l3")]

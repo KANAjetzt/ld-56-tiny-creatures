@@ -9,6 +9,8 @@ signal current_amount_changed(data: PlaceableData)
 @export var icon: CompressedTexture2D
 @export var is_attractor := true
 @export var is_habitat := false
+## True if the habitat is constructed by the creature
+@export var is_habitat_construction := false
 @export var is_plant := true
 ## The time the creature will stay
 @export var wait_time := 1.0
