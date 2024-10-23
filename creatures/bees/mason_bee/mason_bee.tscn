@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://caucs034c3drh"]
+[gd_scene load_steps=20 format=3 uid="uid://caucs034c3drh"]
 
 [ext_resource type="Texture2D" uid="uid://bc5kihw4ceao3" path="res://creatures/bees/mason_bee/Bee.svg" id="1_rfrud"]
 [ext_resource type="PackedScene" uid="uid://bn0rrnq8jxv5q" path="res://creatures/movement.tscn" id="2_u58yd"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://placeables/_placeable_data.gd" id="5_4s3xw"]
 [ext_resource type="PackedScene" uid="uid://b87c15tnbke7v" path="res://creatures/Attractee.tscn" id="5_q28co"]
 [ext_resource type="Resource" uid="uid://co8bgcteikhjp" path="res://placeables/structures/Hotel/hotel_data.tres" id="6_wr3dl"]
+[ext_resource type="Resource" uid="uid://grp3lfxjgh5k" path="res://placeables/structures/Snail/snail_data.tres" id="8_abn5k"]
 [ext_resource type="Script" path="res://creatures/_creature_data.gd" id="9_wni0k"]
 [ext_resource type="PackedScene" uid="uid://bueem1cthmctk" path="res://creatures/clickable.tscn" id="9_x5kdg"]
 [ext_resource type="PackedScene" uid="uid://duaefw1ednjhb" path="res://creatures/flip_to_direction.tscn" id="11_56hr3"]
@@ -16,13 +17,13 @@
 [ext_resource type="PackedScene" uid="uid://c0p6fwpet1gec" path="res://global_components/zoom_db_modulate.tscn" id="14_0gr5b"]
 [ext_resource type="PackedScene" uid="uid://nx2hjeg62iqb" path="res://placeables/plants/Fade.tscn" id="14_4l5wg"]
 
-[sub_resource type="Resource" id="Resource_8psnk"]
+[sub_resource type="Resource" id="Resource_nmyh3"]
 resource_local_to_scene = true
 script = ExtResource("9_wni0k")
 id = "bee_mason"
 display_name = "Mason Bee"
 icon = ExtResource("1_rfrud")
-habitats = Array[ExtResource("5_4s3xw")]([ExtResource("6_wr3dl")])
+habitats = Array[ExtResource("5_4s3xw")]([ExtResource("6_wr3dl"), ExtResource("8_abn5k")])
 plants = {
 "plant_grass": 3,
 "plant_lavender": 3
@@ -61,7 +62,7 @@ steering_speed = 5.0
 [node name="AttracteeComponent" parent="." instance=ExtResource("5_q28co")]
 
 [node name="BeeComponent" parent="." node_paths=PackedStringArray("movement", "attractee", "pollen_container", "fade", "shake", "sound", "debug_panel") instance=ExtResource("4_xwqrq")]
-data = SubResource("Resource_8psnk")
+data = SubResource("Resource_nmyh3")
 movement = NodePath("../MovementComponent")
 attractee = NodePath("../AttracteeComponent")
 pollen_container = NodePath("../PollenContainer")

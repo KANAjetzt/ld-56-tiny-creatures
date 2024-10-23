@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="CreatureData" load_steps=5 format=3 uid="uid://c8hiebemd4v7h"]
+[gd_resource type="Resource" script_class="CreatureData" load_steps=6 format=3 uid="uid://c8hiebemd4v7h"]
 
 [ext_resource type="Script" path="res://placeables/_placeable_data.gd" id="1_epi8m"]
 [ext_resource type="Resource" uid="uid://co8bgcteikhjp" path="res://placeables/structures/Hotel/hotel_data.tres" id="2_xv0c8"]
+[ext_resource type="Resource" uid="uid://grp3lfxjgh5k" path="res://placeables/structures/Snail/snail_data.tres" id="3_5pso8"]
 [ext_resource type="Texture2D" uid="uid://bc5kihw4ceao3" path="res://creatures/bees/mason_bee/Bee.svg" id="3_hlo4t"]
 [ext_resource type="Script" path="res://creatures/_creature_data.gd" id="6_27qxr"]
 
@@ -11,7 +12,7 @@ script = ExtResource("6_27qxr")
 id = "bee_mason"
 display_name = "Mason Bee"
 icon = ExtResource("3_hlo4t")
-habitats = Array[ExtResource("1_epi8m")]([ExtResource("2_xv0c8")])
+habitats = Array[ExtResource("1_epi8m")]([ExtResource("2_xv0c8"), ExtResource("3_5pso8")])
 plants = {
 "plant_grass": 3,
 "plant_lavender": 3

@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://c0p6fwpet1gec" path="res://global_components/zoom_db_modulate.tscn" id="14_fypyg"]
 [ext_resource type="PackedScene" uid="uid://nx2hjeg62iqb" path="res://placeables/plants/Fade.tscn" id="14_vbmf8"]
 
-[sub_resource type="Resource" id="Resource_eh3vt"]
+[sub_resource type="Resource" id="Resource_obwtg"]
 resource_local_to_scene = true
 script = ExtResource("8_5eteg")
 id = "bee_bumble"
@@ -58,7 +58,7 @@ steering_speed = 5.0
 [node name="AttracteeComponent" parent="." instance=ExtResource("4_rbjvn")]
 
 [node name="BeeComponent" parent="." node_paths=PackedStringArray("movement", "attractee", "pollen_container", "fade", "shake", "sound", "debug_panel") instance=ExtResource("5_tq3r2")]
-data = SubResource("Resource_eh3vt")
+data = SubResource("Resource_obwtg")
 movement = NodePath("../MovementComponent")
 attractee = NodePath("../AttracteeComponent")
 pollen_container = NodePath("../PollenContainer")

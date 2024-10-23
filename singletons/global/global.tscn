@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c5tc65oy2wfid"]
+[gd_scene load_steps=11 format=3 uid="uid://c5tc65oy2wfid"]
 
 [ext_resource type="Script" path="res://singletons/global/global.gd" id="1_x86hg"]
 [ext_resource type="Script" path="res://placeables/_placeable_data.gd" id="2_ci44c"]
@@ -8,9 +8,10 @@
 [ext_resource type="Resource" uid="uid://ct7hknfwasjft" path="res://placeables/plants/clover/clover_data.tres" id="6_carc6"]
 [ext_resource type="Script" path="res://creatures/_creature_data.gd" id="6_f440i"]
 [ext_resource type="Resource" uid="uid://c8hiebemd4v7h" path="res://creatures/bees/mason_bee/mason_bee_data.tres" id="7_kitnh"]
+[ext_resource type="Resource" uid="uid://grp3lfxjgh5k" path="res://placeables/structures/Snail/snail_data.tres" id="7_xhko1"]
 [ext_resource type="Resource" uid="uid://tlfsluwoh36b" path="res://creatures/bees/bumble_bee/bumble_bee_data.tres" id="8_1kgu4"]
 
 [node name="Global" type="Node"]
 script = ExtResource("1_x86hg")
-placeables = Array[ExtResource("2_ci44c")]([ExtResource("3_tibxk"), ExtResource("4_qj638"), ExtResource("5_65jj2"), ExtResource("6_carc6")])
-creatures = Array[ExtResource("6_f440i")]([ExtResource("7_kitnh"), ExtResource("8_1kgu4")])
+placeables = Array[ExtResource("2_ci44c")]([ExtResource("3_tibxk"), ExtResource("4_qj638"), ExtResource("5_65jj2"), ExtResource("6_carc6"), ExtResource("7_xhko1")])
+creatures = Array[ExtResource("6_f440i")]([ExtResource("8_1kgu4"), ExtResource("7_kitnh")])

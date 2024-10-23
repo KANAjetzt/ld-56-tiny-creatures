@@ -31,7 +31,7 @@ func spawn() -> void:
 	print("INFO: Spawned %s at %s" % [creature.id, random_position])
 
 	for habitat in creature.habitats:
-		if Global.current_habitats[habitat.id].space_free > 0:
+		if Global.current_habitats.has(habitat.id) and Global.current_habitats[habitat.id].space_free > 0:
 			Global.current_habitats[habitat.id].remove()
 			break
 
