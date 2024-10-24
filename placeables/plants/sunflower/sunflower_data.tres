@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="PlaceableData" load_steps=3 format=3 uid="uid://cxehqokwdut38"]
+
+[ext_resource type="Texture2D" uid="uid://cuc3y7r8i1qt7" path="res://placeables/plants/sunflower/sunflower.svg" id="1_1pnn1"]
+[ext_resource type="Script" path="res://placeables/_placeable_data.gd" id="2_uiiwu"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("2_uiiwu")
+id = "plant_sunflower"
+display_name = "Sunflower"
+icon = ExtResource("1_1pnn1")
+is_attractor = true
+is_habitat = false
+is_habitat_construction = false
+is_plant = true
+wait_time = 20.0
+resupply_time = 60.0
+amount_max = 5
+scene_path = "res://placeables/plants/sunflower/sunflower_placeable.tscn"

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkmfebbqtoe8u"]
+
+[ext_resource type="PackedScene" uid="uid://b3bquxluiiqbn" path="res://placeables/placeable.tscn" id="1_862gl"]
+[ext_resource type="PackedScene" uid="uid://b0waxrl8kul7k" path="res://placeables/plants/sunflower/sunflower.tscn" id="2_rcwpd"]
+
+[node name="Placeable" instance=ExtResource("1_862gl")]
+
+[node name="Sunflower" parent="." index="1" instance=ExtResource("2_rcwpd")]
