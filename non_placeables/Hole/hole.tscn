@@ -34,7 +34,7 @@ creature_positions = NodePath("../CreaturePositionsComponent")
 habitat = NodePath("../HabitatComponent")
 
 [node name="AttractorArea" type="Area2D" parent="AttractorComponent" node_paths=PackedStringArray("ref")]
-collision_layer = 2
+collision_layer = 18
 input_pickable = false
 script = ExtResource("6_6piyo")
 ref = NodePath("..")
