@@ -11,6 +11,8 @@ signal current_local_data_changed(current_local_data: PlaceableData)
 @export var icon: CompressedTexture2D
 @export var habitats: Array[PlaceableData]
 @export var plants: Dictionary
+## Add `plant_id: count` to add to the spawn requirement each time the creature is spawned.
+@export var plants_per_spawn: Dictionary
 @export_dir var scene_path: String
 @export var spawn_time: float = 5.0
 @export_multiline var info_text: String

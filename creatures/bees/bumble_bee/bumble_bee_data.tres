@@ -14,8 +14,11 @@ icon = ExtResource("3_vmsn7")
 habitats = Array[ExtResource("1_ekjt2")]([ExtResource("2_ncijm")])
 plants = {
 "plant_clover": 3,
-"plant_grass": 1,
+"plant_grass": 3,
 "plant_lavender": 3
+}
+plants_per_spawn = {
+"plant_grass": 3
 }
 scene_path = "res://creatures/bees/bumble_bee/bumble_bee.tscn"
 spawn_time = 1.0

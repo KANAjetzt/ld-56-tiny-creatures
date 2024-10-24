@@ -37,7 +37,8 @@ func _ready() -> void:
 	movement.target_reached.connect(_on_target_reached)
 	timer_max_search_time.timeout.connect(_on_timer_max_search_time_timeout)
 	data.current_local_data_changed.connect(_on_data_current_local_data_changed)
-	digging.finished.connect(_on_digging_finished)
+	if digging:
+		digging.finished.connect(_on_digging_finished)
 
 func _process(delta: float) -> void:
 	if data.current_habitat:
@@ -143,7 +144,7 @@ func travel(target: Vector2) -> void:
 
 
 func _on_target_reached() -> void:
-	if digging.is_digging:
+	if digging and digging.is_digging:
 		return
 	if data.current_local_data == null:
 		search()

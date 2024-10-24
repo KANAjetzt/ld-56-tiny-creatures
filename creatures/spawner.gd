@@ -39,6 +39,14 @@ func spawn() -> void:
 
 	print("INFO: Spawned %s at %s" % [creature.id, random_position])
 
+	if not creature.plants_per_spawn.is_empty():
+		for plant_id in creature.plants_per_spawn:
+			if not creature.plants.has(plant_id):
+				assert(false, "Make sure to have the plant also in Plants - as a requirement.")
+				return
+
+			creature.plants[plant_id] += creature.plants_per_spawn[plant_id]
+
 	for habitat in creature.habitats:
 		if Global.current_habitats.has(habitat.id) and Global.current_habitats[habitat.id].space_free > 0:
 			Global.current_habitats[habitat.id].remove()
