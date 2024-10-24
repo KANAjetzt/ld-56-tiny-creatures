@@ -46,9 +46,14 @@ func start(position: Vector2) -> void:
 
 
 func spawn_habitat(parent: Node) -> void:
-	var new_habitat: Node2D = load(habitat_to_spawn).instantiate()
+	var new_habitat: Placeable = load(habitat_to_spawn).instantiate()
+	var habitat_component: HabitatComponent = new_habitat.habitat
 	parent.add_child(new_habitat)
 	new_habitat.global_position = dig_position
+
+	if habitat_component.spawner:
+		habitat_component.spawner.is_active = true
+
 	is_digging = false
 
 

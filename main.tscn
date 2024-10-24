@@ -128,6 +128,7 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="Bees" type="Node" parent="."]
+unique_name_in_owner = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

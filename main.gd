@@ -9,6 +9,7 @@ extends Node2D
 @onready var plants: Node = %Plants
 @onready var placeables: Node = %Placeables
 @onready var constructed: Node = %Constructed
+@onready var bees: Node = %Bees
 
 
 func _ready() -> void:

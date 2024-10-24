@@ -88,7 +88,6 @@ zoom_db_curve = SubResource("Curve_wxc3i")
 [node name="FadeComponent" parent="." node_paths=PackedStringArray("node") instance=ExtResource("14_vbmf8")]
 node = NodePath("..")
 time = 0.5
-auto_start = false
 
 [node name="AreaScanner" parent="." instance=ExtResource("16_f4vup")]
 search_for = {
