@@ -5,6 +5,8 @@ extends Resource
 enum STATE {IDLE, SEARCHING, TRAVEL}
 
 signal current_local_data_changed(current_local_data: PlaceableData)
+signal task_completed(data: CreatureData)
+signal all_tasks_completed(data: CreatureData)
 
 @export var id: String
 @export var display_name: String
@@ -16,6 +18,9 @@ signal current_local_data_changed(current_local_data: PlaceableData)
 @export_dir var scene_path: String
 @export var spawn_time: float = 5.0
 @export_multiline var info_text: String
+@export var tasks: TasksData
+## Add placeables that are unlocked if all tasks are completed
+@export var unlocks_placeable: Array[PlaceableData] = []
 
 var current_state := STATE.IDLE
 var current_local: Node
@@ -25,6 +30,7 @@ var current_local_data: PlaceableData:
 var current_habitat: HabitatComponent
 var current_habitat_position: CreaturePositionComponent
 var is_discovered := false
+var images: Array[Image] = []
 
 
 func _set_current_local_data(new_value) -> void:

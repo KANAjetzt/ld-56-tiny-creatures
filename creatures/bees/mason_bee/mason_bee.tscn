@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://caucs034c3drh"]
+[gd_scene load_steps=17 format=3 uid="uid://caucs034c3drh"]
 
 [ext_resource type="Script" path="res://creatures/bees/bee.gd" id="1_j331g"]
 [ext_resource type="Texture2D" uid="uid://bc5kihw4ceao3" path="res://creatures/bees/mason_bee/Bee.svg" id="1_rfrud"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dtd546uk8jtsa" path="res://creatures/shake.tscn" id="12_npwo8"]
 [ext_resource type="PackedScene" uid="uid://dy1sof26yiegd" path="res://creatures/bees/bee_sound.tscn" id="13_1ei2o"]
 [ext_resource type="PackedScene" uid="uid://c0p6fwpet1gec" path="res://global_components/zoom_db_modulate.tscn" id="14_0gr5b"]
+[ext_resource type="PackedScene" uid="uid://b7objjql7vcio" path="res://creatures/task_observer.tscn" id="14_1isyq"]
 [ext_resource type="PackedScene" uid="uid://nx2hjeg62iqb" path="res://placeables/plants/Fade.tscn" id="14_4l5wg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wcchw"]
@@ -81,3 +82,5 @@ zoom_db_curve = SubResource("Curve_spyfq")
 node = NodePath("..")
 time = 0.5
 auto_start = false
+
+[node name="TaskObserver" parent="." instance=ExtResource("14_1isyq")]

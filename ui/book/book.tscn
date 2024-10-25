@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://d25f1lqy1mp5x"]
+[gd_scene load_steps=7 format=3 uid="uid://d25f1lqy1mp5x"]
 
-[ext_resource type="Script" path="res://ui/book.gd" id="1_qvnfb"]
-[ext_resource type="Texture2D" uid="uid://cu46445elo3jm" path="res://ui/arrow_left.svg" id="2_3wg5e"]
-[ext_resource type="Texture2D" uid="uid://fc2a450ol38q" path="res://ui/Bee_unknown.svg" id="2_e8udr"]
+[ext_resource type="Script" path="res://ui/book/book.gd" id="1_qvnfb"]
+[ext_resource type="Texture2D" uid="uid://cu46445elo3jm" path="res://ui/assets/arrow_left.svg" id="2_3wg5e"]
+[ext_resource type="Texture2D" uid="uid://fc2a450ol38q" path="res://ui/assets/Bee_unknown.svg" id="2_e8udr"]
 [ext_resource type="Texture2D" uid="uid://bc5kihw4ceao3" path="res://creatures/bees/mason_bee/Bee.svg" id="2_hsonb"]
-[ext_resource type="Texture2D" uid="uid://ce7rp1hvfwchp" path="res://ui/arrow_right.svg" id="4_uypq3"]
+[ext_resource type="PackedScene" uid="uid://dbtuxqiuii7rq" path="res://ui/book/task.tscn" id="3_yjpj7"]
+[ext_resource type="Texture2D" uid="uid://ce7rp1hvfwchp" path="res://ui/assets/arrow_right.svg" id="4_uypq3"]
 
 [node name="Book" type="PanelContainer"]
 anchors_preset = 8
@@ -16,6 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qvnfb")
 unknown_icon = ExtResource("2_e8udr")
+task_scene = ExtResource("3_yjpj7")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -61,6 +63,14 @@ custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme_override_constants/line_separation = 5
 fit_content = true
+
+[node name="Tasks" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Images" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="ButtonRight" type="Button" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8fyspjdn1an4"
-path="res://.godot/imported/keyboard_arrow_left_24px.svg-ef018968251ad32ec7d85950dc1fe16d.ctex"
+uid="uid://ce7rp1hvfwchp"
+path="res://.godot/imported/arrow_right.svg-9f930b63d19351261bab608bb5affc7d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/keyboard_arrow_left_24px.svg"
-dest_files=["res://.godot/imported/keyboard_arrow_left_24px.svg-ef018968251ad32ec7d85950dc1fe16d.ctex"]
+source_file="res://ui/assets/arrow_right.svg"
+dest_files=["res://.godot/imported/arrow_right.svg-9f930b63d19351261bab608bb5affc7d.ctex"]
 
 [params]
 

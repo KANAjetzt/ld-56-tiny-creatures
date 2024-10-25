@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://go3y4nueef53"]
 
-[ext_resource type="Script" path="res://ui/placeable_button.gd" id="1_7siba"]
+[ext_resource type="Script" path="res://ui/placeable/placeable_button.gd" id="1_7siba"]
 [ext_resource type="Texture2D" uid="uid://dt0jcqf6qbyto" path="res://placeables/plants/lavender/Lavender.svg" id="1_vihdw"]
 
 [node name="PlaceableButton" type="HBoxContainer"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=34 format=3 uid="uid://cawplt2cvlk2e"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_8iqq1"]
-[ext_resource type="PackedScene" uid="uid://pany56w6d3vs" path="res://ui/placeable_preview.tscn" id="2_5g2f2"]
+[ext_resource type="PackedScene" uid="uid://pany56w6d3vs" path="res://ui/placeable/placeable_preview.tscn" id="2_5g2f2"]
 [ext_resource type="PackedScene" uid="uid://fxqjwdt0bjcm" path="res://camera/tracker.tscn" id="2_fagt1"]
 [ext_resource type="PackedScene" uid="uid://jv6gm24c60xm" path="res://camera/ambient_soundscape.tscn" id="3_l4b8f"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="3_yjssh"]
@@ -14,7 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://dah6lhr8nq3k0" path="res://assets/sfx/ambient_short/bird/bird-3.ogg" id="7_d3oxu"]
 [ext_resource type="PackedScene" uid="uid://d3dwibrkoelds" path="res://creatures/spawner.tscn" id="8_cct5b"]
 [ext_resource type="AudioStream" uid="uid://cplxqwx0vk0iu" path="res://assets/sfx/ambient_short/bird/bird-4.ogg" id="8_nf565"]
-[ext_resource type="PackedScene" uid="uid://d25f1lqy1mp5x" path="res://ui/book.tscn" id="9_4wdwf"]
+[ext_resource type="PackedScene" uid="uid://d25f1lqy1mp5x" path="res://ui/book/book.tscn" id="9_4wdwf"]
 [ext_resource type="AudioStream" uid="uid://cq12nkpu3n8us" path="res://assets/sfx/ambient_short/bird/bird-5.ogg" id="9_cb0h8"]
 [ext_resource type="AudioStream" uid="uid://begkpspk1urda" path="res://assets/sfx/ambient_short/bird/bird-6.ogg" id="10_3st4r"]
 [ext_resource type="AudioStream" uid="uid://ds2tkjg3b00cp" path="res://assets/sfx/ambient_short/bird/bird-7.ogg" id="11_uyatv"]

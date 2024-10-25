@@ -11,6 +11,9 @@ signal placeable_selected(data: PlaceableData)
 
 func _ready() -> void:
 	for placeable in Global.placeables:
+		if not placeable.is_unlocked:
+			continue
+
 		var new_button: UIPlaceableButton = placeable_button_scene.instantiate()
 		new_button.data = placeable
 		grid_container.add_child(new_button)

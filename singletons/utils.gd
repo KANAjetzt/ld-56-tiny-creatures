@@ -12,3 +12,15 @@ func get_camera_view_size(camera: Camera2D) -> Vector2:
 		viewport_size.x / zoom.x,
 		viewport_size.y / zoom.y
 	)
+
+
+func get_global_creature_data(data: CreatureData) -> CreatureData:
+	var global_creature_data: CreatureData = Global.creatures.filter(get_global_creature_data)[0]
+
+	var get_global_creature_data = func get_bee(creature_data: CreatureData) -> bool:
+			if creature_data.id == data.id:
+				return true
+
+			return false
+
+	return global_creature_data

@@ -1,0 +1,2 @@
+class_name TaskHabitatDeliverData
+extends TaskData

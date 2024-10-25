@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ceg6niusdu1sc"]
 
-[ext_resource type="Script" path="res://ui/placeables.gd" id="1_c3ljw"]
-[ext_resource type="PackedScene" uid="uid://go3y4nueef53" path="res://ui/placeable_button.tscn" id="2_trfeh"]
+[ext_resource type="Script" path="res://ui/placeable/placeables.gd" id="1_c3ljw"]
+[ext_resource type="PackedScene" uid="uid://go3y4nueef53" path="res://ui/placeable/placeable_button.tscn" id="2_trfeh"]
 
 [node name="Placeables" type="PanelContainer"]
 anchors_preset = 15

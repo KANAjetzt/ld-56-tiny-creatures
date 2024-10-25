@@ -18,6 +18,7 @@ signal current_amount_changed(data: PlaceableData)
 @export var resupply_time := 30.0
 @export var amount_max := 3
 @export_dir var scene_path: String
+@export var is_unlocked := true
 
 # TODO: rename to amount_current
 var current_amount := amount_max:

@@ -2,6 +2,11 @@ class_name BeeComponent
 extends Node2D
 
 
+signal found_habitat(bee: BeeComponent)
+signal entered_habitat(bee: BeeComponent)
+signal collected_pollen(bee: BeeComponent)
+signal delivered_pollen(bee: BeeComponent)
+
 @export var data: CreatureData
 @export var movement: MovementComponent
 @export var attractee: AttracteeComponent
@@ -39,6 +44,7 @@ func _ready() -> void:
 	data.current_local_data_changed.connect(_on_data_current_local_data_changed)
 	if digging:
 		digging.finished.connect(_on_digging_finished)
+
 
 func _process(delta: float) -> void:
 	if data.current_habitat:
@@ -110,6 +116,7 @@ func collect(plant_creature_positions: CreaturePositionsComponent) -> void:
 		shake.is_active = true
 		sound.fade_in()
 		var receiver_pollen_count := pollen_container.receive(given_pollen_count)
+		collected_pollen.emit(self)
 	else:
 		no_pollen_counter += 1
 
@@ -156,6 +163,7 @@ func _on_target_reached() -> void:
 			# Drop pollen
 			# TODO: Maybe do something if the pollen container is full?
 			data.current_habitat.pollen_container.receive(pollen_container.give_all())
+			delivered_pollen.emit(self)
 		# Wait until the action at the local is done
 		await get_tree().create_timer(data.current_local_data.wait_time).timeout
 		# TODO: Quick fix - sometimes after awaiting the current_local can be reset to null some how
@@ -183,6 +191,7 @@ func _on_inside_attractor_area(area: AttractorArea) -> void:
 				data.current_habitat_position = area.ref.creature_positions.occupy_position()
 				data.current_habitat = area.ref.habitat
 				data.current_local_data = area.ref.habitat.data
+				found_habitat.emit(self)
 				travel(data.current_habitat_position.global_position)
 	elif area.ref.plant:
 		# Check memory

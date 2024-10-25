@@ -5,6 +5,7 @@ signal criteria_met(creature: CreatureData)
 signal criteria_no_longer_met(creature: CreatureData)
 signal creature_discovered(creature: CreatureData)
 signal creature_focused(creature_node: BeeComponent)
+signal creature_unfocused
 
 @export var placeables: Array[PlaceableData]
 @export var creatures: Array[CreatureData]

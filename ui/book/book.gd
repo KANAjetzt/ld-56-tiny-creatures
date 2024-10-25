@@ -3,10 +3,13 @@ extends PanelContainer
 
 
 @export var unknown_icon: Texture
+@export var task_scene: PackedScene
 
 @onready var icon: TextureRect = %Icon
 @onready var label_name: Label = %LabelName
 @onready var info_text: RichTextLabel = %InfoText
+@onready var tasks: VBoxContainer = %Tasks
+
 
 var info_text_template := """
 Happy Bees: {%BEE_COUNT%}
@@ -54,6 +57,10 @@ func init_page(creature: CreatureData) -> void:
 		"%BEE_COUNT%": Global.creature_count[creature.id] if Global.creature_count.has(creature.id) else 0,
 		"%CREATURE_INFO%": creature.info_text
 	})
+	for task in creature.tasks:
+		var new_task: UITask = task_scene.instantiate()
+		tasks.add_child(new_task)
+		new_task.init(task)
 
 
 func init_preview_page() -> void:

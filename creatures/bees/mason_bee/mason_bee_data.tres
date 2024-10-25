@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="CreatureData" load_steps=6 format=3 uid="uid://c8hiebemd4v7h"]
+[gd_resource type="Resource" script_class="CreatureData" load_steps=8 format=3 uid="uid://c8hiebemd4v7h"]
 
 [ext_resource type="Script" path="res://placeables/_placeable_data.gd" id="1_epi8m"]
 [ext_resource type="Resource" uid="uid://co8bgcteikhjp" path="res://placeables/structures/Hotel/hotel_data.tres" id="2_xv0c8"]
 [ext_resource type="Resource" uid="uid://grp3lfxjgh5k" path="res://placeables/structures/Snail/snail_data.tres" id="3_5pso8"]
 [ext_resource type="Texture2D" uid="uid://bc5kihw4ceao3" path="res://creatures/bees/mason_bee/Bee.svg" id="3_hlo4t"]
 [ext_resource type="Script" path="res://creatures/_creature_data.gd" id="6_27qxr"]
+[ext_resource type="Resource" uid="uid://c4ai6nrdydmj0" path="res://creatures/bees/mason_bee/mason_bee_tasks_data.tres" id="6_otfka"]
+[ext_resource type="Resource" uid="uid://ct7hknfwasjft" path="res://placeables/plants/clover/clover_data.tres" id="7_vken8"]
 
 [resource]
 resource_local_to_scene = true
@@ -23,3 +25,5 @@ spawn_time = 0.3
 info_text = "- Prefers small cavities, like hollow stems, or bee hotels made of wood or bamboo tubes for nesting.
 - Attracted to flowering plants with accessible nectar, such as fruit trees and spring-blooming plants.
 - These bees are prolific pollinators and can boost the bloom of early plants."
+tasks = ExtResource("6_otfka")
+unlocks_placeable = Array[ExtResource("1_epi8m")]([ExtResource("7_vken8")])

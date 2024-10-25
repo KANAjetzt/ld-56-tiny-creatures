@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnl2ed54uwm6x"
-path="res://.godot/imported/arrow_up.svg-e50997585d72d1ae9fdb863abb707b12.ctex"
+uid="uid://fc2a450ol38q"
+path="res://.godot/imported/Bee_unknown.svg-7b90879a5593d45d132e8cced6c820d6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/arrow_up.svg"
-dest_files=["res://.godot/imported/arrow_up.svg-e50997585d72d1ae9fdb863abb707b12.ctex"]
+source_file="res://ui/assets/Bee_unknown.svg"
+dest_files=["res://.godot/imported/Bee_unknown.svg-7b90879a5593d45d132e8cced6c820d6.ctex"]
 
 [params]
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://ui/hud.gd" id="1_jjvs2"]
 [ext_resource type="PackedScene" uid="uid://hi233c3jm3s3" path="res://ui/folded.tscn" id="1_wqxql"]
-[ext_resource type="PackedScene" uid="uid://ceg6niusdu1sc" path="res://ui/placeables.tscn" id="2_p1ne0"]
+[ext_resource type="PackedScene" uid="uid://ceg6niusdu1sc" path="res://ui/placeable/placeables.tscn" id="2_p1ne0"]
 [ext_resource type="PackedScene" uid="uid://dtwmad8adjx0j" path="res://ui/fly_in.tscn" id="3_m8jdn"]
 
 [node name="Hud" type="MarginContainer"]
