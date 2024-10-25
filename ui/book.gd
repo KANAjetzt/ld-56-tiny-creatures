@@ -51,7 +51,7 @@ func init_page(creature: CreatureData) -> void:
 	icon.texture = creature.icon
 	label_name.text = creature.display_name
 	info_text.text = info_text_template.format({
-		"%BEE_COUNT%": Global.creature_count[creature],
+		"%BEE_COUNT%": Global.creature_count[creature.id] if Global.creature_count.has(creature.id) else 0,
 		"%CREATURE_INFO%": creature.info_text
 	})
 
@@ -66,6 +66,7 @@ func init_preview_page() -> void:
 """
 	})
 
+
 func _on_creature_discovered(creature: CreatureData) -> void:
 	Global.creatures[Global.creatures.find(creature)].is_discovered = true
 	if visible:
@@ -73,10 +74,26 @@ func _on_creature_discovered(creature: CreatureData) -> void:
 
 
 func _on_button_left_pressed() -> void:
-	current_page_index -= 1 % pages.size()
-	init_page(pages[current_page_index])
+	current_page_index -= 1
+	if  current_page_index < 0:
+		current_page_index = pages.size() - 1
+
+	var creature_data := pages[current_page_index]
+
+	if creature_data.is_discovered:
+		init_page(pages[current_page_index])
+	else:
+		init_preview_page()
 
 
 func _on_button_right_pressed() -> void:
-	current_page_index += 1 % pages.size()
-	init_page(pages[current_page_index])
+	current_page_index += 1
+	if  current_page_index > pages.size() - 1:
+		current_page_index = 0
+
+	var creature_data := pages[current_page_index]
+
+	if creature_data.is_discovered:
+		init_page(pages[current_page_index])
+	else:
+		init_preview_page()
