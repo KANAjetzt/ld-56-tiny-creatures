@@ -4,6 +4,8 @@ extends Node2D
 
 
 @export var creature: CreatureData
+@export var habitat: HabitatComponent
+@export var habitat_position: CreaturePositionComponent
 @export var spawn_to: Node
 @export var constructions_spawn_to: Node
 @export var constructions_spawn_to_main := false
@@ -32,7 +34,7 @@ func spawn() -> void:
 		await get_tree().create_timer(override_creature_spawn_time).timeout
 
 	var random_position: Vector2
-	var new_creature: Node2D = load(creature.scene_path).instantiate()
+	var new_creature: BeeComponent = load(creature.scene_path).instantiate()
 
 	if not local:
 		var camera_view_size := Utils.get_camera_view_size(camera)
@@ -48,6 +50,17 @@ func spawn() -> void:
 		Global.main_ref.bees.add_child(new_creature)
 
 	new_creature.global_position = global_position if local else random_position
+
+	if habitat:
+		new_creature.data.current_habitat = habitat
+
+	if habitat_position:
+		new_creature.data.current_habitat_position = habitat_position
+
+	if camera:
+		new_creature.movement.target = Vector2(camera.global_position)
+	else:
+		new_creature.search()
 
 	var digging_component: DiggingComponent = new_creature.get("digging")
 	if digging_component:

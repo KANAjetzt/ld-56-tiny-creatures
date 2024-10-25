@@ -28,7 +28,7 @@ var debug_entry_name: UIDebugPanelEntry
 
 func _ready() -> void:
 	if debug_panel:
-		debug_entry_name = debug_panel.add_entry("name:", get_parent().name)
+		debug_entry_name = debug_panel.add_entry("name:", name)
 		debug_entry = debug_panel.add_entry("current_local_data:", str(data.current_local_data))
 
 	search()
@@ -165,9 +165,6 @@ func _on_target_reached() -> void:
 			return
 		# If at habitat
 		if data.current_local_data.is_habitat:
-			if data.current_local_data.is_habitat_construction:
-				return
-
 			# Fade in bee
 			fade.fade_in()
 			sound.fade_in()

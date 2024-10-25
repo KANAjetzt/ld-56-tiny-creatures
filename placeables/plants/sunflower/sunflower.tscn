@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b0waxrl8kul7k"]
+[gd_scene load_steps=17 format=3 uid="uid://b0waxrl8kul7k"]
 
 [ext_resource type="Texture2D" uid="uid://cuc3y7r8i1qt7" path="res://placeables/plants/sunflower/sunflower.svg" id="1_yyn3d"]
 [ext_resource type="Texture2D" uid="uid://cjnhydxgrpm27" path="res://placeables/plants/lavender/Lavender_Glow.svg" id="2_ixukl"]
@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dannee2yf7qrq" path="res://placeables/attractor.tscn" id="9_gt2lr"]
 [ext_resource type="Script" path="res://placeables/attractor_area.gd" id="10_yodwm"]
 [ext_resource type="PackedScene" uid="uid://bgx25yt4ojjda" path="res://placeables/plants/plant_component.tscn" id="11_f4b0n"]
-[ext_resource type="Resource" uid="uid://cxehqokwdut38" path="res://placeables/plants/sunflower/sunflower_data.tres" id="12_xvcep"]
+[ext_resource type="Script" path="res://placeables/_placeable_data.gd" id="12_fql72"]
 [ext_resource type="PackedScene" uid="uid://nx2hjeg62iqb" path="res://placeables/plants/Fade.tscn" id="13_32ynf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2j7ci"]
@@ -24,6 +24,21 @@ shader_parameter/circle_color = Color(0.856, 0.68, 0, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bhi5v"]
 radius = 69.3542
+
+[sub_resource type="Resource" id="Resource_m1rga"]
+resource_local_to_scene = true
+script = ExtResource("12_fql72")
+id = "plant_sunflower"
+display_name = "Sunflower"
+icon = ExtResource("1_yyn3d")
+is_attractor = true
+is_habitat = false
+is_habitat_construction = false
+is_plant = true
+wait_time = 20.0
+resupply_time = 60.0
+amount_max = 5
+scene_path = "res://placeables/plants/sunflower/sunflower_placeable.tscn"
 
 [node name="Sunflower" type="Node2D" groups=["placeable"]]
 
@@ -96,7 +111,7 @@ ref = NodePath("..")
 shape = SubResource("CircleShape2D_bhi5v")
 
 [node name="PlantComponent" parent="." node_paths=PackedStringArray("creature_positions", "attractor") instance=ExtResource("11_f4b0n")]
-data = ExtResource("12_xvcep")
+data = SubResource("Resource_m1rga")
 creature_positions = NodePath("../CreaturePositionsComponent")
 attractor = NodePath("../AttractorComponent")
 
