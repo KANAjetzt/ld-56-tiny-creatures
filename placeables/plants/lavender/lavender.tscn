@@ -25,7 +25,7 @@ shader_parameter/circle_color = Color(0.856, 0.68, 0, 1)
 [sub_resource type="CircleShape2D" id="CircleShape2D_bhi5v"]
 radius = 69.3542
 
-[sub_resource type="Resource" id="Resource_rteas"]
+[sub_resource type="Resource" id="Resource_wm2ma"]
 resource_local_to_scene = true
 script = ExtResource("12_yqekh")
 id = "plant_lavender"
@@ -33,11 +33,13 @@ display_name = "Lavender"
 icon = ExtResource("1_hjeq0")
 is_attractor = true
 is_habitat = false
+is_habitat_construction = false
 is_plant = true
 wait_time = 8.0
 resupply_time = 15.0
 amount_max = 5
 scene_path = "res://placeables/plants/lavender/placeable_lavender.tscn"
+is_unlocked = true
 
 [node name="Lavender" type="Node2D" groups=["placeable"]]
 
@@ -85,7 +87,6 @@ creature_positions = NodePath("../CreaturePositionsComponent")
 plant = NodePath("../PlantComponent")
 
 [node name="AttractorArea" type="Area2D" parent="AttractorComponent" node_paths=PackedStringArray("ref")]
-visible = false
 collision_layer = 2
 input_pickable = false
 script = ExtResource("6_t12ov")
@@ -95,7 +96,7 @@ ref = NodePath("..")
 shape = SubResource("CircleShape2D_bhi5v")
 
 [node name="PlantComponent" parent="." node_paths=PackedStringArray("creature_positions", "attractor") instance=ExtResource("7_y430i")]
-data = SubResource("Resource_rteas")
+data = SubResource("Resource_wm2ma")
 creature_positions = NodePath("../CreaturePositionsComponent")
 attractor = NodePath("../AttractorComponent")
 

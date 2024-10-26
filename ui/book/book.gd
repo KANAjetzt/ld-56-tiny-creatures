@@ -57,7 +57,10 @@ func init_page(creature: CreatureData) -> void:
 		"%BEE_COUNT%": Global.creature_count[creature.id] if Global.creature_count.has(creature.id) else 0,
 		"%CREATURE_INFO%": creature.info_text
 	})
-	for task in creature.tasks:
+
+	Utils.free_children(tasks)
+
+	for task in creature.tasks.get_all_tasks():
 		var new_task: UITask = task_scene.instantiate()
 		tasks.add_child(new_task)
 		new_task.init(task)

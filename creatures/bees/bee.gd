@@ -162,8 +162,10 @@ func _on_target_reached() -> void:
 			sound.fade_out()
 			# Drop pollen
 			# TODO: Maybe do something if the pollen container is full?
-			data.current_habitat.pollen_container.receive(pollen_container.give_all())
-			delivered_pollen.emit(self)
+			var pollen_count := pollen_container.give_all()
+			data.current_habitat.pollen_container.receive(pollen_count)
+			if pollen_count > 0:
+				delivered_pollen.emit(self)
 		# Wait until the action at the local is done
 		await get_tree().create_timer(data.current_local_data.wait_time).timeout
 		# TODO: Quick fix - sometimes after awaiting the current_local can be reset to null some how

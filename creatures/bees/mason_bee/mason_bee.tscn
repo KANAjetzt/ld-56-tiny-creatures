@@ -83,4 +83,5 @@ node = NodePath("..")
 time = 0.5
 auto_start = false
 
-[node name="TaskObserver" parent="." instance=ExtResource("14_1isyq")]
+[node name="TaskObserver" parent="." node_paths=PackedStringArray("bee") instance=ExtResource("14_1isyq")]
+bee = NodePath("..")

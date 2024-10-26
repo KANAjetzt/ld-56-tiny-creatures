@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://nx2hjeg62iqb" path="res://placeables/plants/Fade.tscn" id="10_egybj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bdra4"]
-radius = 225.142
+radius = 163.0
 
 [node name="SnailShell" type="Node2D"]
 
@@ -41,7 +41,6 @@ script = ExtResource("6_h6np2")
 ref = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttractorComponent/AttractorArea"]
-visible = false
 shape = SubResource("CircleShape2D_bdra4")
 
 [node name="HabitatComponent" parent="." node_paths=PackedStringArray("attractor", "creature_positions", "pollen_container") instance=ExtResource("7_rll1j")]

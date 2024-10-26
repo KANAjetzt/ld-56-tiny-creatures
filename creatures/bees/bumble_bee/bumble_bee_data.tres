@@ -23,3 +23,4 @@ plants_per_spawn = {
 scene_path = "res://creatures/bees/bumble_bee/bumble_bee.tscn"
 spawn_time = 1.0
 info_text = ""
+unlocks_placeable = Array[ExtResource("1_ekjt2")]([])

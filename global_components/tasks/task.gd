@@ -15,7 +15,8 @@ signal completed(task: TaskData)
 
 func _set_is_completed(new_value) -> void:
 	is_completed = new_value
-	completed.emit(self)
+	if is_completed:
+		completed.emit(self)
 
 	for unlock in unlocks_placeable:
 		unlock.is_unlocked = true
