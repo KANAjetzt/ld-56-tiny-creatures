@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://creatures/bees/bee.gd" id="1_j331g"]
 [ext_resource type="Texture2D" uid="uid://bc5kihw4ceao3" path="res://creatures/bees/mason_bee/Bee.svg" id="1_rfrud"]
-[ext_resource type="Resource" uid="uid://c8hiebemd4v7h" path="res://creatures/bees/mason_bee/mason_bee_data.tres" id="2_7bwq5"]
+[ext_resource type="Resource" uid="uid://bcllksr86wmwa" path="res://creatures/bees/mason_bee/mason_bee_data.tres" id="2_4sjcd"]
 [ext_resource type="PackedScene" uid="uid://bn0rrnq8jxv5q" path="res://creatures/movement.tscn" id="2_u58yd"]
 [ext_resource type="PackedScene" uid="uid://b87c15tnbke7v" path="res://creatures/Attractee.tscn" id="5_q28co"]
 [ext_resource type="PackedScene" uid="uid://bueem1cthmctk" path="res://creatures/clickable.tscn" id="9_x5kdg"]
@@ -26,7 +26,7 @@ point_count = 4
 
 [node name="MasonBee" type="Node2D" node_paths=PackedStringArray("movement", "attractee", "pollen_container", "fade", "shake", "sound", "debug_panel")]
 script = ExtResource("1_j331g")
-data = ExtResource("2_7bwq5")
+data_global = ExtResource("2_4sjcd")
 movement = NodePath("MovementComponent")
 attractee = NodePath("AttracteeComponent")
 pollen_container = NodePath("PollenContainer")

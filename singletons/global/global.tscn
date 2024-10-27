@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c5tc65oy2wfid"]
+[gd_scene load_steps=12 format=3 uid="uid://c5tc65oy2wfid"]
 
 [ext_resource type="Script" path="res://singletons/global/global.gd" id="1_x86hg"]
 [ext_resource type="Script" path="res://placeables/_placeable_data.gd" id="2_ci44c"]
@@ -6,89 +6,13 @@
 [ext_resource type="Resource" uid="uid://cajovvpy2a1tr" path="res://placeables/plants/lavender/lavender_data.tres" id="4_qj638"]
 [ext_resource type="Resource" uid="uid://co8bgcteikhjp" path="res://placeables/structures/Hotel/hotel_data.tres" id="5_65jj2"]
 [ext_resource type="Resource" uid="uid://ct7hknfwasjft" path="res://placeables/plants/clover/clover_data.tres" id="6_carc6"]
-[ext_resource type="Script" path="res://creatures/_creature_data.gd" id="6_f440i"]
 [ext_resource type="Resource" uid="uid://grp3lfxjgh5k" path="res://placeables/structures/Snail/snail_data.tres" id="7_xhko1"]
 [ext_resource type="Resource" uid="uid://cxehqokwdut38" path="res://placeables/plants/sunflower/sunflower_data.tres" id="8_naa43"]
-[ext_resource type="Script" path="res://global_components/tasks/task.gd" id="10_1olik"]
-[ext_resource type="Texture2D" uid="uid://bc5kihw4ceao3" path="res://creatures/bees/mason_bee/Bee.svg" id="10_x04cy"]
-[ext_resource type="Script" path="res://global_components/tasks/task_habitat_deliver.gd" id="11_qj2ps"]
-[ext_resource type="Script" path="res://global_components/tasks/task_habitat_find.gd" id="12_oo43w"]
-[ext_resource type="Script" path="res://global_components/tasks/task_collect.gd" id="13_8litg"]
-[ext_resource type="Script" path="res://global_components/tasks/tasks.gd" id="14_pp3wo"]
-[ext_resource type="Resource" uid="uid://dwued6pb2bpl0" path="res://non_placeables/Hole/hole_data.tres" id="16_pvjvh"]
-[ext_resource type="Texture2D" uid="uid://drvucgj0wdyp5" path="res://creatures/bees/bumble_bee/Bee_Bumble.svg" id="17_03rj3"]
-
-[sub_resource type="Resource" id="Resource_rngao"]
-script = ExtResource("11_qj2ps")
-id = "task_bee_mason_deliver"
-display_name = "Watch the mason bee deliver pollen to her habitat"
-description = ""
-is_completed = false
-unlocks_placeable = Array[ExtResource("2_ci44c")]([])
-
-[sub_resource type="Resource" id="Resource_j6mhs"]
-script = ExtResource("12_oo43w")
-habitat = ExtResource("7_xhko1")
-id = "task_bee_mason_habitat_snail"
-display_name = "Watch the mason bee enter a snail shell for the first time"
-description = "Target the bee by left clicking it and follow it until it discovers a habitat."
-is_completed = false
-unlocks_placeable = Array[ExtResource("2_ci44c")]([])
-
-[sub_resource type="Resource" id="Resource_8b6sf"]
-script = ExtResource("13_8litg")
-plant = ExtResource("3_tibxk")
-id = "task_bee_mason_grass"
-display_name = "Watch the mason bee collect pollen on tall grass."
-description = ""
-is_completed = false
-unlocks_placeable = Array[ExtResource("2_ci44c")]([])
-
-[sub_resource type="Resource" id="Resource_1ntjp"]
-script = ExtResource("14_pp3wo")
-pollen_collect = Array[ExtResource("10_1olik")]([SubResource("Resource_8b6sf")])
-habitat_deliver = Array[ExtResource("10_1olik")]([SubResource("Resource_rngao")])
-habitat_find = Array[ExtResource("10_1olik")]([SubResource("Resource_j6mhs")])
-
-[sub_resource type="Resource" id="Resource_y0tft"]
-script = ExtResource("6_f440i")
-id = "bee_mason"
-display_name = "Mason Bee"
-icon = ExtResource("10_x04cy")
-habitats = Array[ExtResource("2_ci44c")]([ExtResource("5_65jj2"), ExtResource("7_xhko1")])
-plants = {
-"plant_grass": 3,
-"plant_lavender": 3
-}
-plants_per_spawn = {}
-scene_path = "res://creatures/bees/mason_bee/mason_bee.tscn"
-spawn_time = 0.3
-info_text = "- Prefers small cavities, like hollow stems, or bee hotels made of wood or bamboo tubes for nesting.
-- Attracted to flowering plants with accessible nectar, such as fruit trees and spring-blooming plants.
-- These bees are prolific pollinators and can boost the bloom of early plants."
-tasks = SubResource("Resource_1ntjp")
-unlocks_placeable = Array[ExtResource("2_ci44c")]([ExtResource("6_carc6")])
-
-[sub_resource type="Resource" id="Resource_sv4xq"]
-script = ExtResource("6_f440i")
-id = "bee_bumble"
-display_name = "Bumblebee"
-icon = ExtResource("17_03rj3")
-habitats = Array[ExtResource("2_ci44c")]([ExtResource("16_pvjvh")])
-plants = {
-"plant_clover": 3,
-"plant_grass": 3,
-"plant_lavender": 3
-}
-plants_per_spawn = {
-"plant_grass": 3
-}
-scene_path = "res://creatures/bees/bumble_bee/bumble_bee.tscn"
-spawn_time = 1.0
-info_text = ""
-unlocks_placeable = Array[ExtResource("2_ci44c")]([])
+[ext_resource type="Script" path="res://creatures/_creature_data_global.gd" id="9_8bjif"]
+[ext_resource type="Resource" uid="uid://bcllksr86wmwa" path="res://creatures/bees/mason_bee/mason_bee_data.tres" id="10_galja"]
+[ext_resource type="Resource" uid="uid://ddc6h5xvatk8q" path="res://creatures/bees/bumble_bee/bumble_bee_data.tres" id="11_14b1r"]
 
 [node name="Global" type="Node"]
 script = ExtResource("1_x86hg")
 placeables = Array[ExtResource("2_ci44c")]([ExtResource("3_tibxk"), ExtResource("4_qj638"), ExtResource("5_65jj2"), ExtResource("6_carc6"), ExtResource("7_xhko1"), ExtResource("8_naa43")])
-creatures = Array[ExtResource("6_f440i")]([SubResource("Resource_y0tft"), SubResource("Resource_sv4xq")])
+creatures = Array[ExtResource("9_8bjif")]([ExtResource("10_galja"), ExtResource("11_14b1r")])

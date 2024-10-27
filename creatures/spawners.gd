@@ -15,7 +15,7 @@ func _ready() -> void:
 	Global.criteria_no_longer_met.connect(_on_criteria_no_longer_met)
 
 
-func add_spawner(creature: CreatureData) -> void:
+func add_spawner(creature: CreatureGlobalData) -> void:
 	var new_spawner: SpawnerComponent = spawner_scene.instantiate()
 	new_spawner.name = creature.id
 	add_child(new_spawner)
@@ -28,12 +28,12 @@ func add_spawner(creature: CreatureData) -> void:
 	new_spawner.is_active = true
 
 
-func _on_criteria_met(creature: CreatureData) -> void:
+func _on_criteria_met(creature: CreatureGlobalData) -> void:
 	print("INFO: Added spawner for %s" % creature.id)
 	add_spawner(creature)
 
 
-func _on_criteria_no_longer_met(creature: CreatureData) -> void:
+func _on_criteria_no_longer_met(creature: CreatureGlobalData) -> void:
 	print("INFO: Removed spawner for %s" % creature.id)
 	var spawner: SpawnerComponent = get_node(creature.id)
 	spawner.queue_free()

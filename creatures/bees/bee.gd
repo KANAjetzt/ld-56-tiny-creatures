@@ -7,7 +7,7 @@ signal entered_habitat(bee: BeeComponent)
 signal collected_pollen(bee: BeeComponent)
 signal delivered_pollen(bee: BeeComponent)
 
-@export var data: CreatureData
+@export var data_global: CreatureGlobalData
 @export var movement: MovementComponent
 @export var attractee: AttracteeComponent
 @export var pollen_container: PollenContainerComponent
@@ -21,6 +21,7 @@ signal delivered_pollen(bee: BeeComponent)
 @export var max_search_time := 60.0
 @export var debug_panel: UIDebugPanel
 
+var data := CreatureData.new()
 var memory_success: Array[PlaceableData] = []
 var memory_no_success: PlaceableData
 var no_pollen_counter := 0
@@ -187,7 +188,7 @@ func _on_inside_attractor_area(area: AttractorArea) -> void:
 	# Check if searching for habitat
 	if data.current_habitat == null:
 		# Check if valid habitat
-		if area.ref.habitat and area.ref.habitat.data in data.habitats:
+		if area.ref.habitat and area.ref.habitat.data in data_global.habitats:
 			# Occupy position if available
 			if not area.ref.creature_positions.all_occupied:
 				data.current_habitat_position = area.ref.creature_positions.occupy_position()

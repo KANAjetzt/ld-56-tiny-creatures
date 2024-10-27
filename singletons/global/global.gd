@@ -1,20 +1,20 @@
 extends Node
 
 
-signal criteria_met(creature: CreatureData)
-signal criteria_no_longer_met(creature: CreatureData)
-signal creature_discovered(creature: CreatureData)
+signal criteria_met(creature: CreatureGlobalData)
+signal criteria_no_longer_met(creature: CreatureGlobalData)
+signal creature_discovered(creature: CreatureGlobalData)
 signal creature_focused(creature_node: BeeComponent)
 signal creature_unfocused
 
 @export var placeables: Array[PlaceableData]
-@export var creatures: Array[CreatureData]
+@export var creatures: Array[CreatureGlobalData]
 
 var currently_selected_placeable: PlaceableData
 var current_habitats: Dictionary = {}
 var currently_placed_plants: Dictionary = {}
-var current_creatures_with_met_criteria: Array[CreatureData]
-var currently_discovered_creatures: Array[CreatureData]
+var current_creatures_with_met_criteria: Array[CreatureGlobalData]
+var currently_discovered_creatures: Array[CreatureGlobalData]
 var creature_count: Dictionary = {}
 var current_focused_creature: BeeComponent:
 	set = _set_current_focused_creature
@@ -72,19 +72,19 @@ func check_creature_criteria() -> void:
 				creature_criteria_no_longer_met(creature)
 
 
-func creature_criteria_met(creature: CreatureData):
+func creature_criteria_met(creature: CreatureGlobalData):
 	print("INFO: Creature criteria met for %s" % creature.id)
 	current_creatures_with_met_criteria.push_back(creature)
 	criteria_met.emit(creature)
 
 
-func creature_criteria_no_longer_met(creature: CreatureData):
+func creature_criteria_no_longer_met(creature: CreatureGlobalData):
 	print("INFO: Creature criteria no longer met for %s" % creature.id)
 	current_creatures_with_met_criteria.erase(creature)
 	criteria_no_longer_met.emit(creature)
 
 
-func new_creature_discovered(creature: CreatureData) -> void:
+func new_creature_discovered(creature: CreatureGlobalData) -> void:
 	currently_discovered_creatures.push_back(creature)
 	creature_discovered.emit(creature)
 

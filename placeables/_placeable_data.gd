@@ -3,6 +3,7 @@ extends Resource
 
 
 signal current_amount_changed(data: PlaceableData)
+signal got_unlocked(data: PlaceableData)
 
 @export var id: String
 @export var display_name: String
@@ -18,7 +19,8 @@ signal current_amount_changed(data: PlaceableData)
 @export var resupply_time := 30.0
 @export var amount_max := 3
 @export_dir var scene_path: String
-@export var is_unlocked := true
+@export var is_unlocked := true:
+	set = _set_is_unlocked
 
 # TODO: rename to amount_current
 var current_amount := amount_max:
@@ -50,6 +52,14 @@ func _set_needs_resupply(new_value) -> void:
 	# If previously there was no need for resupply start resuppling
 	if new_value == true and previous_value == false:
 		resupply()
+
+
+func _set_is_unlocked(new_value) -> void:
+	var previous_value := is_unlocked
+	is_unlocked = new_value
+	# If previously there was no need for resupply start resuppling
+	if new_value == true and previous_value == false:
+		got_unlocked.emit(self)
 
 
 func _on_resupply_timer_timeout() -> void:

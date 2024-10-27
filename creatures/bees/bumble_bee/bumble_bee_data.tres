@@ -1,13 +1,12 @@
-[gd_resource type="Resource" script_class="CreatureData" load_steps=5 format=3 uid="uid://tlfsluwoh36b"]
+[gd_resource type="Resource" script_class="CreatureGlobalData" load_steps=5 format=3 uid="uid://ddc6h5xvatk8q"]
 
 [ext_resource type="Script" path="res://placeables/_placeable_data.gd" id="1_ekjt2"]
+[ext_resource type="Script" path="res://creatures/_creature_data_global.gd" id="2_8sl66"]
 [ext_resource type="Resource" uid="uid://dwued6pb2bpl0" path="res://non_placeables/Hole/hole_data.tres" id="2_ncijm"]
 [ext_resource type="Texture2D" uid="uid://drvucgj0wdyp5" path="res://creatures/bees/bumble_bee/Bee_Bumble.svg" id="3_vmsn7"]
-[ext_resource type="Script" path="res://creatures/_creature_data.gd" id="4_ye2ni"]
 
 [resource]
-resource_local_to_scene = true
-script = ExtResource("4_ye2ni")
+script = ExtResource("2_8sl66")
 id = "bee_bumble"
 display_name = "Bumblebee"
 icon = ExtResource("3_vmsn7")

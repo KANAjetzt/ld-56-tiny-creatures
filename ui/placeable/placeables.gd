@@ -14,14 +14,23 @@ func _ready() -> void:
 		if not placeable.is_unlocked:
 			continue
 
-		var new_button: UIPlaceableButton = placeable_button_scene.instantiate()
-		new_button.data = placeable
-		grid_container.add_child(new_button)
-		new_button.set_icon(placeable.icon)
-		new_button.set_label(str(placeable.amount_max))
+		add_placeable(placeable)
 
-		new_button.placeable_selected.connect(_on_placeable_selected)
+
+func add_placeable(placeable: PlaceableData) -> void:
+	var new_button: UIPlaceableButton = placeable_button_scene.instantiate()
+	new_button.data = placeable
+	grid_container.add_child(new_button)
+	new_button.set_icon(placeable.icon)
+	new_button.set_label(str(placeable.amount_max))
+
+	new_button.placeable_selected.connect(_on_placeable_selected)
+	placeable.got_unlocked.connect(_on_placeable_got_unlocked)
 
 
 func _on_placeable_selected(button: UIPlaceableButton, placeable: PlaceableData) -> void:
 	placeable_selected.emit(placeable)
+
+
+func _on_placeable_got_unlocked(placeable: PlaceableData) -> void:
+	add_placeable(placeable)

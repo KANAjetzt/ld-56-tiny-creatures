@@ -3,7 +3,7 @@ class_name SpawnerComponent
 extends Node2D
 
 
-@export var creature: CreatureData
+@export var creature: CreatureGlobalData
 @export var habitat: HabitatComponent
 @export var habitat_position: CreaturePositionComponent
 @export var spawn_to: Node

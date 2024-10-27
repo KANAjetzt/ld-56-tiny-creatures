@@ -16,7 +16,7 @@ Happy Bees: {%BEE_COUNT%}
 {%CREATURE_INFO%}
 """
 
-var pages: Array[CreatureData] = []
+var pages: Array[CreatureGlobalData] = []
 var current_page_index := 0
 
 
@@ -46,11 +46,11 @@ func make_visible() -> void:
 	show()
 
 
-func add_page(creature: CreatureData) -> void:
+func add_page(creature: CreatureGlobalData) -> void:
 	pages.push_back(creature)
 
 
-func init_page(creature: CreatureData) -> void:
+func init_page(creature: CreatureGlobalData) -> void:
 	icon.texture = creature.icon
 	label_name.text = creature.display_name
 	info_text.text = info_text_template.format({
@@ -77,7 +77,7 @@ func init_preview_page() -> void:
 	})
 
 
-func _on_creature_discovered(creature: CreatureData) -> void:
+func _on_creature_discovered(creature: CreatureGlobalData) -> void:
 	Global.creatures[Global.creatures.find(creature)].is_discovered = true
 	if visible:
 		init_page(pages[current_page_index])
