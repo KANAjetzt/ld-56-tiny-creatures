@@ -32,7 +32,7 @@ func check_habitat_delivered_tasks() -> void:
 	for task in bee.data_global.tasks.habitat_deliver:
 		if task.is_completed:
 			continue
-		if bee.data.current_local_data == bee.data.current_habitat.data:
+		if bee.data.current_local_data == bee.data.current_habitat.data_global:
 			task.is_completed = true
 			print("INFO: \"%s\" completed." % task.id)
 
@@ -41,7 +41,7 @@ func check_habitat_found_tasks() -> void:
 	for task in bee.data_global.tasks.habitat_find:
 		if task.is_completed:
 			continue
-		if bee.data.current_habitat and bee.data.current_habitat.data == bee.data.current_local_data:
+		if bee.data.current_habitat and bee.data.current_habitat.data_global == bee.data.current_local_data:
 			task.is_completed = true
 			print("INFO: \"%s\" completed." % task.id)
 

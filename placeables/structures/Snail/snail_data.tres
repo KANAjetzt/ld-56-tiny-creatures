@@ -1,17 +1,19 @@
-[gd_resource type="Resource" script_class="PlaceableData" load_steps=3 format=3 uid="uid://grp3lfxjgh5k"]
+[gd_resource type="Resource" script_class="PlaceableGlobalData" load_steps=3 format=3 uid="uid://de3ly3xci85n4"]
 
-[ext_resource type="Texture2D" uid="uid://pe2bbme08mvo" path="res://placeables/structures/Snail/snail.svg" id="1_knkqa"]
-[ext_resource type="Script" path="res://placeables/_placeable_data.gd" id="2_ev26g"]
+[ext_resource type="Script" path="res://placeables/_placeable_data_global.gd" id="1_mxkhy"]
+[ext_resource type="Texture2D" uid="uid://pe2bbme08mvo" path="res://placeables/structures/Snail/snail.svg" id="1_tshqo"]
 
 [resource]
-script = ExtResource("2_ev26g")
+script = ExtResource("1_mxkhy")
 id = "structure_snail"
 display_name = "Snail Shell"
-icon = ExtResource("1_knkqa")
+icon = ExtResource("1_tshqo")
 is_attractor = true
 is_habitat = true
+is_habitat_construction = false
 is_plant = false
 wait_time = 10.0
 resupply_time = 15.0
-amount_max = 3
+amount_max = 5
 scene_path = "res://placeables/structures/Snail/placeable_snail.tscn"
+is_unlocked = true

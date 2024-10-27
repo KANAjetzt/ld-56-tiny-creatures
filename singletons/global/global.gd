@@ -7,10 +7,10 @@ signal creature_discovered(creature: CreatureGlobalData)
 signal creature_focused(creature_node: BeeComponent)
 signal creature_unfocused
 
-@export var placeables: Array[PlaceableData]
+@export var placeables: Array[PlaceableGlobalData]
 @export var creatures: Array[CreatureGlobalData]
 
-var currently_selected_placeable: PlaceableData
+var currently_selected_placeable: PlaceableGlobalData
 var current_habitats: Dictionary = {}
 var currently_placed_plants: Dictionary = {}
 var current_creatures_with_met_criteria: Array[CreatureGlobalData]
@@ -91,4 +91,7 @@ func new_creature_discovered(creature: CreatureGlobalData) -> void:
 
 func _set_current_focused_creature(new_value) -> void:
 	current_focused_creature = new_value
-	creature_focused.emit(new_value)
+	if current_focused_creature:
+		creature_focused.emit(new_value)
+	else:
+		creature_unfocused.emit()

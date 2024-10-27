@@ -31,7 +31,7 @@ func get_all_tasks() -> Array[TaskData]:
 	return tasks
 
 
-func _on_task_completed(task: TaskData) -> void:
+func _on_task_completed(_task: TaskData) -> void:
 	tasks_completed += 1
 	if task_count == tasks_completed:
 		is_all_completed = true

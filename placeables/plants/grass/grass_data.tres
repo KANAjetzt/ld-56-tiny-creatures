@@ -1,18 +1,19 @@
-[gd_resource type="Resource" script_class="PlaceableData" load_steps=3 format=3 uid="uid://b1oloopp16uv8"]
+[gd_resource type="Resource" script_class="PlaceableGlobalData" load_steps=3 format=3 uid="uid://7j4ekhqshqxw"]
 
-[ext_resource type="Texture2D" uid="uid://btc70hba4hkmx" path="res://placeables/plants/grass/Grass.svg" id="1_2vgam"]
-[ext_resource type="Script" path="res://placeables/_placeable_data.gd" id="1_iiger"]
+[ext_resource type="Texture2D" uid="uid://btc70hba4hkmx" path="res://placeables/plants/grass/Grass.svg" id="1_nyeth"]
+[ext_resource type="Script" path="res://placeables/_placeable_data_global.gd" id="1_sxjub"]
 
 [resource]
-resource_local_to_scene = true
-script = ExtResource("1_iiger")
+script = ExtResource("1_sxjub")
 id = "plant_grass"
 display_name = "Tall Grass"
-icon = ExtResource("1_2vgam")
+icon = ExtResource("1_nyeth")
 is_attractor = true
 is_habitat = false
+is_habitat_construction = false
 is_plant = true
 wait_time = 5.0
 resupply_time = 5.0
 amount_max = 5
 scene_path = "res://placeables/plants/grass/placeable_grass.tscn"
+is_unlocked = true

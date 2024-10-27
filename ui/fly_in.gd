@@ -18,7 +18,7 @@ func _ready() -> void:
 	original_minimum_size = Vector2(transition_control.custom_minimum_size)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if mouse_over_control.get_global_rect().has_point(mouse_over_control.get_global_mouse_position()):
 		is_hovering = true
 	else:

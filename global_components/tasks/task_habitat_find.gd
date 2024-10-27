@@ -2,4 +2,4 @@ class_name TaskHabitatFindData
 extends TaskData
 
 
-@export var habitat: PlaceableData
+@export var habitat: PlaceableGlobalData

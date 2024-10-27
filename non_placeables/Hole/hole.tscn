@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://rni0lanhuidt"]
+[gd_scene load_steps=15 format=3 uid="uid://rni0lanhuidt"]
 
 [ext_resource type="PackedScene" uid="uid://b850qlnpmsgn8" path="res://ui/debug/debug_panel.tscn" id="1_kixxc"]
 [ext_resource type="Script" path="res://placeables/structures/habitat.gd" id="1_xfq4q"]
@@ -7,39 +7,22 @@
 [ext_resource type="PackedScene" uid="uid://mu0cbo743n6a" path="res://placeables/creature_position.tscn" id="4_o30xf"]
 [ext_resource type="PackedScene" uid="uid://dannee2yf7qrq" path="res://placeables/attractor.tscn" id="5_yrk73"]
 [ext_resource type="Script" path="res://placeables/attractor_area.gd" id="6_6piyo"]
-[ext_resource type="Resource" uid="uid://dwued6pb2bpl0" path="res://non_placeables/Hole/hole_data.tres" id="8_ppljj"]
+[ext_resource type="Resource" uid="uid://bpjpitx5st3ek" path="res://non_placeables/Hole/hole_data.tres" id="8_ppljj"]
 [ext_resource type="PackedScene" uid="uid://dh60blsam6xim" path="res://global_components/pollen_container.tscn" id="9_hg0xg"]
 [ext_resource type="PackedScene" uid="uid://nx2hjeg62iqb" path="res://placeables/plants/Fade.tscn" id="10_v7q84"]
 [ext_resource type="PackedScene" uid="uid://d3dwibrkoelds" path="res://creatures/spawner.tscn" id="11_325ae"]
-[ext_resource type="Script" path="res://placeables/_placeable_data.gd" id="12_j4ihr"]
-[ext_resource type="Texture2D" uid="uid://drvucgj0wdyp5" path="res://creatures/bees/bumble_bee/Bee_Bumble.svg" id="13_0urj1"]
 [ext_resource type="Script" path="res://creatures/_creature_data.gd" id="14_rbskh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bdra4"]
 radius = 225.142
 
-[sub_resource type="Resource" id="Resource_b6ytx"]
+[sub_resource type="Resource" id="Resource_ror7d"]
 resource_local_to_scene = true
 script = ExtResource("14_rbskh")
-id = "bee_bumble"
-display_name = "Bumblebee"
-icon = ExtResource("13_0urj1")
-habitats = Array[ExtResource("12_j4ihr")]([ExtResource("8_ppljj")])
-plants = {
-"plant_clover": 3,
-"plant_grass": 3,
-"plant_lavender": 3
-}
-plants_per_spawn = {
-"plant_grass": 3
-}
-scene_path = "res://creatures/bees/bumble_bee/bumble_bee.tscn"
-spawn_time = 1.0
-info_text = ""
 
 [node name="Hole" type="Node2D" node_paths=PackedStringArray("attractor", "creature_positions", "pollen_container", "spawner")]
 script = ExtResource("1_xfq4q")
-data = ExtResource("8_ppljj")
+data_global = ExtResource("8_ppljj")
 attractor = NodePath("AttractorComponent")
 creature_positions = NodePath("CreaturePositionsComponent")
 pollen_container = NodePath("PollenContainer")
@@ -82,7 +65,7 @@ node = NodePath("..")
 time = 0.2
 
 [node name="Spawner" parent="." node_paths=PackedStringArray("habitat", "habitat_position") instance=ExtResource("11_325ae")]
-creature = SubResource("Resource_b6ytx")
+creature = SubResource("Resource_ror7d")
 habitat = NodePath("..")
 habitat_position = NodePath("../CreaturePositionsComponent/CreaturePositionComponent")
 constructions_spawn_to_main = true

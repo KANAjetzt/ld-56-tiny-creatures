@@ -8,7 +8,7 @@ signal area_detected(area: Area2D)
 @export var ignore_if_habitat_close_by := true
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var found_plants := {}
 	var ignore := false
 

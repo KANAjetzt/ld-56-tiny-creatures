@@ -1,7 +1,6 @@
 [gd_scene load_steps=24 format=3 uid="uid://c5tc65oy2wfid"]
 
 [ext_resource type="Script" path="res://singletons/global/global.gd" id="1_x86hg"]
-[ext_resource type="Script" path="res://placeables/_placeable_data.gd" id="2_ci44c"]
 [ext_resource type="Resource" uid="uid://b1oloopp16uv8" path="res://placeables/plants/grass/grass_data.tres" id="3_tibxk"]
 [ext_resource type="Resource" uid="uid://cajovvpy2a1tr" path="res://placeables/plants/lavender/lavender_data.tres" id="4_qj638"]
 [ext_resource type="Resource" uid="uid://co8bgcteikhjp" path="res://placeables/structures/Hotel/hotel_data.tres" id="5_65jj2"]

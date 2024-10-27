@@ -29,7 +29,7 @@ func _ready() -> void:
 	Global.creature_discovered.connect(_on_creature_discovered)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("open_book"):
 		if visible:
 			hide()

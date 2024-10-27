@@ -1,6 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://cn41knnncy7a0"]
+[gd_scene load_steps=16 format=3 uid="uid://cn41knnncy7a0"]
 
 [ext_resource type="Texture2D" uid="uid://btc70hba4hkmx" path="res://placeables/plants/grass/Grass.svg" id="1_5d27m"]
+[ext_resource type="Script" path="res://placeables/plants/plant.gd" id="1_rh87y"]
+[ext_resource type="Resource" uid="uid://7j4ekhqshqxw" path="res://placeables/plants/grass/grass_data.tres" id="2_2rp4r"]
 [ext_resource type="Texture2D" uid="uid://cjnhydxgrpm27" path="res://placeables/plants/lavender/Lavender_Glow.svg" id="2_pkldb"]
 [ext_resource type="PackedScene" uid="uid://c5yo20qevp5vw" path="res://placeables/creature_positions.tscn" id="3_2exjg"]
 [ext_resource type="PackedScene" uid="uid://mu0cbo743n6a" path="res://placeables/creature_position.tscn" id="4_a6ipc"]
@@ -8,9 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dannee2yf7qrq" path="res://placeables/attractor.tscn" id="5_lj21l"]
 [ext_resource type="Script" path="res://placeables/attractor_area.gd" id="6_hs0jk"]
 [ext_resource type="Shader" path="res://assets/shader/pollen.gdshader" id="6_namsf"]
-[ext_resource type="PackedScene" uid="uid://bgx25yt4ojjda" path="res://placeables/plants/plant_component.tscn" id="7_oafsp"]
 [ext_resource type="PackedScene" uid="uid://dh60blsam6xim" path="res://global_components/pollen_container.tscn" id="9_3f3br"]
-[ext_resource type="Script" path="res://placeables/_placeable_data.gd" id="10_8w7b4"]
 [ext_resource type="PackedScene" uid="uid://bfitru0sgkbv5" path="res://global_components/add_to_each_child.tscn" id="10_yv66p"]
 [ext_resource type="PackedScene" uid="uid://nx2hjeg62iqb" path="res://placeables/plants/Fade.tscn" id="11_jhmn0"]
 
@@ -25,22 +25,11 @@ shader_parameter/circle_color = Color(0.856, 0.68, 0, 1)
 [sub_resource type="CircleShape2D" id="CircleShape2D_bhi5v"]
 radius = 69.3542
 
-[sub_resource type="Resource" id="Resource_g8bvk"]
-resource_local_to_scene = true
-script = ExtResource("10_8w7b4")
-id = "plant_grass"
-display_name = "Tall Grass"
-icon = ExtResource("1_5d27m")
-is_attractor = true
-is_habitat = false
-is_habitat_construction = false
-is_plant = true
-wait_time = 5.0
-resupply_time = 5.0
-amount_max = 5
-scene_path = "res://placeables/plants/grass/placeable_grass.tscn"
-
-[node name="Grass" type="Node2D" groups=["placeable"]]
+[node name="Grass" type="Node2D" node_paths=PackedStringArray("creature_positions", "attractor") groups=["placeable"]]
+script = ExtResource("1_rh87y")
+data_global = ExtResource("2_2rp4r")
+creature_positions = NodePath("CreaturePositionsComponent")
+attractor = NodePath("AttractorComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.09, 0.09)
@@ -83,7 +72,7 @@ position = Vector2(8, -14)
 
 [node name="AttractorComponent" parent="." node_paths=PackedStringArray("creature_positions", "plant") instance=ExtResource("5_lj21l")]
 creature_positions = NodePath("../CreaturePositionsComponent")
-plant = NodePath("../PlantComponent")
+plant = NodePath("..")
 
 [node name="AttractorArea" type="Area2D" parent="AttractorComponent" node_paths=PackedStringArray("ref")]
 collision_layer = 10
@@ -93,11 +82,6 @@ ref = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttractorComponent/AttractorArea"]
 shape = SubResource("CircleShape2D_bhi5v")
-
-[node name="PlantComponent" parent="." node_paths=PackedStringArray("creature_positions", "attractor") instance=ExtResource("7_oafsp")]
-data = SubResource("Resource_g8bvk")
-creature_positions = NodePath("../CreaturePositionsComponent")
-attractor = NodePath("../AttractorComponent")
 
 [node name="GrowComponent" parent="." node_paths=PackedStringArray("node") instance=ExtResource("11_jhmn0")]
 node = NodePath("..")

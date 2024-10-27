@@ -1,9 +1,9 @@
-class_name PlaceableData
+class_name PlaceableGlobalData
 extends Resource
 
 
-signal current_amount_changed(data: PlaceableData)
-signal got_unlocked(data: PlaceableData)
+signal got_unlocked(data: PlaceableGlobalData)
+signal amount_current_changed(data: PlaceableGlobalData)
 
 @export var id: String
 @export var display_name: String
@@ -22,28 +22,27 @@ signal got_unlocked(data: PlaceableData)
 @export var is_unlocked := true:
 	set = _set_is_unlocked
 
-# TODO: rename to amount_current
-var current_amount := amount_max:
-	set = _set_current_amount
+var amount_current := amount_max:
+	set = _set_amount_current
 var needs_resupply := false:
 	set = _set_needs_resupply
 
 
 func resupply() -> void:
 	if needs_resupply:
-		var timer := Utils.create_timer(resupply_time).timeout.connect(_on_resupply_timer_timeout)
+		Utils.create_timer(resupply_time).timeout.connect(_on_resupply_timer_timeout)
 
 
-func _set_current_amount(new_value) -> void:
-	current_amount = new_value
+func _set_amount_current(new_value) -> void:
+	amount_current = new_value
 
-	if current_amount < amount_max:
+	if amount_current < amount_max:
 		needs_resupply = true
 
-	if current_amount == amount_max:
+	if amount_current == amount_max:
 		needs_resupply = false
 
-	current_amount_changed.emit(self)
+	amount_current_changed.emit(self)
 
 
 func _set_needs_resupply(new_value) -> void:
@@ -63,5 +62,5 @@ func _set_is_unlocked(new_value) -> void:
 
 
 func _on_resupply_timer_timeout() -> void:
-	current_amount += 1
+	amount_current += 1
 	resupply()

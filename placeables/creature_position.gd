@@ -12,7 +12,7 @@ func _ready() -> void:
 	if get_parent() is CreaturePositionsComponent:
 		parent = get_parent()
 	else:
-		assert("CreaturePositionComponent must be a child of CreaturePositionsComponent")
+		assert(false, "CreaturePositionComponent must be a child of CreaturePositionsComponent")
 
 
 func clear() -> void:

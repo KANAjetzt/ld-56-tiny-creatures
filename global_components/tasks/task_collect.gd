@@ -2,4 +2,4 @@ class_name TaskCollectData
 extends TaskData
 
 
-@export var plant: PlaceableData
+@export var plant: PlaceableGlobalData

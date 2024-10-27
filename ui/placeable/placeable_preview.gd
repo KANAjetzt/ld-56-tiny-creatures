@@ -2,7 +2,7 @@ class_name UIPlaceablePreview
 extends Sprite2D
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if texture:
 		global_position = get_global_mouse_position() + Vector2(20, -15)
 

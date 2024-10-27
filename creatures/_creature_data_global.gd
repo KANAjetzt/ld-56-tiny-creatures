@@ -5,7 +5,7 @@ extends Resource
 @export var id: String
 @export var display_name: String
 @export var icon: CompressedTexture2D
-@export var habitats: Array[PlaceableData]
+@export var habitats: Array[PlaceableGlobalData]
 @export var plants: Dictionary
 ## Add `plant_id: count` to add to the spawn requirement each time the creature is spawned.
 @export var plants_per_spawn: Dictionary
@@ -15,7 +15,7 @@ extends Resource
 @export var tasks: TasksData:
 	set = _set_tasks
 ## Add placeables that are unlocked if all tasks are completed
-@export var unlocks_placeable: Array[PlaceableData] = []
+@export var unlocks_placeable: Array[PlaceableGlobalData] = []
 
 var images: Array[Image] = []
 var is_discovered := false

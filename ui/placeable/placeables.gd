@@ -2,7 +2,7 @@ class_name UIPlaceables
 extends PanelContainer
 
 
-signal placeable_selected(data: PlaceableData)
+signal placeable_selected(data: PlaceableGlobalData)
 
 @export var placeable_button_scene: PackedScene
 
@@ -17,7 +17,7 @@ func _ready() -> void:
 		add_placeable(placeable)
 
 
-func add_placeable(placeable: PlaceableData) -> void:
+func add_placeable(placeable: PlaceableGlobalData) -> void:
 	var new_button: UIPlaceableButton = placeable_button_scene.instantiate()
 	new_button.data = placeable
 	grid_container.add_child(new_button)
@@ -28,9 +28,9 @@ func add_placeable(placeable: PlaceableData) -> void:
 	placeable.got_unlocked.connect(_on_placeable_got_unlocked)
 
 
-func _on_placeable_selected(button: UIPlaceableButton, placeable: PlaceableData) -> void:
+func _on_placeable_selected(_button: UIPlaceableButton, placeable: PlaceableGlobalData) -> void:
 	placeable_selected.emit(placeable)
 
 
-func _on_placeable_got_unlocked(placeable: PlaceableData) -> void:
+func _on_placeable_got_unlocked(placeable: PlaceableGlobalData) -> void:
 	add_placeable(placeable)

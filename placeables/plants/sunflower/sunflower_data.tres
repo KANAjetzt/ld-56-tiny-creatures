@@ -1,14 +1,13 @@
-[gd_resource type="Resource" script_class="PlaceableData" load_steps=3 format=3 uid="uid://cxehqokwdut38"]
+[gd_resource type="Resource" script_class="PlaceableGlobalData" load_steps=3 format=3 uid="uid://d1hfp8iwvj3qe"]
 
-[ext_resource type="Texture2D" uid="uid://cuc3y7r8i1qt7" path="res://placeables/plants/sunflower/sunflower.svg" id="1_1pnn1"]
-[ext_resource type="Script" path="res://placeables/_placeable_data.gd" id="2_uiiwu"]
+[ext_resource type="Texture2D" uid="uid://cuc3y7r8i1qt7" path="res://placeables/plants/sunflower/sunflower.svg" id="1_hdrhb"]
+[ext_resource type="Script" path="res://placeables/_placeable_data_global.gd" id="1_q33xp"]
 
 [resource]
-resource_local_to_scene = true
-script = ExtResource("2_uiiwu")
+script = ExtResource("1_q33xp")
 id = "plant_sunflower"
 display_name = "Sunflower"
-icon = ExtResource("1_1pnn1")
+icon = ExtResource("1_hdrhb")
 is_attractor = true
 is_habitat = false
 is_habitat_construction = false

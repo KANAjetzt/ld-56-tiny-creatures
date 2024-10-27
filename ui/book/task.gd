@@ -16,5 +16,5 @@ func init(_task: TaskData) -> void:
 	task.completed.connect(_on_task_completed)
 
 
-func _on_task_completed(task: TaskData) -> void:
+func _on_task_completed(_task: TaskData) -> void:
 	check_box.button_pressed = true

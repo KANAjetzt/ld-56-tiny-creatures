@@ -9,7 +9,7 @@ signal clicked_on(bee: BeeComponent)
 var is_hovering := false
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("place") and is_hovering:
 		clicked_on.emit(bee)
 		Global.current_focused_creature = bee

@@ -5,7 +5,7 @@ extends Node
 @export var movement: MovementComponent
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if movement.direction.x > 0:
 		sprite.flip_h = true
 	elif movement.direction.x < 0:

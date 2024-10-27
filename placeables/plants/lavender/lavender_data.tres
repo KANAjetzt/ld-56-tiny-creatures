@@ -1,18 +1,19 @@
-[gd_resource type="Resource" script_class="PlaceableData" load_steps=3 format=3 uid="uid://cajovvpy2a1tr"]
+[gd_resource type="Resource" script_class="PlaceableGlobalData" load_steps=3 format=3 uid="uid://dumnnhwlcvlli"]
 
-[ext_resource type="Texture2D" uid="uid://dt0jcqf6qbyto" path="res://placeables/plants/lavender/Lavender.svg" id="1_1uytt"]
-[ext_resource type="Script" path="res://placeables/_placeable_data.gd" id="1_gcllh"]
+[ext_resource type="Texture2D" uid="uid://dt0jcqf6qbyto" path="res://placeables/plants/lavender/Lavender.svg" id="1_862g8"]
+[ext_resource type="Script" path="res://placeables/_placeable_data_global.gd" id="1_xkd0g"]
 
 [resource]
-resource_local_to_scene = true
-script = ExtResource("1_gcllh")
+script = ExtResource("1_xkd0g")
 id = "plant_lavender"
 display_name = "Lavender"
-icon = ExtResource("1_1uytt")
+icon = ExtResource("1_862g8")
 is_attractor = true
 is_habitat = false
+is_habitat_construction = false
 is_plant = true
 wait_time = 8.0
 resupply_time = 15.0
 amount_max = 5
 scene_path = "res://placeables/plants/lavender/placeable_lavender.tscn"
+is_unlocked = true

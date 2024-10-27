@@ -12,7 +12,7 @@ func _ready() -> void:
 		assert(false, "Only AudioStreamPlayer and AudioStreamPlayer2D are supported as audio_player.")
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var camera := get_viewport().get_camera_2d()
 
 	if camera:

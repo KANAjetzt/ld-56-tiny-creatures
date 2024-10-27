@@ -1,14 +1,13 @@
-[gd_resource type="Resource" script_class="PlaceableData" load_steps=3 format=3 uid="uid://ct7hknfwasjft"]
+[gd_resource type="Resource" script_class="PlaceableGlobalData" load_steps=3 format=3 uid="uid://5baj322b55fe"]
 
-[ext_resource type="Texture2D" uid="uid://bqnkatmp18vj0" path="res://placeables/plants/clover/clover.svg" id="1_hvlik"]
-[ext_resource type="Script" path="res://placeables/_placeable_data.gd" id="2_mgvgs"]
+[ext_resource type="Texture2D" uid="uid://bqnkatmp18vj0" path="res://placeables/plants/clover/clover.svg" id="1_cywqv"]
+[ext_resource type="Script" path="res://placeables/_placeable_data_global.gd" id="1_nly5c"]
 
 [resource]
-resource_local_to_scene = true
-script = ExtResource("2_mgvgs")
+script = ExtResource("1_nly5c")
 id = "plant_clover"
 display_name = "Clover"
-icon = ExtResource("1_hvlik")
+icon = ExtResource("1_cywqv")
 is_attractor = true
 is_habitat = false
 is_habitat_construction = false

@@ -46,6 +46,7 @@ func activate() -> void:
 	global_position = camera_main.follow_target.global_position
 	camera_main.follow_target = self
 	is_active = true
+	Global.current_focused_creature = null
 
 
 func _on_creature_focused(bee: BeeComponent) -> void:

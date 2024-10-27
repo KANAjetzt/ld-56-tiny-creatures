@@ -3,7 +3,10 @@ extends Node2D
 
 
 signal found_habitat(bee: BeeComponent)
-signal entered_habitat(bee: BeeComponent)
+# `delivered_pollen` and entered habitat is currently more or less the same.
+# Maybe can be emitted even if the delivered pollen count is 0.
+#signal entered_habitat(bee: BeeComponent)
+
 signal collected_pollen(bee: BeeComponent)
 signal delivered_pollen(bee: BeeComponent)
 
@@ -22,8 +25,8 @@ signal delivered_pollen(bee: BeeComponent)
 @export var debug_panel: UIDebugPanel
 
 var data := CreatureData.new()
-var memory_success: Array[PlaceableData] = []
-var memory_no_success: PlaceableData
+var memory_success: Array[PlaceableGlobalData] = []
+var memory_no_success: PlaceableGlobalData
 var no_pollen_counter := 0
 var is_collecting := false
 var timer_max_search_time := Timer.new()
@@ -47,7 +50,7 @@ func _ready() -> void:
 		digging.finished.connect(_on_digging_finished)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if data.current_habitat:
 		if global_position.distance_to(data.current_habitat_position.global_position) > max_distance_from_habitat:
 			data.current_local = data.current_habitat
@@ -116,7 +119,7 @@ func collect(plant_creature_positions: CreaturePositionsComponent) -> void:
 			return
 		shake.is_active = true
 		sound.fade_in()
-		var receiver_pollen_count := pollen_container.receive(given_pollen_count)
+		var _receiver_pollen_count := pollen_container.receive(given_pollen_count)
 		collected_pollen.emit(self)
 	else:
 		no_pollen_counter += 1
@@ -127,7 +130,7 @@ func collect(plant_creature_positions: CreaturePositionsComponent) -> void:
 	if pollen_container.is_full:
 		is_collecting = false
 		# Start traveling to habitat
-		data.current_local_data = data.current_habitat.data
+		data.current_local_data = data.current_habitat.data_global
 		travel(data.current_habitat_position.global_position)
 	elif no_pollen_counter >= 3:
 		is_collecting = false
@@ -188,20 +191,20 @@ func _on_inside_attractor_area(area: AttractorArea) -> void:
 	# Check if searching for habitat
 	if data.current_habitat == null:
 		# Check if valid habitat
-		if area.ref.habitat and area.ref.habitat.data in data_global.habitats:
+		if area.ref.habitat and area.ref.habitat.data_global in data_global.habitats:
 			# Occupy position if available
 			if not area.ref.creature_positions.all_occupied:
 				data.current_habitat_position = area.ref.creature_positions.occupy_position()
 				data.current_habitat = area.ref.habitat
-				data.current_local_data = area.ref.habitat.data
+				data.current_local_data = area.ref.habitat.data_global
 				found_habitat.emit(self)
 				travel(data.current_habitat_position.global_position)
 	elif area.ref.plant:
 		# Check memory
-		if area.ref.plant.data == memory_no_success:
+		if area.ref.plant.data_global == memory_no_success:
 			search()
 		elif not area.ref.creature_positions.all_occupied:
-			data.current_local_data = area.ref.plant.data
+			data.current_local_data = area.ref.plant.data_global
 			collect(area.ref.creature_positions)
 
 
@@ -210,7 +213,7 @@ func _on_timer_max_search_time_timeout() -> void:
 	travel(data.current_habitat_position.global_position)
 
 
-func _on_data_current_local_data_changed(_data: PlaceableData) -> void:
+func _on_data_current_local_data_changed(_data: PlaceableGlobalData) -> void:
 	if debug_entry:
 		if _data == null:
 			debug_entry.update_value("null")

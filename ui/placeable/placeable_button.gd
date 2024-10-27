@@ -2,17 +2,17 @@ class_name UIPlaceableButton
 extends HBoxContainer
 
 
-signal placeable_selected(button: UIPlaceableButton, placeable: PlaceableData)
+signal placeable_selected(button: UIPlaceableButton, placeable: PlaceableGlobalData)
 
 @onready var button: Button = %Button
 @onready var label: Label = %Label
 @onready var progress_bar: ProgressBar = %ProgressBar
 
-var data: PlaceableData
+var data: PlaceableGlobalData
 
 
 func _ready() -> void:
-	data.current_amount_changed.connect(_on_current_amount_changed)
+	data.amount_current_changed.connect(_on_amount_current_changed)
 
 
 func set_icon(icon: Texture) -> void:
@@ -36,11 +36,11 @@ func _on_button_pressed() -> void:
 
 # TODO: This can be done better, checking on all buttons if the placeable is the same as the one in the button is not ideal.
 # TODO: Rethink the global signal and implement something less lazy?
-func _on_current_amount_changed(placeable: PlaceableData) -> void:
+func _on_amount_current_changed(placeable: PlaceableGlobalData) -> void:
 	if placeable == data:
-		set_label(str(placeable.current_amount))
+		set_label(str(placeable.amount_current))
 
-		if not placeable.current_amount == placeable.amount_max:
+		if not placeable.amount_current == placeable.amount_max:
 			tween_progress_bar()
 		else:
 			progress_bar.set_value_no_signal(0.0)
