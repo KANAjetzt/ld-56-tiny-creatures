@@ -12,6 +12,7 @@ signal placeable_selected(data: PlaceableGlobalData)
 func _ready() -> void:
 	for placeable in Global.placeables:
 		if not placeable.is_unlocked:
+			placeable.got_unlocked.connect(_on_placeable_got_unlocked)
 			continue
 
 		add_placeable(placeable)
@@ -22,10 +23,9 @@ func add_placeable(placeable: PlaceableGlobalData) -> void:
 	new_button.data = placeable
 	grid_container.add_child(new_button)
 	new_button.set_icon(placeable.icon)
-	new_button.set_label(str(placeable.amount_max))
+	new_button.set_label(str(placeable.amount_current))
 
 	new_button.placeable_selected.connect(_on_placeable_selected)
-	placeable.got_unlocked.connect(_on_placeable_got_unlocked)
 
 
 func _on_placeable_selected(_button: UIPlaceableButton, placeable: PlaceableGlobalData) -> void:

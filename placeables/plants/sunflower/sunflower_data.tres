@@ -14,6 +14,7 @@ is_habitat_construction = false
 is_plant = true
 wait_time = 20.0
 resupply_time = 60.0
+amount_start = 1
 amount_max = 5
 scene_path = "res://placeables/plants/sunflower/sunflower_placeable.tscn"
 is_unlocked = false

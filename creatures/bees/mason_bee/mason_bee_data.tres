@@ -12,10 +12,9 @@ script = ExtResource("2_4d5qu")
 id = "bee_mason"
 display_name = "Mason Bee"
 icon = ExtResource("3_hlo4t")
-habitats = Array[ExtResource("1_epi8m")]([ExtResource("3_5pso8")])
+habitats = Array[ExtResource("1_epi8m")]([ExtResource("3_5pso8"), ExtResource("2_xv0c8")])
 plants = {
-"plant_grass": 3,
-"plant_lavender": 3
+"plant_grass": 3
 }
 plants_per_spawn = {
 "plant_grass": 0

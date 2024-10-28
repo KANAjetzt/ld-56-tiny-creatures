@@ -14,6 +14,7 @@ is_habitat_construction = false
 is_plant = false
 wait_time = 10.0
 resupply_time = 30.0
+amount_start = 1
 amount_max = 3
 scene_path = "res://placeables/structures/Hotel/placeable_hotel.tscn"
 is_unlocked = false
