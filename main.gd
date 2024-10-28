@@ -19,6 +19,9 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("place") and not hud.is_hovering:
 		place_placeable()
+	if Input.is_action_just_pressed("deselect"):
+		Global.currently_selected_placeable = null
+		placeable_preview.remove_preview()
 
 
 func place_placeable() -> void:
