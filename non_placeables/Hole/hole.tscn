@@ -16,7 +16,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_bdra4"]
 radius = 225.142
 
-[sub_resource type="Resource" id="Resource_ror7d"]
+[sub_resource type="Resource" id="Resource_ivdrm"]
 resource_local_to_scene = true
 script = ExtResource("14_rbskh")
 
@@ -65,7 +65,7 @@ node = NodePath("..")
 time = 0.2
 
 [node name="Spawner" parent="." node_paths=PackedStringArray("habitat", "habitat_position") instance=ExtResource("11_325ae")]
-creature = SubResource("Resource_ror7d")
+creature = SubResource("Resource_ivdrm")
 habitat = NodePath("..")
 habitat_position = NodePath("../CreaturePositionsComponent/CreaturePositionComponent")
 constructions_spawn_to_main = true

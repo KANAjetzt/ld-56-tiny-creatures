@@ -14,7 +14,7 @@ func _ready() -> void:
 	bee.collected_pollen.connect(_on_bee_collected_pollen)
 	bee.delivered_pollen.connect(_on_bee_delivered_pollen)
 	bee.found_habitat.connect(_on_bee_found_habitat)
-	bee.entered_habitat.connect(_on_bee_entered_habitat)
+	#bee.entered_habitat.connect(_on_bee_entered_habitat)
 
 	bee.data_global.tasks.all_tasks_completed.connect(_on_tasks_all_tasks_completed)
 
@@ -65,8 +65,8 @@ func _on_bee_found_habitat(_bee: BeeComponent) -> void:
 		check_habitat_found_tasks()
 
 
-func _on_bee_entered_habitat(_bee: BeeComponent) -> void:
-	pass
+#func _on_bee_entered_habitat(_bee: BeeComponent) -> void:
+	#pass
 
 
 func _on_bee_delivered_pollen(_bee: BeeComponent) -> void:
