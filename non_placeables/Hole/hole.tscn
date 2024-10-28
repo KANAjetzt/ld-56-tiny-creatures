@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://rni0lanhuidt"]
+[gd_scene load_steps=14 format=3 uid="uid://rni0lanhuidt"]
 
 [ext_resource type="PackedScene" uid="uid://b850qlnpmsgn8" path="res://ui/debug/debug_panel.tscn" id="1_kixxc"]
 [ext_resource type="Script" path="res://placeables/structures/habitat.gd" id="1_xfq4q"]
@@ -11,14 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://dh60blsam6xim" path="res://global_components/pollen_container.tscn" id="9_hg0xg"]
 [ext_resource type="PackedScene" uid="uid://nx2hjeg62iqb" path="res://placeables/plants/Fade.tscn" id="10_v7q84"]
 [ext_resource type="PackedScene" uid="uid://d3dwibrkoelds" path="res://creatures/spawner.tscn" id="11_325ae"]
-[ext_resource type="Script" path="res://creatures/_creature_data.gd" id="14_rbskh"]
+[ext_resource type="Resource" uid="uid://ddc6h5xvatk8q" path="res://creatures/bees/bumble_bee/bumble_bee_data.tres" id="12_jg6uh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bdra4"]
 radius = 225.142
-
-[sub_resource type="Resource" id="Resource_ivdrm"]
-resource_local_to_scene = true
-script = ExtResource("14_rbskh")
 
 [node name="Hole" type="Node2D" node_paths=PackedStringArray("attractor", "creature_positions", "pollen_container", "spawner")]
 script = ExtResource("1_xfq4q")
@@ -65,13 +61,13 @@ node = NodePath("..")
 time = 0.2
 
 [node name="Spawner" parent="." node_paths=PackedStringArray("habitat", "habitat_position") instance=ExtResource("11_325ae")]
-creature = SubResource("Resource_ivdrm")
+creature = ExtResource("12_jg6uh")
 habitat = NodePath("..")
 habitat_position = NodePath("../CreaturePositionsComponent/CreaturePositionComponent")
 constructions_spawn_to_main = true
 spawn_to_main_bees = true
 local = true
-override_creature_spawn_time = 1.0
+override_creature_spawn_time = 30.0
 use_spawn_count = true
 
 [editable path="AttractorComponent"]

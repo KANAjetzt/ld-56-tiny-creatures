@@ -20,7 +20,7 @@ func _physics_process(_delta: float) -> void:
 			break
 
 		if area is AttractorArea and area.ref.plant:
-			var plant_id: String = area.ref.plant.data.id
+			var plant_id: String = area.ref.plant.data_global.id
 
 			if not search_for.has(plant_id):
 				continue

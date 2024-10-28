@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="TasksData" load_steps=13 format=3 uid="uid://c4ai6nrdydmj0"]
+[gd_resource type="Resource" script_class="TasksData" load_steps=14 format=3 uid="uid://c4ai6nrdydmj0"]
 
 [ext_resource type="Script" path="res://global_components/tasks/task.gd" id="1_bdvmc"]
 [ext_resource type="Script" path="res://global_components/tasks/task_habitat_deliver.gd" id="2_d4ing"]
 [ext_resource type="Script" path="res://placeables/_placeable_data_global.gd" id="3_0w0xb"]
+[ext_resource type="Resource" uid="uid://cf2xp1ut6ag87" path="res://placeables/structures/Hotel/hotel_data.tres" id="4_cjvt2"]
 [ext_resource type="Resource" uid="uid://de3ly3xci85n4" path="res://placeables/structures/Snail/snail_data.tres" id="4_il3w5"]
 [ext_resource type="Script" path="res://global_components/tasks/task_habitat_find.gd" id="5_a3w10"]
 [ext_resource type="Resource" uid="uid://7j4ekhqshqxw" path="res://placeables/plants/grass/grass_data.tres" id="6_31svl"]
@@ -16,7 +17,7 @@ id = "task_bee_mason_deliver"
 display_name = "Watch the mason bee deliver pollen to her habitat"
 description = ""
 is_completed = false
-unlocks_placeable = Array[ExtResource("3_0w0xb")]([])
+unlocks_placeable = Array[ExtResource("3_0w0xb")]([ExtResource("4_cjvt2")])
 
 [sub_resource type="Resource" id="Resource_j6mhs"]
 script = ExtResource("5_a3w10")

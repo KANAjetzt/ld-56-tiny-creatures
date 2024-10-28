@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CreatureGlobalData" load_steps=7 format=3 uid="uid://bcllksr86wmwa"]
+[gd_resource type="Resource" script_class="CreatureGlobalData" load_steps=8 format=3 uid="uid://bcllksr86wmwa"]
 
 [ext_resource type="Script" path="res://placeables/_placeable_data_global.gd" id="1_epi8m"]
 [ext_resource type="Script" path="res://creatures/_creature_data_global.gd" id="2_4d5qu"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://de3ly3xci85n4" path="res://placeables/structures/Snail/snail_data.tres" id="3_5pso8"]
 [ext_resource type="Texture2D" uid="uid://bc5kihw4ceao3" path="res://creatures/bees/mason_bee/Bee.svg" id="3_hlo4t"]
 [ext_resource type="Resource" uid="uid://c4ai6nrdydmj0" path="res://creatures/bees/mason_bee/mason_bee_tasks_data.tres" id="6_36thy"]
+[ext_resource type="Resource" uid="uid://5baj322b55fe" path="res://placeables/plants/clover/clover_data.tres" id="7_nlkt8"]
 
 [resource]
 script = ExtResource("2_4d5qu")
@@ -23,4 +24,4 @@ scene_path = "res://creatures/bees/mason_bee/mason_bee.tscn"
 spawn_time = 0.3
 info_text = ""
 tasks = ExtResource("6_36thy")
-unlocks_placeable = Array[ExtResource("1_epi8m")]([ExtResource("2_xv0c8")])
+unlocks_placeable = Array[ExtResource("1_epi8m")]([ExtResource("7_nlkt8")])

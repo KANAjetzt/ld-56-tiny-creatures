@@ -60,10 +60,11 @@ func init_page(creature: CreatureGlobalData) -> void:
 
 	Utils.free_children(tasks)
 
-	for task in creature.tasks.get_all_tasks():
-		var new_task: UITask = task_scene.instantiate()
-		tasks.add_child(new_task)
-		new_task.init(task)
+	if creature.tasks:
+		for task in creature.tasks.get_all_tasks():
+			var new_task: UITask = task_scene.instantiate()
+			tasks.add_child(new_task)
+			new_task.init(task)
 
 
 func init_preview_page() -> void:
