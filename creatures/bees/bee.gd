@@ -89,17 +89,13 @@ func collect(plant_creature_positions: CreaturePositionsComponent) -> void:
 	await movement.target_reached
 	# TODO: Quick fix - sometimes after awaiting the current_local can be reset to null some how
 	if data.current_local_data == null:
-		print("INFO: Quick fix for `current_local_data == null` is used.")
-		is_collecting = false
-		search()
+		quick_fix()
 		return
 
 	# Check for pollen
 	await get_tree().create_timer(data.current_local_data.wait_time * 0.5).timeout
 	if data.current_local_data == null:
-		print("INFO: Quick fix for `current_local_data == null` is used.")
-		is_collecting = false
-		search()
+		quick_fix()
 		return
 
 	# Retrieve pollen if available
@@ -113,9 +109,7 @@ func collect(plant_creature_positions: CreaturePositionsComponent) -> void:
 		sound.fade_out()
 		await get_tree().create_timer(data.current_local_data.wait_time * 0.5).timeout
 		if data.current_local_data == null:
-			print("INFO: Quick fix for `current_local_data == null` is used.")
-			is_collecting = false
-			search()
+			quick_fix()
 			return
 		shake.is_active = true
 		sound.fade_in()
@@ -154,6 +148,19 @@ func travel(target: Vector2) -> void:
 	movement.target = target
 
 
+func quick_fix() -> void:
+	print("INFO: Quick fix for `current_local_data == null` is used.")
+	is_collecting = false
+	if not visible:
+		fade.fade_in()
+		sound.fade_in()
+		await fade.fade_in_finished
+		search()
+		return
+
+	search()
+
+
 func _on_target_reached() -> void:
 	if digging and digging.is_digging:
 		return
@@ -174,8 +181,7 @@ func _on_target_reached() -> void:
 		await get_tree().create_timer(data.current_local_data.wait_time).timeout
 		# TODO: Quick fix - sometimes after awaiting the current_local can be reset to null some how
 		if data.current_local_data == null:
-			print("INFO: Quick fix for `current_local_data == null` is used.")
-			search()
+			quick_fix()
 			return
 		# If at habitat
 		if data.current_local_data.is_habitat:

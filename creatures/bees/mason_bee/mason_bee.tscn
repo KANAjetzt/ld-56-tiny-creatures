@@ -60,6 +60,7 @@ visibility_layer = 4
 shape = SubResource("CircleShape2D_wcchw")
 
 [node name="PollenContainer" parent="." instance=ExtResource("11_s2crv")]
+max = 3
 play_sound = true
 
 [node name="FlipToDirectionComponent" parent="." node_paths=PackedStringArray("sprite", "movement") instance=ExtResource("11_56hr3")]
