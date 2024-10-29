@@ -1,18 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://dtp0uwwalaxep"]
+[gd_scene load_steps=3 format=3 uid="uid://dtp0uwwalaxep"]
 
 [ext_resource type="Script" path="res://ui/book/image.gd" id="1_syc8h"]
+[ext_resource type="Texture2D" uid="uid://bqnkatmp18vj0" path="res://placeables/plants/clover/clover.svg" id="2_6rnsy"]
 
 [node name="Image" type="PanelContainer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_syc8h")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+unique_name_in_owner = true
 layout_mode = 2
+theme_override_constants/margin_left = 0
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+texture = ExtResource("2_6rnsy")
+expand_mode = 1

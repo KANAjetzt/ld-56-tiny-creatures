@@ -61,6 +61,7 @@ func _set_is_unlocked(new_value) -> void:
 	# If previously there was no need for resupply start resuppling
 	if new_value == true and previous_value == false:
 		got_unlocked.emit(self)
+		Global.unlocked_placeable.emit(self)
 
 
 func _set_amount_start(new_value) -> void:

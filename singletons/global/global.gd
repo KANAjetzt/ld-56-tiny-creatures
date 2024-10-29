@@ -6,6 +6,7 @@ signal criteria_no_longer_met(creature: CreatureGlobalData)
 signal creature_discovered(creature: CreatureGlobalData)
 signal creature_focused(creature_node: BeeComponent)
 signal creature_unfocused
+signal unlocked_placeable(placeable: PlaceableGlobalData)
 
 @export var placeables: Array[PlaceableGlobalData]
 @export var creatures: Array[CreatureGlobalData]
