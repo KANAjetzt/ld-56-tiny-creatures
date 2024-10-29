@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TasksData" load_steps=14 format=3 uid="uid://c4ai6nrdydmj0"]
+[gd_resource type="Resource" script_class="TasksData" load_steps=15 format=3 uid="uid://c4ai6nrdydmj0"]
 
 [ext_resource type="Script" path="res://global_components/tasks/task.gd" id="1_bdvmc"]
 [ext_resource type="Script" path="res://global_components/tasks/task_habitat_deliver.gd" id="2_d4ing"]
@@ -14,16 +14,16 @@
 [sub_resource type="Resource" id="Resource_rngao"]
 script = ExtResource("2_d4ing")
 id = "task_bee_mason_deliver"
-display_name = "Watch the mason bee deliver pollen to her habitat"
+display_name = "Watch the mason bee deliver pollen to her habitat."
 description = ""
 is_completed = false
-unlocks_placeable = Array[ExtResource("3_0w0xb")]([ExtResource("4_cjvt2")])
+unlocks_placeable = Array[ExtResource("3_0w0xb")]([])
 
 [sub_resource type="Resource" id="Resource_j6mhs"]
 script = ExtResource("5_a3w10")
 habitat = ExtResource("4_il3w5")
 id = "task_bee_mason_habitat_snail"
-display_name = "Watch the mason bee enter a snail shell for the first time"
+display_name = "Watch the mason bee enter a snail shell for the first time."
 description = "Target the bee by left clicking it and follow it until it discovers a habitat."
 is_completed = false
 unlocks_placeable = Array[ExtResource("3_0w0xb")]([])
@@ -37,8 +37,17 @@ description = ""
 is_completed = false
 unlocks_placeable = Array[ExtResource("3_0w0xb")]([ExtResource("8_7l6sv")])
 
+[sub_resource type="Resource" id="Resource_gdj0g"]
+script = ExtResource("7_dyi0b")
+plant = ExtResource("8_7l6sv")
+id = "task_bee_mason_lavender"
+display_name = "Watch the mason bee collect pollen on lavender."
+description = ""
+is_completed = false
+unlocks_placeable = Array[ExtResource("3_0w0xb")]([ExtResource("4_cjvt2")])
+
 [resource]
 script = ExtResource("8_mndya")
-pollen_collect = Array[ExtResource("1_bdvmc")]([SubResource("Resource_8b6sf")])
+pollen_collect = Array[ExtResource("1_bdvmc")]([SubResource("Resource_8b6sf"), SubResource("Resource_gdj0g")])
 habitat_deliver = Array[ExtResource("1_bdvmc")]([SubResource("Resource_rngao")])
 habitat_find = Array[ExtResource("1_bdvmc")]([SubResource("Resource_j6mhs")])

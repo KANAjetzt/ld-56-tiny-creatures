@@ -1,0 +1,56 @@
+[gd_resource type="Resource" script_class="TasksData" load_steps=17 format=3 uid="uid://j4cl6vxaun7u"]
+
+[ext_resource type="Script" path="res://global_components/tasks/task.gd" id="1_twy1o"]
+[ext_resource type="Script" path="res://global_components/tasks/task_habitat_deliver.gd" id="2_7n67o"]
+[ext_resource type="Resource" uid="uid://bpjpitx5st3ek" path="res://non_placeables/Hole/hole_data.tres" id="2_oherd"]
+[ext_resource type="Script" path="res://placeables/_placeable_data_global.gd" id="3_8a4av"]
+[ext_resource type="Resource" uid="uid://de3ly3xci85n4" path="res://placeables/structures/Snail/snail_data.tres" id="4_eppsj"]
+[ext_resource type="Script" path="res://global_components/tasks/task_habitat_find.gd" id="5_dsfsr"]
+[ext_resource type="Resource" uid="uid://7j4ekhqshqxw" path="res://placeables/plants/grass/grass_data.tres" id="6_fswlg"]
+[ext_resource type="Script" path="res://global_components/tasks/task_collect.gd" id="7_yr3qw"]
+[ext_resource type="Resource" uid="uid://dumnnhwlcvlli" path="res://placeables/plants/lavender/lavender_data.tres" id="8_kvu25"]
+[ext_resource type="Resource" uid="uid://cf2xp1ut6ag87" path="res://placeables/structures/Hotel/hotel_data.tres" id="9_7ppp4"]
+[ext_resource type="Resource" uid="uid://5baj322b55fe" path="res://placeables/plants/clover/clover_data.tres" id="9_jkclp"]
+[ext_resource type="Script" path="res://global_components/tasks/tasks.gd" id="10_erun1"]
+
+[sub_resource type="Resource" id="Resource_jdwbr"]
+script = ExtResource("2_7n67o")
+habitat = ExtResource("2_oherd")
+id = "task_bee_bumble_deliver"
+display_name = "Watch the bumble bee deliver pollen to her habitat."
+description = ""
+is_completed = false
+unlocks_placeable = Array[ExtResource("3_8a4av")]([])
+
+[sub_resource type="Resource" id="Resource_l8lh2"]
+script = ExtResource("5_dsfsr")
+habitat = ExtResource("4_eppsj")
+id = "task_bee_bumble_habitat_hole"
+display_name = "Watch the bumble bee enter a hole for the first time."
+description = "Target the bee by left clicking it and follow it until it discovers a habitat."
+is_completed = false
+unlocks_placeable = Array[ExtResource("3_8a4av")]([])
+
+[sub_resource type="Resource" id="Resource_se5xy"]
+script = ExtResource("7_yr3qw")
+plant = ExtResource("6_fswlg")
+id = "task_bee_mason_clover"
+display_name = "Watch the mason bee collect pollen on clover."
+description = ""
+is_completed = false
+unlocks_placeable = Array[ExtResource("3_8a4av")]([ExtResource("9_jkclp")])
+
+[sub_resource type="Resource" id="Resource_yo25a"]
+script = ExtResource("7_yr3qw")
+plant = ExtResource("8_kvu25")
+id = "task_bee_bumble_sunflower"
+display_name = "Watch the bumblebee collect pollen on a sunflower."
+description = ""
+is_completed = false
+unlocks_placeable = Array[ExtResource("3_8a4av")]([ExtResource("9_7ppp4")])
+
+[resource]
+script = ExtResource("10_erun1")
+pollen_collect = Array[ExtResource("1_twy1o")]([SubResource("Resource_se5xy"), SubResource("Resource_yo25a")])
+habitat_deliver = Array[ExtResource("1_twy1o")]([SubResource("Resource_jdwbr")])
+habitat_find = Array[ExtResource("1_twy1o")]([SubResource("Resource_l8lh2")])

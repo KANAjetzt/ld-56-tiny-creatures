@@ -3,13 +3,16 @@ extends Node2D
 
 
 @export var habitat: HabitatComponent
+## Use this to set an amount of positions not present as a [CreaturePositionComponent].
+## Can be used instead of placing multiple [CreaturePositionComponent] at the same position.
+@export var underground_positions := 0
 
 var all_occupied := false:
 	set = _set_all_occupied
 var creature_positions: Array[CreaturePositionComponent]
 var creature_positions_free: Array[CreaturePositionComponent]
 
-@onready var available_positions: int = get_child_count():
+@onready var available_positions: int = get_child_count() + underground_positions:
 	set = _set_available_positions
 
 
@@ -30,9 +33,11 @@ func occupy_position() -> CreaturePositionComponent:
 
 	# TODO: Can be optimized
 	var creature_position: CreaturePositionComponent = creature_positions_free.pick_random()
-	creature_positions_free.erase(creature_position)
 
-	creature_position.is_occupied = true
+	if not creature_position.is_entrance:
+		creature_position.is_occupied = true
+		creature_positions_free.erase(creature_position)
+
 	available_positions -= 1
 	return creature_position
 

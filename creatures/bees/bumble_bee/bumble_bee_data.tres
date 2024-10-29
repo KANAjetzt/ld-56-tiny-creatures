@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="CreatureGlobalData" load_steps=5 format=3 uid="uid://ddc6h5xvatk8q"]
+[gd_resource type="Resource" script_class="CreatureGlobalData" load_steps=6 format=3 uid="uid://ddc6h5xvatk8q"]
 
 [ext_resource type="Script" path="res://placeables/_placeable_data_global.gd" id="1_ekjt2"]
 [ext_resource type="Script" path="res://creatures/_creature_data_global.gd" id="2_8sl66"]
 [ext_resource type="Resource" uid="uid://bpjpitx5st3ek" path="res://non_placeables/Hole/hole_data.tres" id="2_ncijm"]
 [ext_resource type="Texture2D" uid="uid://drvucgj0wdyp5" path="res://creatures/bees/bumble_bee/Bee_Bumble.svg" id="3_vmsn7"]
+[ext_resource type="Resource" uid="uid://j4cl6vxaun7u" path="res://creatures/bees/bumble_bee/bumble_bee_tasks_data.tres" id="5_ybk7d"]
 
 [resource]
 script = ExtResource("2_8sl66")
@@ -22,4 +23,5 @@ plants_per_spawn = {
 scene_path = "res://creatures/bees/bumble_bee/bumble_bee.tscn"
 spawn_time = 1.0
 info_text = ""
+tasks = ExtResource("5_ybk7d")
 unlocks_placeable = Array[ExtResource("1_ekjt2")]([])

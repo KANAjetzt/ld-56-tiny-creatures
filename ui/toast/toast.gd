@@ -4,6 +4,7 @@ extends PanelContainer
 
 @onready var image: UIImage = %Image
 @onready var label: Label = %Label
+@onready var sfx: AudioStreamPlayer = %SFX
 
 var toast_queue := []
 
@@ -26,6 +27,7 @@ func fly_in() -> void:
 
 	show()
 	var tween := create_tween()
+	play_sfx(0.2)
 	tween.tween_property(self, "position:y", 0 - size.y, 0.2).set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "position:y", 0 + size.y, 0.2).set_delay(2.0).set_ease(Tween.EASE_OUT)
 	await tween.finished
@@ -33,3 +35,13 @@ func fly_in() -> void:
 	hide()
 	if toast_queue.size() > 0:
 		fly_in()
+
+
+func play_sfx(delay := 0.0) -> void:
+	if sfx.playing:
+		return
+
+	if delay > 0.0:
+		await get_tree().create_timer(delay).timeout
+
+	sfx.play()

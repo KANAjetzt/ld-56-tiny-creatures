@@ -34,8 +34,11 @@ texture = ExtResource("2_2fwmu")
 
 [node name="CreaturePositionsComponent" parent="." node_paths=PackedStringArray("habitat") instance=ExtResource("3_jrsvs")]
 habitat = NodePath("..")
+underground_positions = 9
 
 [node name="CreaturePositionComponent" parent="CreaturePositionsComponent" instance=ExtResource("4_o30xf")]
+is_occupied = null
+is_entrance = true
 
 [node name="AttractorComponent" parent="." node_paths=PackedStringArray("creature_positions", "habitat") instance=ExtResource("5_yrk73")]
 creature_positions = NodePath("../CreaturePositionsComponent")

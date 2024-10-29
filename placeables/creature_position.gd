@@ -3,6 +3,7 @@ extends Node2D
 
 
 @export var is_occupied := false
+@export var is_entrance := false
 @export var pollen_container: PollenContainerComponent
 
 var parent: CreaturePositionsComponent
