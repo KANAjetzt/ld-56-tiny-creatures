@@ -22,8 +22,8 @@ shader_parameter/circle_radius = 0.078
 shader_parameter/circle_distance = 0.134
 shader_parameter/circle_color = Color(0.856, 0.68, 0, 1)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_bhi5v"]
-radius = 69.3542
+[sub_resource type="CircleShape2D" id="CircleShape2D_n2d2q"]
+radius = 120.0
 
 [node name="Sunflower" type="Node2D" node_paths=PackedStringArray("creature_positions", "attractor") groups=["placeable"]]
 script = ExtResource("1_d2dno")
@@ -90,18 +90,18 @@ creature_positions = NodePath("../CreaturePositionsComponent")
 plant = NodePath("..")
 
 [node name="AttractorArea" type="Area2D" parent="AttractorComponent" node_paths=PackedStringArray("ref")]
-visible = false
 collision_layer = 2
 input_pickable = false
 script = ExtResource("10_yodwm")
 ref = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttractorComponent/AttractorArea"]
-shape = SubResource("CircleShape2D_bhi5v")
+position = Vector2(-10, -36)
+shape = SubResource("CircleShape2D_n2d2q")
 
 [node name="GrowComponent" parent="." node_paths=PackedStringArray("node") instance=ExtResource("13_32ynf")]
 node = NodePath("..")
-time = 15.0
+time = 30.0
 start_scale = Vector2(0.01, 0.01)
 
 [editable path="AttractorComponent"]

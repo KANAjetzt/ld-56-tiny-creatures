@@ -14,5 +14,13 @@ func _ready() -> void:
 				inside_attractor_area.emit(area)
 
 
+func disable() -> void:
+	area_2d.monitoring = false
+
+
+func activate() -> void:
+	area_2d.monitoring = true
+
+
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	inside_attractor_area.emit(area)

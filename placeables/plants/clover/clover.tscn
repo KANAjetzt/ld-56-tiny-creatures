@@ -80,7 +80,6 @@ script = ExtResource("10_n033r")
 ref = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttractorComponent/AttractorArea"]
-visible = false
 shape = SubResource("CircleShape2D_bhi5v")
 
 [node name="GrowComponent" parent="." node_paths=PackedStringArray("node") instance=ExtResource("13_bolhf")]

@@ -205,6 +205,9 @@ func _on_inside_attractor_area(area: AttractorArea) -> void:
 				data.current_local_data = area.ref.habitat.data_global
 				found_habitat.emit(self)
 				travel(data.current_habitat_position.global_position)
+	# If current local is set to the habitat keep traveling to the habitat
+	elif data.current_local == data.current_habitat.data_global:
+		return
 	elif area.ref.plant:
 		# Check memory
 		if area.ref.plant.data_global == memory_no_success:

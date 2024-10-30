@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://fluverg1qtie"]
+[gd_scene load_steps=20 format=3 uid="uid://fluverg1qtie"]
 
 [ext_resource type="Script" path="res://creatures/bees/bee.gd" id="1_ijwiw"]
 [ext_resource type="PackedScene" uid="uid://b850qlnpmsgn8" path="res://ui/debug/debug_panel.tscn" id="1_ypnlu"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://c0p6fwpet1gec" path="res://global_components/zoom_db_modulate.tscn" id="14_fypyg"]
 [ext_resource type="PackedScene" uid="uid://nx2hjeg62iqb" path="res://placeables/plants/Fade.tscn" id="14_vbmf8"]
 [ext_resource type="PackedScene" uid="uid://b4k5x2h857mh8" path="res://creatures/bees/area_scanner.tscn" id="16_f4vup"]
+[ext_resource type="PackedScene" uid="uid://b7objjql7vcio" path="res://creatures/task_observer.tscn" id="16_sy10k"]
 [ext_resource type="PackedScene" uid="uid://cq4dycueymjnj" path="res://creatures/bees/digging.tscn" id="17_7jjtd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wcchw"]
@@ -103,3 +104,6 @@ area_scanner = NodePath("../AreaScanner")
 movement = NodePath("../MovementComponent")
 dig_time = 25.0
 habitat_to_spawn = "res://non_placeables/Hole/hole_placeable.tscn"
+
+[node name="TaskObserver" parent="." node_paths=PackedStringArray("bee") instance=ExtResource("16_sy10k")]
+bee = NodePath("..")
