@@ -49,7 +49,7 @@ display_name = "Watch the bumblebee collect pollen on a sunflower."
 description = ""
 is_completed = false
 unlocks_placeable = Array[ExtResource("3_8a4av")]([ExtResource("9_7ppp4")])
-unlocks_fact = Array[String](["Bumblebees have five eyes, to pick up colors, shapes, and UV markings on flowers"])
+unlocks_fact = Array[String](["Bumblebees have five eyes, to pick up colors, shapes, and UV markings on flowers."])
 
 [resource]
 script = ExtResource("10_erun1")

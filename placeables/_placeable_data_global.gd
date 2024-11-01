@@ -28,11 +28,14 @@ var amount_current := amount_start:
 	set = _set_amount_current
 var needs_resupply := false:
 	set = _set_needs_resupply
-
+var is_resupplying := false
 
 func resupply() -> void:
 	if needs_resupply and Utils:
+		is_resupplying = true
 		Utils.create_timer(resupply_time).timeout.connect(_on_resupply_timer_timeout)
+	else:
+		is_resupplying = false
 
 
 func _set_amount_current(new_value) -> void:
@@ -51,7 +54,7 @@ func _set_needs_resupply(new_value) -> void:
 	var previous_value := needs_resupply
 	needs_resupply = new_value
 	# If previously there was no need for resupply start resuppling
-	if new_value == true and previous_value == false:
+	if not is_resupplying:
 		resupply()
 
 
