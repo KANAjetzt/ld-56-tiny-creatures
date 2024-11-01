@@ -10,6 +10,7 @@ extends Node2D
 @onready var placeables: Node = %Placeables
 @onready var constructed: Node = %Constructed
 @onready var bees: Node = %Bees
+@onready var book: UIBook = %Book
 
 
 func _ready() -> void:
@@ -59,3 +60,10 @@ func place_placeable() -> void:
 
 func _on_hud_placeable_selected(data: PlaceableGlobalData) -> void:
 	placeable_preview.set_preview(data.icon)
+
+
+func _on_hud_button_book_pressed() -> void:
+	if not book.visible:
+		book.make_visible()
+	else:
+		book.make_invisble()

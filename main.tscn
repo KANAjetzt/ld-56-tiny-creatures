@@ -153,7 +153,9 @@ scale = Vector2(0.03, 0.03)
 unique_name_in_owner = true
 
 [node name="Book" parent="CanvasLayer" instance=ExtResource("9_4wdwf")]
+unique_name_in_owner = true
 
 [node name="Sounds" type="Node" parent="."]
 
+[connection signal="button_book_pressed" from="CanvasLayer/Hud" to="." method="_on_hud_button_book_pressed"]
 [connection signal="placeable_selected" from="CanvasLayer/Hud" to="." method="_on_hud_placeable_selected"]

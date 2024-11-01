@@ -11,6 +11,7 @@ signal completed(task: TaskData)
 	set = _set_is_completed
 ## Add placeables that are unlocked if this task is completed
 @export var unlocks_placeable: Array[PlaceableGlobalData] = []
+@export var unlocks_fact: Array[String] = []
 
 
 func _set_is_completed(new_value) -> void:

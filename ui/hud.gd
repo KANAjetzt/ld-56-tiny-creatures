@@ -3,6 +3,7 @@ extends AspectRatioContainer
 
 
 signal placeable_selected(data: PlaceableGlobalData)
+signal button_book_pressed
 
 var is_hovering := false
 
@@ -23,3 +24,7 @@ func _on_placeables_placeable_selected(data: PlaceableGlobalData) -> void:
 
 func _on_global_unlocked_placeable(data: PlaceableGlobalData) -> void:
 	toast.add(data.icon, "Unlocked %s" % data.display_name)
+
+
+func _on_button_book_pressed() -> void:
+	button_book_pressed.emit()

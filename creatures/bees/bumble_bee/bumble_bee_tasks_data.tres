@@ -19,6 +19,7 @@ display_name = "Watch the bumblebee deliver pollen to her habitat."
 description = ""
 is_completed = false
 unlocks_placeable = Array[ExtResource("3_8a4av")]([])
+unlocks_fact = Array[String](["Bumblebees don’t produce honey.", "While wild bumblebees do collect sugary nectar, they always consume it before they have a chance to convert it into honey."])
 
 [sub_resource type="Resource" id="Resource_l8lh2"]
 script = ExtResource("5_dsfsr")
@@ -28,6 +29,7 @@ display_name = "Watch the bumblbee enter a hole for the first time."
 description = "Target the bee by left clicking it and follow it until it discovers a habitat."
 is_completed = false
 unlocks_placeable = Array[ExtResource("3_8a4av")]([])
+unlocks_fact = Array[String](["There are 265 species of Bumblebees in the world."])
 
 [sub_resource type="Resource" id="Resource_se5xy"]
 script = ExtResource("7_yr3qw")
@@ -37,6 +39,7 @@ display_name = "Watch the bumblebee collect pollen on clover."
 description = ""
 is_completed = false
 unlocks_placeable = Array[ExtResource("3_8a4av")]([ExtResource("8_v7cpt")])
+unlocks_fact = Array[String](["Bumblebees can detect the nutritional quality of pollen."])
 
 [sub_resource type="Resource" id="Resource_yo25a"]
 script = ExtResource("7_yr3qw")
@@ -46,6 +49,7 @@ display_name = "Watch the bumblebee collect pollen on a sunflower."
 description = ""
 is_completed = false
 unlocks_placeable = Array[ExtResource("3_8a4av")]([ExtResource("9_7ppp4")])
+unlocks_fact = Array[String](["Bumblebees have five eyes, to pick up colors, shapes, and UV markings on flowers"])
 
 [resource]
 script = ExtResource("10_erun1")

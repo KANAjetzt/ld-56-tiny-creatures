@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://d25f1lqy1mp5x"]
+[gd_scene load_steps=8 format=3 uid="uid://d25f1lqy1mp5x"]
 
 [ext_resource type="Script" path="res://ui/book/book.gd" id="1_qvnfb"]
 [ext_resource type="Texture2D" uid="uid://cu46445elo3jm" path="res://ui/assets/arrow_left.svg" id="2_3wg5e"]
 [ext_resource type="Texture2D" uid="uid://fc2a450ol38q" path="res://ui/assets/Bee_unknown.svg" id="2_e8udr"]
 [ext_resource type="Texture2D" uid="uid://bc5kihw4ceao3" path="res://creatures/bees/mason_bee/Bee.svg" id="2_hsonb"]
 [ext_resource type="PackedScene" uid="uid://dbtuxqiuii7rq" path="res://ui/book/task.tscn" id="3_yjpj7"]
+[ext_resource type="PackedScene" uid="uid://7kvhsp0k7qbu" path="res://ui/fact/fact.tscn" id="4_akbrx"]
 [ext_resource type="Texture2D" uid="uid://ce7rp1hvfwchp" path="res://ui/assets/arrow_right.svg" id="4_uypq3"]
 
 [node name="Book" type="PanelContainer"]
@@ -18,9 +19,12 @@ grow_vertical = 2
 script = ExtResource("1_qvnfb")
 unknown_icon = ExtResource("2_e8udr")
 task_scene = ExtResource("3_yjpj7")
+fact_scene = ExtResource("4_akbrx")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
@@ -39,7 +43,8 @@ icon = ExtResource("2_3wg5e")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 50
+size_flags_horizontal = 3
+theme_override_constants/separation = 30
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -57,20 +62,39 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "%BEE_NAME%"
 
-[node name="InfoText" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(500, 0)
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(600, 400)
 layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="InfoText" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/line_separation = 5
 fit_content = true
 
-[node name="Tasks" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Facts" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
 
-[node name="Images" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Tasks" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="ButtonRight" type="Button" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true

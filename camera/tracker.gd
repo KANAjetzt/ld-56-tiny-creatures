@@ -21,6 +21,9 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	if Global.is_book_open:
+		return
+
 	if Input.is_action_just_pressed("exit_follow_mode"):
 		activate()
 

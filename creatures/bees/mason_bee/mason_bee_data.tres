@@ -22,6 +22,8 @@ plants_per_spawn = {
 }
 scene_path = "res://creatures/bees/mason_bee/mason_bee.tscn"
 spawn_time = 0.3
-info_text = ""
+info_text = "- Habitats: Bee Hotel / Dead Wood / Logs
+- Favorite Plants: Gooseberry / Fruit Trees / Lavender / Grass"
 tasks = ExtResource("6_36thy")
 unlocks_placeable = Array[ExtResource("1_epi8m")]([ExtResource("7_nlkt8")])
+fact_source = "https://bestbees.com/2022/06/03/mason-bees"

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://clc8r6kbffjad"]
+[gd_scene load_steps=7 format=3 uid="uid://clc8r6kbffjad"]
 
 [ext_resource type="Script" path="res://ui/hud.gd" id="1_jjvs2"]
 [ext_resource type="PackedScene" uid="uid://hi233c3jm3s3" path="res://ui/folded.tscn" id="1_wqxql"]
 [ext_resource type="PackedScene" uid="uid://ceg6niusdu1sc" path="res://ui/placeable/placeables.tscn" id="2_p1ne0"]
 [ext_resource type="PackedScene" uid="uid://dtwmad8adjx0j" path="res://ui/fly_in.tscn" id="3_m8jdn"]
 [ext_resource type="PackedScene" uid="uid://cgokyoyr7so6g" path="res://ui/toast/toast.tscn" id="5_ai3rp"]
+[ext_resource type="Texture2D" uid="uid://fnv88xax6q4g" path="res://ui/book/book_icon.svg" id="6_01xib"]
 
 [node name="Hud" type="AspectRatioContainer"]
 anchors_preset = 15
@@ -75,7 +76,24 @@ grow_vertical = 0
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="ButtonBook" type="Button" parent="MarginContainer2"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+icon = ExtResource("6_01xib")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
 [connection signal="placeable_selected" from="MarginContainer/VBoxContainer/Control2/VBoxContainer/Placeables" to="." method="_on_placeables_placeable_selected"]
 [connection signal="hover_changed" from="MarginContainer/FlyIn" to="MarginContainer" method="_on_fly_in_hover_changed"]
+[connection signal="pressed" from="MarginContainer2/ButtonBook" to="." method="_on_button_book_pressed"]
 
 [editable path="MarginContainer/VBoxContainer/Control2/VBoxContainer/PanelContainer"]

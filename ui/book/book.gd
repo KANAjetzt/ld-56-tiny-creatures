@@ -4,15 +4,18 @@ extends PanelContainer
 
 @export var unknown_icon: Texture
 @export var task_scene: PackedScene
+@export var fact_scene: PackedScene
 
 @onready var icon: TextureRect = %Icon
 @onready var label_name: Label = %LabelName
 @onready var info_text: RichTextLabel = %InfoText
 @onready var tasks: VBoxContainer = %Tasks
-
+@onready var facts: VBoxContainer = %Facts
+@onready var button_right: Button = %ButtonRight
 
 var info_text_template := """
 Happy Bees: {%BEE_COUNT%}
+
 {%CREATURE_INFO%}
 """
 
@@ -32,7 +35,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("open_book"):
 		if visible:
-			hide()
+			make_invisble()
 		else:
 			make_visible()
 
@@ -44,6 +47,13 @@ func make_visible() -> void:
 		init_preview_page()
 
 	show()
+	Global.is_book_open = true
+	button_right.grab_focus()
+
+
+func make_invisble() -> void:
+	hide()
+	Global.is_book_open = false
 
 
 func add_page(creature: CreatureGlobalData) -> void:
@@ -59,12 +69,24 @@ func init_page(creature: CreatureGlobalData) -> void:
 	})
 
 	Utils.free_children(tasks)
+	Utils.free_children(facts)
 
 	if creature.tasks:
 		for task in creature.tasks.get_all_tasks():
 			var new_task: UITask = task_scene.instantiate()
 			tasks.add_child(new_task)
 			new_task.init(task)
+
+			for i in task.unlocks_fact.size():
+				var fact_text := task.unlocks_fact[i]
+				var new_fact: UIFact = fact_scene.instantiate()
+				facts.add_child(new_fact)
+				new_fact.init(task, i)
+
+		var fact_source := Label.new()
+		facts.add_child(fact_source)
+		fact_source.text = creature.fact_source
+		fact_source.add_theme_font_size_override(&"font_size", 12)
 
 
 func init_preview_page() -> void:
@@ -76,6 +98,9 @@ func init_preview_page() -> void:
 ???
 """
 	})
+
+	Utils.free_children(tasks)
+	Utils.free_children(facts)
 
 
 func _on_creature_discovered(creature: CreatureGlobalData) -> void:

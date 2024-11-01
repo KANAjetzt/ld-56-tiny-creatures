@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://7kvhsp0k7qbu"]
+
+[ext_resource type="Script" path="res://ui/fact/fact.gd" id="1_wyxhv"]
+
+[node name="Fact" type="RichTextLabel"]
+offset_right = 40.0
+offset_bottom = 40.0
+fit_content = true
+script = ExtResource("1_wyxhv")

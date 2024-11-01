@@ -22,6 +22,8 @@ plants_per_spawn = {
 }
 scene_path = "res://creatures/bees/bumble_bee/bumble_bee.tscn"
 spawn_time = 1.0
-info_text = ""
+info_text = "- Habitats: Abandoned burrows / Tall grassy areas
+- Favorite Plants: Clover / Sunflower / Lavender"
 tasks = ExtResource("5_ybk7d")
 unlocks_placeable = Array[ExtResource("1_ekjt2")]([])
+fact_source = "https://www.treehugger.com/bumblebee-facts-5119379"

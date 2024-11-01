@@ -18,6 +18,7 @@ display_name = "Watch the mason bee deliver pollen to her habitat."
 description = ""
 is_completed = false
 unlocks_placeable = Array[ExtResource("3_0w0xb")]([])
+unlocks_fact = Array[String](["Unlike the honey bee, Mason Bees make their nests about 300 feet from the best selection of flowers."])
 
 [sub_resource type="Resource" id="Resource_j6mhs"]
 script = ExtResource("5_a3w10")
@@ -27,6 +28,7 @@ display_name = "Watch the mason bee enter a snail shell for the first time."
 description = "Target the bee by left clicking it and follow it until it discovers a habitat."
 is_completed = false
 unlocks_placeable = Array[ExtResource("3_0w0xb")]([])
+unlocks_fact = Array[String](["There are 130 species of Mason Bees throughout North America."])
 
 [sub_resource type="Resource" id="Resource_8b6sf"]
 script = ExtResource("7_dyi0b")
@@ -36,6 +38,7 @@ display_name = "Watch the mason bee collect pollen on tall grass."
 description = ""
 is_completed = false
 unlocks_placeable = Array[ExtResource("3_0w0xb")]([ExtResource("8_7l6sv")])
+unlocks_fact = Array[String](["Mason Bees are solitary bees, meaning they work alone and do not rely on a colony."])
 
 [sub_resource type="Resource" id="Resource_gdj0g"]
 script = ExtResource("7_dyi0b")
@@ -45,6 +48,7 @@ display_name = "Watch the mason bee collect pollen on lavender."
 description = ""
 is_completed = false
 unlocks_placeable = Array[ExtResource("3_0w0xb")]([ExtResource("4_cjvt2")])
+unlocks_fact = Array[String](["Mason Bees do not make honey."])
 
 [resource]
 script = ExtResource("8_mndya")

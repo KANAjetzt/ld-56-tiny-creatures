@@ -19,6 +19,7 @@ var currently_discovered_creatures: Array[CreatureGlobalData]
 var creature_count: Dictionary = {}
 var current_focused_creature: BeeComponent:
 	set = _set_current_focused_creature
+var is_book_open := false
 
 ## Set by [CameraTarget]
 var zoom_in_max: Vector2
