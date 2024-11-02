@@ -2,6 +2,8 @@ class_name SpawnersComponent
 extends Node2D
 
 
+signal spawned(creature: Node2D, creature_data: CreatureGlobalData)
+
 @export var camera: Camera2D
 @export var spawner_scene: PackedScene
 @export var spawn_to: Node
@@ -27,6 +29,8 @@ func add_spawner(creature: CreatureGlobalData) -> void:
 	new_spawner.spawn_offset_max = spawn_offset_max
 	new_spawner.is_active = true
 
+	new_spawner.spawned.connect(on_new_spawner_spawned)
+
 
 func _on_criteria_met(creature: CreatureGlobalData) -> void:
 	print("INFO: Added spawner for %s" % creature.id)
@@ -37,3 +41,7 @@ func _on_criteria_no_longer_met(creature: CreatureGlobalData) -> void:
 	print("INFO: Removed spawner for %s" % creature.id)
 	var spawner: SpawnerComponent = get_node(creature.id)
 	spawner.queue_free()
+
+
+func on_new_spawner_spawned(creature: Node2D, data: CreatureGlobalData) -> void:
+	spawned.emit(creature, data)

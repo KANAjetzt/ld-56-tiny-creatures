@@ -51,6 +51,7 @@ layout_mode = 2
 mouse_filter = 1
 
 [node name="FlyIn" parent="MarginContainer" node_paths=PackedStringArray("mouse_over_control", "transition_control", "hidden_control") instance=ExtResource("3_m8jdn")]
+unique_name_in_owner = true
 mouse_over_control = NodePath("../VBoxContainer/Control2/VBoxContainer")
 transition_control = NodePath("../VBoxContainer/Control2")
 hidden_control = NodePath("../VBoxContainer/Control2/VBoxContainer/Placeables")
@@ -85,7 +86,7 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 
 [node name="ButtonBook" type="Button" parent="MarginContainer2"]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 icon = ExtResource("6_01xib")
 flat = true

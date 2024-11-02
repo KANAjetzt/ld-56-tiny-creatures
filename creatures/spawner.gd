@@ -3,6 +3,8 @@ class_name SpawnerComponent
 extends Node2D
 
 
+signal spawned(creature: Node2D, data: CreatureData)
+
 @export var creature: CreatureGlobalData
 @export var habitat: HabitatComponent
 @export var habitat_position: CreaturePositionComponent
@@ -23,6 +25,7 @@ var camera: Camera2D
 var spawn_offset_min: int
 var spawn_offset_max: int
 var creatures_spawned := 0
+
 
 func spawn() -> void:
 	if not is_active:
@@ -75,6 +78,7 @@ func spawn() -> void:
 		Global.creature_count[creature.id] += 1
 
 	print("INFO: Spawned %s at %s" % [creature.id, random_position])
+	spawned.emit(new_creature, creature)
 
 	if not creature.plants_per_spawn.is_empty():
 		for plant_id in creature.plants_per_spawn:

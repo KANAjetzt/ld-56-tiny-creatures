@@ -12,7 +12,7 @@ signal hover_changed(is_hovering: bool)
 var original_minimum_size: Vector2
 var is_hovering := false:
 	set = _set_is_hovering
-
+var is_in := false
 
 func _ready() -> void:
 	original_minimum_size = Vector2(transition_control.custom_minimum_size)
@@ -28,11 +28,13 @@ func _process(_delta: float) -> void:
 func transition_in() -> void:
 	var tween := create_tween()
 	tween.tween_property(transition_control, "custom_minimum_size:y", original_minimum_size.y + hidden_control.size.y, transition_time).set_ease(Tween.EASE_OUT)
+	is_in = true
 
 
 func transition_out() -> void:
 	var tween := create_tween()
 	tween.tween_property(transition_control, "custom_minimum_size:y", original_minimum_size.y, transition_time).set_ease(Tween.EASE_OUT)
+	is_in = false
 
 
 func _set_is_hovering(new_value) -> void:

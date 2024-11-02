@@ -33,7 +33,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("open_book"):
+	if Input.is_action_just_pressed("open_book") or Input.is_action_just_pressed("close"):
 		if visible:
 			make_invisble()
 		else:

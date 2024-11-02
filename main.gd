@@ -11,14 +11,18 @@ extends Node2D
 @onready var constructed: Node = %Constructed
 @onready var bees: Node = %Bees
 @onready var book: UIBook = %Book
+@onready var spawners_component: SpawnersComponent = %SpawnersComponent
+
+var first_spawned := false
 
 
 func _ready() -> void:
 	Global.main_ref = self
+	Global.check_creature_criteria()
 
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("place") and not hud.is_hovering:
+	if Input.is_action_just_pressed("place") and not hud.fly_in.is_in:
 		place_placeable()
 	if Input.is_action_just_pressed("deselect"):
 		Global.currently_selected_placeable = null
@@ -67,3 +71,11 @@ func _on_hud_button_book_pressed() -> void:
 		book.make_visible()
 	else:
 		book.make_invisble()
+
+
+func _on_spawners_component_spawned(creature: Node2D, creature_data: CreatureGlobalData) -> void:
+	if not first_spawned:
+		Global.current_focused_creature = creature
+		first_spawned = true
+	else:
+		spawners_component.spawned.disconnect(_on_spawners_component_spawned)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cawplt2cvlk2e"]
+[gd_scene load_steps=35 format=3 uid="uid://cawplt2cvlk2e"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_8iqq1"]
 [ext_resource type="PackedScene" uid="uid://pany56w6d3vs" path="res://ui/placeable/placeable_preview.tscn" id="2_5g2f2"]
@@ -29,6 +29,7 @@
 [ext_resource type="AudioStream" uid="uid://c81fm6efluoli" path="res://assets/sfx/ambient_short/rat/rat-3.ogg" id="20_e176y"]
 [ext_resource type="AudioStream" uid="uid://groxr85fv5mg" path="res://assets/sfx/ambient_short/rat/rat-4.ogg" id="21_0j3gq"]
 [ext_resource type="PackedScene" uid="uid://c0p6fwpet1gec" path="res://global_components/zoom_db_modulate.tscn" id="22_6o7vv"]
+[ext_resource type="PackedScene" uid="uid://cd0cebpexn4ol" path="res://placeables/structures/Snail/snail.tscn" id="28_ilucu"]
 [ext_resource type="PackedScene" uid="uid://clc8r6kbffjad" path="res://ui/hud.tscn" id="29_4bs2p"]
 
 [sub_resource type="Curve" id="Curve_mlh6k"]
@@ -52,7 +53,7 @@ ease = 2
 script = ExtResource("1_8iqq1")
 
 [node name="CameraTarget" parent="." instance=ExtResource("2_fagt1")]
-position = Vector2(900, 500)
+position = Vector2(875, 500)
 zoom_target_speed_curve = SubResource("Curve_mlh6k")
 
 [node name="AmbientSoundscape" parent="CameraTarget" node_paths=PackedStringArray("global_spawn_position_node", "global_spawn_container_node") instance=ExtResource("3_l4b8f")]
@@ -98,7 +99,7 @@ zoom_db_curve = SubResource("Curve_u8w0q")
 
 [node name="CameraMain" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 unique_name_in_owner = true
-position = Vector2(900, 500)
+position = Vector2(875, 500)
 script = ExtResource("3_yjssh")
 follow_mode = 2
 follow_target = NodePath("../CameraTarget")
@@ -107,12 +108,13 @@ follow_damping = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 2
-position = Vector2(900, 500)
+position = Vector2(875, 500)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("5_v507f")
 
 [node name="SpawnersComponent" parent="Camera2D" node_paths=PackedStringArray("camera", "spawn_to", "constructions_spawn_to") instance=ExtResource("6_jrgpu")]
+unique_name_in_owner = true
 camera = NodePath("..")
 spawner_scene = ExtResource("8_cct5b")
 spawn_to = NodePath("../../Bees")
@@ -126,6 +128,9 @@ unique_name_in_owner = true
 
 [node name="Plants" type="Node" parent="Placeables"]
 unique_name_in_owner = true
+
+[node name="SnailShell" parent="Placeables" instance=ExtResource("28_ilucu")]
+position = Vector2(870, 497)
 
 [node name="Bees" type="Node" parent="."]
 unique_name_in_owner = true
@@ -157,5 +162,6 @@ unique_name_in_owner = true
 
 [node name="Sounds" type="Node" parent="."]
 
+[connection signal="spawned" from="Camera2D/SpawnersComponent" to="." method="_on_spawners_component_spawned"]
 [connection signal="button_book_pressed" from="CanvasLayer/Hud" to="." method="_on_hud_button_book_pressed"]
 [connection signal="placeable_selected" from="CanvasLayer/Hud" to="." method="_on_hud_placeable_selected"]

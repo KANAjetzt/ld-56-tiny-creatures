@@ -27,7 +27,7 @@ id = "task_bee_mason_habitat_snail"
 display_name = "Watch the mason bee enter a snail shell for the first time."
 description = "Target the bee by left clicking it and follow it until it discovers a habitat."
 is_completed = false
-unlocks_placeable = Array[ExtResource("3_0w0xb")]([])
+unlocks_placeable = Array[ExtResource("3_0w0xb")]([ExtResource("6_31svl")])
 unlocks_fact = Array[String](["There are 130 species of Mason Bees throughout North America."])
 
 [sub_resource type="Resource" id="Resource_8b6sf"]

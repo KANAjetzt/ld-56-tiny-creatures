@@ -24,7 +24,7 @@ max_value = 0.0
 _data = [Vector2(0, -80), 10.1528, 10.1528, 0, 0, Vector2(0.0118577, -21.7302), 32.1505, 32.1505, 0, 0, Vector2(0.083004, -6.48094), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[node name="MasonBee" type="Node2D" node_paths=PackedStringArray("movement", "attractee", "pollen_container", "fade", "shake", "sound", "debug_panel")]
+[node name="MasonBee" type="Node2D" node_paths=PackedStringArray("movement", "attractee", "pollen_container", "fade", "shake", "sound", "clickable", "debug_panel")]
 script = ExtResource("1_j331g")
 data_global = ExtResource("2_4sjcd")
 movement = NodePath("MovementComponent")
@@ -33,6 +33,7 @@ pollen_container = NodePath("PollenContainer")
 fade = NodePath("FadeComponent")
 shake = NodePath("ShakeComponent")
 sound = NodePath("BeeSoundComponent")
+clickable = NodePath("ClickableComponent")
 debug_panel = NodePath("DebugPanel")
 
 [node name="DebugPanel" parent="." instance=ExtResource("12_l187m")]

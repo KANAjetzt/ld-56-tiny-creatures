@@ -29,7 +29,7 @@ point_count = 4
 [sub_resource type="CircleShape2D" id="CircleShape2D_00m6i"]
 radius = 248.002
 
-[node name="BumbleBee" type="Node2D" node_paths=PackedStringArray("movement", "attractee", "pollen_container", "fade", "shake", "sound", "digging", "debug_panel")]
+[node name="BumbleBee" type="Node2D" node_paths=PackedStringArray("movement", "attractee", "pollen_container", "fade", "shake", "sound", "digging", "clickable", "debug_panel")]
 script = ExtResource("1_ijwiw")
 data_global = ExtResource("2_8kxrs")
 movement = NodePath("MovementComponent")
@@ -39,6 +39,7 @@ fade = NodePath("FadeComponent")
 shake = NodePath("ShakeComponent")
 sound = NodePath("BeeSoundComponent")
 digging = NodePath("Digging")
+clickable = NodePath("ClickableComponent")
 debug_panel = NodePath("DebugPanel")
 
 [node name="DebugPanel" parent="." instance=ExtResource("1_ypnlu")]

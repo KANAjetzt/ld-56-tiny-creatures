@@ -7,6 +7,7 @@ signal button_book_pressed
 
 var is_hovering := false
 
+@onready var fly_in: Node = %FlyIn
 @onready var toast: ToastUI = %Toast
 
 

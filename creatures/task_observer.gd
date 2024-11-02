@@ -23,7 +23,7 @@ func check_pollen_collected_tasks() -> void:
 	for task in bee.data_global.tasks.pollen_collect:
 		if task.is_completed:
 			continue
-		if bee.data.current_local_data.id == task.plant.id:
+		if bee.data.current_local_data and bee.data.current_local_data.id == task.plant.id:
 			task.is_completed = true
 			print("INFO: \"%s\" completed." % task.id)
 

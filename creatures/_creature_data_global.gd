@@ -17,9 +17,9 @@ extends Resource
 ## Add placeables that are unlocked if all tasks are completed
 @export var unlocks_placeable: Array[PlaceableGlobalData] = []
 @export var fact_source: String
+@export var is_discovered := false
 
 var images: Array[Image] = []
-var is_discovered := false
 
 
 func _set_tasks(new_value) -> void:

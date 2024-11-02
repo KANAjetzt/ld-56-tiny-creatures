@@ -14,12 +14,8 @@ id = "bee_mason"
 display_name = "Mason Bee"
 icon = ExtResource("3_hlo4t")
 habitats = Array[ExtResource("1_epi8m")]([ExtResource("3_5pso8"), ExtResource("2_xv0c8")])
-plants = {
-"plant_grass": 3
-}
-plants_per_spawn = {
-"plant_grass": 0
-}
+plants = {}
+plants_per_spawn = {}
 scene_path = "res://creatures/bees/mason_bee/mason_bee.tscn"
 spawn_time = 0.3
 info_text = "- Habitats: Bee Hotel / Dead Wood / Logs
@@ -27,3 +23,4 @@ info_text = "- Habitats: Bee Hotel / Dead Wood / Logs
 tasks = ExtResource("6_36thy")
 unlocks_placeable = Array[ExtResource("1_epi8m")]([ExtResource("7_nlkt8")])
 fact_source = "https://bestbees.com/2022/06/03/mason-bees"
+is_discovered = true

@@ -18,6 +18,7 @@ signal delivered_pollen(bee: BeeComponent)
 @export var shake: ShakeComponent
 @export var sound: BeeSoundComponent
 @export var digging: DiggingComponent
+@export var clickable: ClickableComponent
 @export var search_scale := 10
 @export var search_distance_min := 100
 @export var max_distance_from_habitat := 1000

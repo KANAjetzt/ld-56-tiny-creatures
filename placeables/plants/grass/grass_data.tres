@@ -17,4 +17,4 @@ resupply_time = 5.0
 amount_start = 5
 amount_max = 5
 scene_path = "res://placeables/plants/grass/placeable_grass.tscn"
-is_unlocked = true
+is_unlocked = false
